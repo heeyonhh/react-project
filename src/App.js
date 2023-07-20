@@ -1,71 +1,71 @@
-import { Routes, Route, Link } from 'react-router-dom'
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route, Link } from 'react-router-dom'
 
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+
+// 컴포넌츠
+import Nav from './components/Nav';
+import Plusmenu from './components/Plusmenu';
 import Code from './components/Code';
 import Event from './components/Event';
-import Mypage from './components/Mypage';
+import Login from './components/Login';
 import Order from './components/Order';
-import Stamp from './components/Stamp'
-
-import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import Stamp from './components/Stamp';
 
 function App() {
   return (
     <div className="App">
 
-      {/* navi var */}
-      {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
-          <Container fluid>
-            <Navbar.Brand href="#">희다방</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  희다방
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">스탬프</Nav.Link>
-                  <Nav.Link href="#action2">쿠폰</Nav.Link>
-                  <Nav.Link href="#action3">주문하기</Nav.Link>
-                  <Nav.Link href="#action4">간편카드등록</Nav.Link>
-                  <Nav.Link href="#action5">이벤트</Nav.Link>
-                </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="불편 사항 있으신가요?"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      ))}
-
       <Routes>
+
         <Route path="/" element=
           {
-            <div>
-              메인페이지임
-            </div>
+            <Container style={{margin:0, padding:0}}>
+              <Grid container>
+                <Grid className='mainslide' item xs={12}>
+                  {/* <Item>이벤트 화면 이미지 슬라이드</Item> */}
+                </Grid>
+                <Grid className='section' item xs={12}>
+                  {/*<Item className='stampbox'>
+                    <p className='username_ment'>김희연 님</p>
+                    <div className='stamp'>
+      
+                    </div>
+                    <div className='coupon'>
+      
+                    </div>
+                    <div className='barcode'>
+      
+                    </div>
+                  </Item>
+      
+                  <Item className='eventslide'>
+      
+                  </Item>
+      
+                  <Item className='mdmenu'>
+                    <p className='username_ment'>김희연 님을 위한 추천 메뉴</p>
+                    <div className='md'>
+                      <img></img>
+                      <p>고흥 유자망고 스무디</p>
+                    </div>
+                  </Item> */}
+                  
+                </Grid>
+              </Grid>
+            </Container>
           } />
         <Route path="/code" element={<Code />} />
         <Route path="/stamp" element={<Stamp />} />
         <Route path="/order" element={<Order />} />
         <Route path="/event" element={<Event />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path='/login' element={<Login />} />
+
       </Routes>
+
+      <Plusmenu />
+      <Nav />
 
     </div>
   );

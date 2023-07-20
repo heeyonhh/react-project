@@ -1,3 +1,28 @@
 .App {
   text-align: center;
 }
+
+.nav{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navactive{
+  color: rgb(255, 119, 0);
+}
+
+.mainslide{
+  height: 250px;
+  background-color: aqua;
+}
+
+.section{
+  height: 800px;
+  background-color: rgb(152, 152, 152);
+}
+
+.plusmenu{
+  color: transparent;
+}
