@@ -1,8 +1,10 @@
 import './App.css';
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 
 // 컴포넌츠
 import Nav from './components/Nav';
@@ -14,8 +16,19 @@ import Order from './components/Order';
 import Stamp from './components/Stamp';
 
 function App() {
+
+  let navigate = useNavigate();
+
   return (
     <div className="App">
+
+      <Stack className='loginbox'>
+        <Avatar
+          src="/broken-image.jpg"
+          onClick={() => {
+            navigate('/login') }}
+        />
+      </Stack>
 
       <Routes>
 

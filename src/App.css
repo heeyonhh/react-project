@@ -2,15 +2,19 @@
   text-align: center;
 }
 
+.loginbox{
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
 .nav{
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-.navactive{
-  color: rgb(255, 119, 0);
 }
 
 .mainslide{
@@ -23,6 +27,7 @@
   background-color: rgb(152, 152, 152);
 }
 
-.plusmenu{
-  color: transparent;
+/* 바텀 내비 액티브 색 변경 */
+.navactive{
+  color: orange;
 }
