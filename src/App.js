@@ -1,10 +1,19 @@
-import './App.css';
+import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box'
+
+import Carousel from 'react-bootstrap/Carousel';
+
+// 아이콘
+import QrCodeIcon from '@mui/icons-material/QrCode';
 
 // 컴포넌츠
 import Nav from './components/Nav';
@@ -18,6 +27,10 @@ import Stamp from './components/Stamp';
 function App() {
 
   let navigate = useNavigate();
+  let [index, setIndex] = useState(0);
+  let handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
 
   return (
     <div className="App">
@@ -26,45 +39,63 @@ function App() {
         <Avatar
           src="/broken-image.jpg"
           onClick={() => {
-            navigate('/login') }}
+            navigate('/login')
+          }}
         />
+
+        <Box>
+          <QrCodeIcon />
+        </Box>
       </Stack>
 
       <Routes>
 
         <Route path="/" element=
           {
-            <Container style={{margin:0, padding:0}}>
+            <Container style={{ margin: 0, padding: 0 }}>
               <Grid container>
+
+                {/* 메인 이미지 슬라이드 */}
                 <Grid className='mainslide' item xs={12}>
-                  {/* <Item>이벤트 화면 이미지 슬라이드</Item> */}
+                  <Carousel activeIndex={index} onSelect={handleSelect}>
+                    <Carousel.Item>
+                      <img src='/img/slide1.jpg' width={'100%'} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img src='/img/slide2.jpg' width={'100%'} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img src='/img/slide3.jpg' width={'100%'} />
+                    </Carousel.Item>
+                  </Carousel>
                 </Grid>
+
                 <Grid className='section' item xs={12}>
-                  {/*<Item className='stampbox'>
+                  <Box className='stampbox'>
                     <p className='username_ment'>김희연 님</p>
-                    <div className='stamp'>
+                    <Box className='stamp'>
       
-                    </div>
-                    <div className='coupon'>
+                    </Box>
+                    <Box className='coupon'>
       
-                    </div>
-                    <div className='barcode'>
+                    </Box>
+                    <Box className='barcode'>
       
-                    </div>
-                  </Item>
+                    </Box>
+                  </Box>
       
-                  <Item className='eventslide'>
+                  <Box className='eventslide'>
       
-                  </Item>
+                  </Box>
       
-                  <Item className='mdmenu'>
+                  <Box className='mdmenu'>
                     <p className='username_ment'>김희연 님을 위한 추천 메뉴</p>
-                    <div className='md'>
+                    <Box className='md'>
                       <img></img>
                       <p>고흥 유자망고 스무디</p>
-                    </div>
-                  </Item> */}
-                  
+                    </Box>
+                  </Box>
+
                 </Grid>
               </Grid>
             </Container>

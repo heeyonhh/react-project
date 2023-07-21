@@ -8,6 +8,7 @@
   right: 0;
   margin-top: 20px;
   margin-right: 20px;
+  z-index: 9999;
 }
 
 .nav{
@@ -17,17 +18,11 @@
   right: 0;
 }
 
-.mainslide{
-  height: 250px;
-  background-color: aqua;
+.MuiBottomNavigation-root{
+  width: 100vw;
 }
 
 .section{
   height: 800px;
   background-color: rgb(152, 152, 152);
-}
-
-/* 바텀 내비 액티브 색 변경 */
-.navactive{
-  color: orange;
 }

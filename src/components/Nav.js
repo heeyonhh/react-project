@@ -18,8 +18,9 @@ function Nav() {
     let navigate = useNavigate();
 
     return (
-        <Box className="nav" sx={1}>
+        <Box className="nav">
             <BottomNavigation
+                sx={12}
                 showLabels
                 value={value}
                 onChange={(event, newValue) => {
