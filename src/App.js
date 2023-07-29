@@ -35,18 +35,21 @@ function App() {
   return (
     <div className="App">
 
-      <Stack className='loginbox'>
-        <Avatar
-          src="/broken-image.jpg"
-          onClick={() => {
-            navigate('/login')
-          }}
-        />
+      <Grid item xs={12}>
+        <Box className='header'>
+          <img src='/img/logo.png' width={'50px'} />
 
-        <Box>
-          <QrCodeIcon />
+          <Box className='header_r'>
+            <QrCodeIcon />
+            <Avatar
+              src="/broken-image.jpg"
+              onClick={() => {
+                navigate('/login')
+              }}
+            />
+          </Box>
         </Box>
-      </Stack>
+      </Grid>
 
       <Routes>
 
@@ -74,20 +77,20 @@ function App() {
                   <Box className='stampbox'>
                     <p className='username_ment'>김희연 님</p>
                     <Box className='stamp'>
-      
+
                     </Box>
                     <Box className='coupon'>
-      
+
                     </Box>
                     <Box className='barcode'>
-      
+
                     </Box>
                   </Box>
-      
+
                   <Box className='eventslide'>
-      
+
                   </Box>
-      
+
                   <Box className='mdmenu'>
                     <p className='username_ment'>김희연 님을 위한 추천 메뉴</p>
                     <Box className='md'>
