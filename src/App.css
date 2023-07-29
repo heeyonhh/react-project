@@ -8,18 +8,26 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: 40px 20px;
+  padding: 30px 15px;
   z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .header_r{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
+
+.login{
+  width: 30px;
+  height: 30px;
+  background-color: #F75B04;
+}
+
 .nav{
   position: fixed;
   bottom: 0;
