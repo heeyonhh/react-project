@@ -67,7 +67,6 @@ function App() {
                   onClick={() => {navigate('/login')}} />
               </Box>
             </Box>
-            <Box className="header_ment">커피 한 잔의 철학🧡<br/>플라토 커피</Box>
           </Grid>
 
           <Routes>

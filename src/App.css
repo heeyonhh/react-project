@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-a{
-  text-decoration: none;
+p{
+  margin-bottom: 0;
 }
 
 .App {
@@ -44,6 +44,7 @@ a{
 }
 
 .header_ment{
+  width: 100%;
   height: 7vh;
   padding: 0 12px;
   text-align: left;
@@ -75,7 +76,28 @@ a{
   display: none;
 }
 
+/* 섹션 */
 .section{
   height: 800px;
-  background-color: rgb(152, 152, 152);
+  padding: 12px 12px;
+}
+
+.username_ment{
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.stampbox{
+  margin-top: 7px;
+  height: 5vh;
+  background-color: #FFAB49;
+  color: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }

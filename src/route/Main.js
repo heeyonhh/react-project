@@ -22,10 +22,10 @@ function Main() {
 
     return (
         <Container style={{ margin: 0, padding: 0 }}>
-            <Grid container>
-
+            <Grid item xs={12} container>
+                <Box className="header_ment">커피 한 잔의 철학🧡<br/>플라토 커피</Box>
                 {/* 메인 이미지 슬라이드 */}
-                <Grid className='mainslide' item xs={12}>
+                <Grid className='mainslide'>
                     <Carousel activeIndex={index} onSelect={handleSelect}>
                         <Carousel.Item>
                             <img src='/img/slide1.jpg' width={'100%'} />
@@ -40,18 +40,20 @@ function Main() {
                 </Grid>
 
                 <Grid className='section' item xs={12}>
-                    <p className='username_ment'>username</p>
+                    <Box className='username_ment'>
+                        <p className='username'>username</p>님 환영합니다.
+                    </Box>
                     <Box className='stampbox'>
                         <Box className='stamp'>
                             <BsCupStraw /> 스탬프 <span>1</span>
-                        </Box>
+                        </Box>|
                         <Box className='coupon'>
                             <RiCoupon3Line /> 쿠폰 <span>1</span>
                         </Box>
                     </Box>
 
                     <Box className="order">
-                        
+
                     </Box>
 
                     <Box className='mdmenu'>
