@@ -16,7 +16,6 @@ import QrCodeIcon from '@mui/icons-material/QrCode';
 // 라우트
 import Main from './route/Main';
 import Nav from './route/Nav';
-import Plusmenu from './route/Plusmenu';
 import Code from './route/Code';
 import Event from './route/Event';
 import Login from './route/Login';
@@ -58,7 +57,9 @@ function App() {
           {/* header (상단 영역) */}
           <Grid xs={12}>
             <Box className='header'>
-              <p className='logo'>plato<br/>coffee</p>
+              <p className='logo'
+                onClick={() => {navigate('/')}}>
+                plato<br/>coffee</p>
               <Box className='header_r'>
                 <QrCodeIcon />
                 <Avatar className='login'
@@ -77,8 +78,6 @@ function App() {
             <Route path="/event" element={<Event />} />
             <Route path='/login' element={<Login />} />
           </Routes>
-
-          <Plusmenu />
 
           {/* 하단 nav */}
           <Nav />

@@ -9,61 +9,72 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
 
+//아이콘
+import { BsCupStraw } from 'react-icons/bs';
+import { RiCoupon3Line } from 'react-icons/ri';
+
 function Main() {
 
     let [index, setIndex] = useState(0);
     let handleSelect = (selectedIndex) => {
-      setIndex(selectedIndex);
+        setIndex(selectedIndex);
     };
 
     return (
         <Container style={{ margin: 0, padding: 0 }}>
-        <Grid container>
+            <Grid container>
 
-          {/* 메인 이미지 슬라이드 */}
-          <Grid className='mainslide' item xs={12}>
-            <Carousel activeIndex={index} onSelect={handleSelect}>
-              <Carousel.Item>
-                <img src='/img/slide1.jpg' width={'100%'} />ç
-              </Carousel.Item>
-              <Carousel.Item>
-                <img src='/img/slide2.jpg' width={'100%'} />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img src='/img/slide3.jpg' width={'100%'} />
-              </Carousel.Item>
-            </Carousel>
-          </Grid>
+                {/* 메인 이미지 슬라이드 */}
+                <Grid className='mainslide' item xs={12}>
+                    <Carousel activeIndex={index} onSelect={handleSelect}>
+                        <Carousel.Item>
+                            <img src='/img/slide1.jpg' width={'100%'} />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img src='/img/slide2.jpg' width={'100%'} />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img src='/img/slide3.jpg' width={'100%'} />
+                        </Carousel.Item>
+                    </Carousel>
+                </Grid>
 
-          <Grid className='section' item xs={12}>
-            <Box className='stampbox'>
-              <p className='username_ment'>김희연 님</p>
-              <Box className='stamp'>
+                <Grid className='section' item xs={12}>
+                    <p className='username_ment'>username</p>
+                    <Box className='stampbox'>
+                        <Box className='stamp'>
+                            <BsCupStraw /> 스탬프 <span>1</span>
+                        </Box>
+                        <Box className='coupon'>
+                            <RiCoupon3Line /> 쿠폰 <span>1</span>
+                        </Box>
+                    </Box>
 
-              </Box>
-              <Box className='coupon'>
+                    <Box className="order">
+                        
+                    </Box>
 
-              </Box>
-              <Box className='barcode'>
+                    <Box className='mdmenu'>
+                        <p className='today_ment'>Today 추천 메뉴</p>
+                        <Box>
+                            <Box className='md'>
+                                <img></img>
+                                <p className='product'>상품1</p>
+                            </Box>
+                            <Box className='md'>
+                                <img></img>
+                                <p className='product'>상품2</p>
+                            </Box>
+                            <Box className='md'>
+                                <img></img>
+                                <p className='product'>상품3</p>
+                            </Box>
+                        </Box>
+                    </Box>
 
-              </Box>
-            </Box>
-
-            <Box className='eventslide'>
-
-            </Box>
-
-            <Box className='mdmenu'>
-              <p className='username_ment'>김희연 님을 위한 추천 메뉴</p>
-              <Box className='md'>
-                <img></img>
-                <p>고흥 유자망고 스무디</p>
-              </Box>
-            </Box>
-
-          </Grid>
-        </Grid>
-      </Container>
+                </Grid>
+            </Grid>
+        </Container>
     );
 };
 

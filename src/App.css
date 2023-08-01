@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+a{
+  text-decoration: none;
+}
+
 .App {
   font-family: 'IBM Plex Sans KR', 'Noto Sans KR', sans-serif;
   text-align: center;
