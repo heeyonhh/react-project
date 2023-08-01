@@ -24,7 +24,7 @@ function Main() {
           <Grid className='mainslide' item xs={12}>
             <Carousel activeIndex={index} onSelect={handleSelect}>
               <Carousel.Item>
-                <img src='/img/slide1.jpg' width={'100%'} />
+                <img src='/img/slide1.jpg' width={'100%'} />ç
               </Carousel.Item>
               <Carousel.Item>
                 <img src='/img/slide2.jpg' width={'100%'} />
