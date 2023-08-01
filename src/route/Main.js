@@ -20,6 +20,8 @@ import { BiGift } from 'react-icons/bi';
 
 //컴포넌츠
 import Mainorder from '../components/Mainorder';
+import Product from '../components/Product';
+import dataproduct from '../dataproduct';
 
 function Main() {
 
@@ -29,10 +31,12 @@ function Main() {
     };
     let navigate = useNavigate();
 
+    let [product, setProduct] = useState(dataproduct);
+
     return (
         <Container style={{ margin: 0, padding: 0 }}>
             <Grid item xs={12} container>
-                <Box className="header_ment">커피 한 잔의 철학🧡<br/>플라토 커피</Box>
+                <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
                 {/* 메인 이미지 슬라이드 */}
                 <Grid className='mainslide'>
                     <Carousel activeIndex={index} onSelect={handleSelect}>
@@ -84,18 +88,11 @@ function Main() {
                     <Box className='mdmenu'>
                         <p className='today_ment'>Today 추천 메뉴</p>
                         <Box>
-                            <Box className='md'>
-                                <img></img>
-                                <p className='product'>상품1</p>
-                            </Box>
-                            <Box className='md'>
-                                <img></img>
-                                <p className='product'>상품2</p>
-                            </Box>
-                            <Box className='md'>
-                                <img></img>
-                                <p className='product'>상품3</p>
-                            </Box>
+                            {product.map(function (a, i) {
+                                return (
+                                    <Product product={product[i]} i={i} />
+                                )
+                            })}
                         </Box>
                     </Box>
 
