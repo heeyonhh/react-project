@@ -82,12 +82,11 @@ function Main() {
                             <BiGift />
                             <p className='order_text'>선물하기</p>
                         </Box>
-                        <Mainorder />
                     </Box>
 
                     <Box className='mdmenu'>
-                        <p className='today_ment'>Today 추천 메뉴</p>
-                        <Box>
+                        <p className='today_ment'>#Today 추천 메뉴</p>
+                        <Box className="productwrap">
                             {product.map(function (a, i) {
                                 return (
                                     <Product product={product[i]} i={i} />

@@ -17,7 +17,7 @@ let productdata = [
     {
         id: 2,
         title: "달고나 라떼",
-        content: null,
+        content: "HOT & ICED",
         price: 3700
     }
 ];
