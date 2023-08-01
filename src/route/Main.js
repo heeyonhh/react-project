@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 //css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +13,13 @@ import Carousel from 'react-bootstrap/Carousel';
 //아이콘
 import { BsCupStraw } from 'react-icons/bs';
 import { RiCoupon3Line } from 'react-icons/ri';
+import { MdOutlinePhonelinkRing } from 'react-icons/md';
+import { BiStore } from 'react-icons/bi';
+import { RiEBike2Line } from 'react-icons/ri';
+import { BiGift } from 'react-icons/bi';
+
+//컴포넌츠
+import Mainorder from '../components/Mainorder';
 
 function Main() {
 
@@ -19,6 +27,7 @@ function Main() {
     let handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
+    let navigate = useNavigate();
 
     return (
         <Container style={{ margin: 0, padding: 0 }}>
@@ -53,7 +62,23 @@ function Main() {
                     </Box>
 
                     <Box className="order">
-
+                        <Box className="order_box">
+                            <MdOutlinePhonelinkRing />
+                            <p className='order_text'>간편주문</p>
+                        </Box>
+                        <Box className="order_box">
+                            <BiStore />
+                            <p className='order_text'>매장주문</p>
+                        </Box>
+                        <Box className="order_box">
+                            <RiEBike2Line />
+                            <p className='order_text'>배달주문</p>
+                        </Box>
+                        <Box className="order_box">
+                            <BiGift />
+                            <p className='order_text'>선물하기</p>
+                        </Box>
+                        <Mainorder />
                     </Box>
 
                     <Box className='mdmenu'>
