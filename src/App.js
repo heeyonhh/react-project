@@ -2,7 +2,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import { StyledEngineProvider } from '@mui/material/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { orange } from '@mui/material/colors';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,8 +26,21 @@ import Stamp from './route/Stamp';
 //테마
 const theme = createTheme({
   palette: {
+    type: 'light',
     primary: {
-      main: orange[500],
+      main: '#FFAB49',
+      contrastText: '#ffffff',
+      dark: '#e0e0e0',
+      light: '#ffffff',
+    },
+    background: {
+      default: '#ffffff',
+    },
+    text: {
+      primary: 'rgba(45,45,45,0.87)',
+      secondary: 'rgba(74,74,74,0.54)',
+      disabled: 'rgba(74,74,74,0.54)',
+      hint: 'rgba(74,74,74,0.54)',
     },
   },
 });
@@ -43,36 +55,32 @@ function App() {
         <div className="App">
           <CssBaseline />
 
-          {/* 메인페이지 상단고정헤더 로고/바코드/로그인 */}
+          {/* header (상단 영역) */}
           <Grid xs={12}>
             <Box className='header'>
-              <img src='/img/logo.png' width={'50px'} />
-
+              <p className='logo'>plato<br/>coffee</p>
               <Box className='header_r'>
                 <QrCodeIcon />
-                <Avatar
-                  className='login'
+                <Avatar className='login'
                   src="/broken-image.jpg"
-                  onClick={() => {
-                    navigate('/login')
-                  }}
-                />
+                  onClick={() => {navigate('/login')}} />
               </Box>
             </Box>
+            <Box className="header_ment">커피 한 잔의 철학🧡<br/>플라토 커피</Box>
           </Grid>
 
           <Routes>
-
             <Route path="/" element={<Main />} />
             <Route path="/code" element={<Code />} />
             <Route path="/stamp" element={<Stamp />} />
             <Route path="/order" element={<Order />} />
             <Route path="/event" element={<Event />} />
             <Route path='/login' element={<Login />} />
-
           </Routes>
 
           <Plusmenu />
+
+          {/* 하단 nav */}
           <Nav />
 
         </div>
