@@ -6,7 +6,7 @@ let mainorderdata = [
 
     {
         id: 0,
-        icon: <MdOutlinePhonelinkRing />,
+        icon: <MdOutlinePhonelinkRing fontSize="large" />,
         name: "간편주문",
     },
 

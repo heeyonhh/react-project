@@ -25,10 +25,12 @@ function Main() {
     let handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
-    let navigate = useNavigate();
 
     let [product, setProduct] = useState(dataproduct);
     let [order, setOrder] = useState(mainorderdata);
+
+    const [showproduct, setShowproduct] = useState(false);
+    const moreproduct = showproduct ? dataproduct : dataproduct.slice(0, 4);
 
     return (
         <Grid item xs={12}>
@@ -62,10 +64,9 @@ function Main() {
                     </Box>
                 </Box>
 
-                {/* 호버 이벤트, 아이콘 크기 */}
                 <Box className="order">
-                    {order.map(function (a, i){
-                        return(
+                    {order.map(function (a, i) {
+                        return (
                             <Mainorder order={order[i]} i={i} />
                         )
                     })}
@@ -74,13 +75,19 @@ function Main() {
                 <Box className='mdmenu'>
                     <p className='today_ment'>#Today 추천 메뉴</p>
                     <Box className="productwrap">
-                        {product.map(function(a, i){
-                            return(
-                                <Product product={product[i]} i={i} />
+                        {moreproduct.map(function (product, i) {
+                            return (
+                                <Product product={product} i={i} />
                             )
                         })}
                     </Box>
-                    {/* 플렉스 정렬 수정, 더보기 버튼 */}
+                    {!showproduct && (
+                        <button
+                            className='morebutton'
+                            onClick={() =>
+                            setShowproduct(true)}>추천 메뉴 더보기
+                        </button>
+                    )}
                 </Box>
 
             </Grid>

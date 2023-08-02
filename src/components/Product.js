@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 
 // 메인 추천 메뉴
 function Product(props) {
+  
   return (
     <Box className='md'>
       <div className='productimgwrap'>

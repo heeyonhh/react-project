@@ -1,14 +1,14 @@
 import '../App.css';
-
-import Box from '@mui/material/Box'
+import { Link } from 'react-router-dom'
 
 //메인 주문 영역
 function Mainorder(props){ 
+
   return(
-    <Box className="order_box">
+    <Link to="/order" className="order_box">
       <div className='order_icon'>{props.order.icon}</div>
       <p className='order_text'>{props.order.name}</p>
-    </Box>
+    </Link>
   )
 };
 
