@@ -34,70 +34,71 @@ function Main() {
     let [product, setProduct] = useState(dataproduct);
 
     return (
-        <Container style={{ margin: 0, padding: 0 }}>
-            <Grid item xs={12} container>
-                <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
-                {/* 메인 이미지 슬라이드 */}
-                <Grid className='mainslide'>
-                    <Carousel activeIndex={index} onSelect={handleSelect}>
-                        <Carousel.Item>
-                            <img src='/img/slide1.jpg' width={'100%'} />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img src='/img/slide2.jpg' width={'100%'} />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img src='/img/slide3.jpg' width={'100%'} />
-                        </Carousel.Item>
-                    </Carousel>
-                </Grid>
-
-                <Grid className='section' item xs={12}>
-                    <Box className='username_ment'>
-                        <p className='username'>username</p>님 환영합니다.
-                    </Box>
-                    <Box className='stampbox'>
-                        <Box className='stamp'>
-                            <BsCupStraw /> 스탬프 <span>1</span>
-                        </Box>|
-                        <Box className='coupon'>
-                            <RiCoupon3Line /> 쿠폰 <span>1</span>
-                        </Box>
-                    </Box>
-
-                    <Box className="order">
-                        <Box className="order_box">
-                            <MdOutlinePhonelinkRing />
-                            <p className='order_text'>간편주문</p>
-                        </Box>
-                        <Box className="order_box">
-                            <BiStore />
-                            <p className='order_text'>매장주문</p>
-                        </Box>
-                        <Box className="order_box">
-                            <RiEBike2Line />
-                            <p className='order_text'>배달주문</p>
-                        </Box>
-                        <Box className="order_box">
-                            <BiGift />
-                            <p className='order_text'>선물하기</p>
-                        </Box>
-                    </Box>
-
-                    <Box className='mdmenu'>
-                        <p className='today_ment'>#Today 추천 메뉴</p>
-                        <Box className="productwrap">
-                            {product.map(function (a, i) {
-                                return (
-                                    <Product product={product[i]} i={i} />
-                                )
-                            })}
-                        </Box>
-                    </Box>
-
-                </Grid>
+        <Grid item xs={12}>
+            <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
+            {/* 메인 이미지 슬라이드 */}
+            <Grid className='mainslide'>
+                <Carousel activeIndex={index} onSelect={handleSelect}>
+                    <Carousel.Item>
+                        <img src='/img/slide1.jpg' width={'100%'} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img src='/img/slide2.jpg' width={'100%'} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img src='/img/slide3.jpg' width={'100%'} />
+                    </Carousel.Item>
+                </Carousel>
             </Grid>
-        </Container>
+
+            {/* 로그인하면 유저네임 생기게 */}
+            <Grid className='section' item xs={12}>
+                <Box className='username_ment'>
+                    <p className='username'>username</p>님 환영합니다.
+                </Box>
+                <Box className='stampbox'>
+                    <Box className='stamp'>
+                        <BsCupStraw /> 스탬프 <span>1</span>
+                    </Box>|
+                    <Box className='coupon'>
+                        <RiCoupon3Line /> 쿠폰 <span>1</span>
+                    </Box>
+                </Box>
+
+                {/* 맵 함수, 호버 이벤트, 아이콘 크기 */}
+                <Box className="order">
+                    <Box className="order_box">
+                        <MdOutlinePhonelinkRing />
+                        <p className='order_text'>간편주문</p>
+                    </Box>
+                    <Box className="order_box">
+                        <BiStore />
+                        <p className='order_text'>매장주문</p>
+                    </Box>
+                    <Box className="order_box">
+                        <RiEBike2Line />
+                        <p className='order_text'>배달주문</p>
+                    </Box>
+                    <Box className="order_box">
+                        <BiGift />
+                        <p className='order_text'>선물하기</p>
+                    </Box>
+                </Box>
+
+                <Box className='mdmenu'>
+                    <p className='today_ment'>#Today 추천 메뉴</p>
+                    <Box className="productwrap">
+                        {product.map(function (a, i) {
+                            return (
+                                <Product product={product[i]} i={i} />
+                            )
+                        })}
+                    </Box>
+                    {/* 플렉스 정렬 수정, 더보기 버튼 */}
+                </Box>
+
+            </Grid>
+        </Grid>
     );
 };
 

@@ -55,7 +55,7 @@ function App() {
           <CssBaseline />
 
           {/* header (상단 영역) */}
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <Box className='header'>
               <p className='logo'
                 onClick={() => {navigate('/')}}>
@@ -67,20 +67,19 @@ function App() {
                   onClick={() => {navigate('/login')}} />
               </Box>
             </Box>
+
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/code" element={<Code />} />
+              <Route path="/stamp" element={<Stamp />} />
+              <Route path="/order" element={<Order />} />
+              <Route path="/event" element={<Event />} />
+              <Route path='/login' element={<Login />} />
+            </Routes>
+
+            {/* 하단 nav */}
+            <Nav />
           </Grid>
-
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/code" element={<Code />} />
-            <Route path="/stamp" element={<Stamp />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/event" element={<Event />} />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-
-          {/* 하단 nav */}
-          <Nav />
-
         </div>
       </ThemeProvider>
     </StyledEngineProvider>

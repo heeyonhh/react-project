@@ -19,7 +19,7 @@ function Nav() {
     let navigate = useNavigate();
 
     return (
-        <Box className="nav">
+        <Box className="BottomNav">
             <BottomNavigation
                 sx={12}
                 showLabels
