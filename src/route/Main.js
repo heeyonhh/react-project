@@ -6,22 +6,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
 
 //아이콘
 import { BsCupStraw } from 'react-icons/bs';
 import { RiCoupon3Line } from 'react-icons/ri';
-import { MdOutlinePhonelinkRing } from 'react-icons/md';
-import { BiStore } from 'react-icons/bi';
-import { RiEBike2Line } from 'react-icons/ri';
-import { BiGift } from 'react-icons/bi';
 
 //컴포넌츠
 import Mainorder from '../components/Mainorder';
+import mainorderdata from '../components/mainorderdata';
 import Product from '../components/Product';
-import dataproduct from '../dataproduct';
+import dataproduct from '../components/dataproduct';
 
 function Main() {
 
@@ -32,6 +28,7 @@ function Main() {
     let navigate = useNavigate();
 
     let [product, setProduct] = useState(dataproduct);
+    let [order, setOrder] = useState(mainorderdata);
 
     return (
         <Grid item xs={12}>
@@ -65,31 +62,20 @@ function Main() {
                     </Box>
                 </Box>
 
-                {/* 맵 함수, 호버 이벤트, 아이콘 크기 */}
+                {/* 호버 이벤트, 아이콘 크기 */}
                 <Box className="order">
-                    <Box className="order_box">
-                        <MdOutlinePhonelinkRing />
-                        <p className='order_text'>간편주문</p>
-                    </Box>
-                    <Box className="order_box">
-                        <BiStore />
-                        <p className='order_text'>매장주문</p>
-                    </Box>
-                    <Box className="order_box">
-                        <RiEBike2Line />
-                        <p className='order_text'>배달주문</p>
-                    </Box>
-                    <Box className="order_box">
-                        <BiGift />
-                        <p className='order_text'>선물하기</p>
-                    </Box>
+                    {order.map(function (a, i){
+                        return(
+                            <Mainorder order={order[i]} i={i} />
+                        )
+                    })}
                 </Box>
 
                 <Box className='mdmenu'>
                     <p className='today_ment'>#Today 추천 메뉴</p>
                     <Box className="productwrap">
-                        {product.map(function (a, i) {
-                            return (
+                        {product.map(function(a, i){
+                            return(
                                 <Product product={product[i]} i={i} />
                             )
                         })}

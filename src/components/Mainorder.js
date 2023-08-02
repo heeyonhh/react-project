@@ -1,32 +1,15 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import '../App.css';
 
-const Mainorder = () => {
-  const [hover, setHover] = useState(false);
-  const handleMouseOver = () => {
-    setHover(true);
-  };
-  const handleMouseOut = () => {
-    setHover(false);
-  };
+import Box from '@mui/material/Box'
 
-  const contentStyle = {
-    position: 'absolute',
-    color: hover ? '#FFAB49' : 'rgba(45, 45, 45, 0.87)'
-  };
-
-  let navigate = useNavigate();
-
-  return (
-    <div
-      className="order_box"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-      onClick={() => navigate('/order')}
-    >
-      <span style={contentStyle}>마우스를 올려보세요!</span>
-    </div>
-  );
+//메인 주문 영역
+function Mainorder(props){ 
+  return(
+    <Box className="order_box">
+      <div className='order_icon'>{props.order.icon}</div>
+      <p className='order_text'>{props.order.name}</p>
+    </Box>
+  )
 };
 
 export default Mainorder;
