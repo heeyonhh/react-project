@@ -79,7 +79,6 @@ p{
 /* 섹션 */
 /* 유저 네임 */
 .section{
-  height: 800px;
   padding: 12px 12px;
 }
 
@@ -132,19 +131,21 @@ p{
 
 .productwrap{
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .md{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .productimgwrap{
-  width: 90px;
+  width: 140px;
   height: 120px;
   display: flex;
   align-items: center;
@@ -152,7 +153,7 @@ p{
 }
 
 .productimg{
-  width: 80px;
+  width: 90px;
 }
 
 .title, .content, .price{
