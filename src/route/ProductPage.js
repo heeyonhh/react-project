@@ -20,8 +20,23 @@ function ProductPage() {
         setValue(newValue);
     };
 
+    let currentCategory;
+    switch (value) {
+        case 0:
+            currentCategory = coffee;
+            break;
+        case 1:
+            currentCategory = beverage;
+            break;
+        case 2:
+            currentCategory = side;
+            break;
+        default:
+            currentCategory = coffee;
+    }
+
     return (
-        <Grid className="productpage">
+        <Grid className="pp">
             <Box>
                 <Tabs value={value} onChange={handleChange} centered>
                     <Tab className="pp_tab" label="커피" />
@@ -30,14 +45,14 @@ function ProductPage() {
                 </Tabs>
             </Box>
             <Box className="p_wrap">
-                {coffee.map((a, i) =>
+                {currentCategory.map((a, i) =>
                 <Box className="p" key={i}>
                     <div className='p_img_wrap'>
-                        <img className="p_img" src={`/img/coffeeimg${coffee[i].id}.png`} />
+                     <img className="p_img" src={`/img/${currentCategory === coffee ? 'coffee' : currentCategory === beverage ? 'beverage' : 'side'}${a.id}.png`} />
                     </div>
-                    <h4 className='title'>{coffee[i].title}</h4>
-                    <p className='content'>{coffee[i].content}</p>
-                    <p className='price'>{coffee[i].price}</p>
+                    <h4 className='title'>{a.title}</h4>
+                    <p className='content'>{a.content}</p>
+                    <p className='price'>{a.price}</p>
                 </Box>
                     )
                 }

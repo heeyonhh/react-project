@@ -18,10 +18,9 @@ let beverage = createSlice({
     { id: 0, title: "블루문 에이드", content: "ICED Only", price: "4,900원"},
     { id: 1, title: "ICED 달고나라떼", content: "ICED Only", price: "4,700원"},
     { id: 2, title: "ICED 흑당라떼", content: null, price: "4,700원"},
-    { id: 3, title: "초코라떼", content: null, price: "4,700원"},
-    { id: 4, title: "녹차라떼", content: null, price: "4,700원"},
-    { id: 5, title: "민트초콜릿", content: null, price: "4,700원"},
-    { id: 6, title: "토피넛라떼", content: null, price: "4,700원"},
+    { id: 3, title: "녹차라떼", content: null, price: "4,700원"},
+    { id: 4, title: "민트초콜릿", content: null, price: "4,700원"},
+    { id: 5, title: "토피넛라떼", content: null, price: "4,700원"},
   ]
 })
 
@@ -34,7 +33,6 @@ let side = createSlice({
     { id: 3, title: "소금 버터 스콘", content: null, price: "4,700원"},
     { id: 4, title: "플레인 크로플", content: null, price: "4,700원"},
     { id: 5, title: "더블베리 요거놀라 1인빙수", content: null, price: "4,700원"},
-    { id: 6, title: "애플망고 눈꽃빙수", content: null, price: "4,700원"},
   ]
 })
 

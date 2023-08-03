@@ -8,7 +8,7 @@ function Product(props) {
   return (
     <Box className='md'>
       <div className='productimgwrap'>
-        <img className="productimg" src={'/img/productimg' + (props.i + 1) + '.png'} />
+        <img className="productimg" src={'/img/product' + (props.i + 1) + '.png'} />
       </div>
       <h4 className='title'>{props.product.title}</h4>
       <p className='content'>{props.product.content}</p>
