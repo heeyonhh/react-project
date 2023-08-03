@@ -203,3 +203,19 @@ p{
 .morebutton:hover{
   color: #FFAB49;
 }
+
+/* productpage */
+
+.productpage{
+  width: 100%;
+  padding: 12px 60px 12px 12px;
+}
+.md_wrap{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

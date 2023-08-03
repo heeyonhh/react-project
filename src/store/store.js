@@ -1,49 +1,48 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-let productdata = createSlice({
-  name: 'productdata',
+let coffee = createSlice({
+  name: 'coffee',
   initialState: [
-    {
-      id: 0,
-      title: "생과일 수박 주스",
-      content: "ICED Only",
-      price: "4,900원"
-    },
-    {
-      id: 1,
-      title: "연유 콜드브루",
-      content: "ICED Only",
-      price: "4,700원"
-    },
-    {
-      id: 2,
-      title: "달고나 라떼",
-      content: null,
-      price: "3,700원"
-    },
-    {
-      id: 3,
-      title: "흑당 콜드브루",
-      content: "ICED Only",
-      price: "4,700원"
-    },
-    {
-      id: 4,
-      title: "피스타치오 쉐이크",
-      content: "ICED Only",
-      price: "5,200원"
-    },
-    {
-      id: 5,
-      title: "더블베리 요거놀라 1인빙수",
-      content: null,
-      price: "6,300원"
-    },
+    { id: 0, title: "아메리카노", content: null, price: "4,900원"},
+    { id: 1, title: "ICED 콜드브루 아메리카노", content: "ICED Only", price: "4,700원"},
+    { id: 2, title: "ICED 넛츠 크림 라떼", content: "ICED Only", price: "4,700원"},
+    { id: 3, title: "ICED 디카페인 콜드브루 화이트 비엔나", content: "ICED Only", price: "4,700원"},
+    { id: 4, title: "카페라떼", content: null, price: "4,700원"},
+    { id: 5, title: "바닐라라떼", content: null, price: "4,700원"},
+    { id: 6, title: "카페모카", content: null, price: "4,700원"},
+  ]
+})
+
+let beverage = createSlice({
+  name: 'beverage',
+  initialState: [
+    { id: 0, title: "블루문 에이드", content: "ICED Only", price: "4,900원"},
+    { id: 1, title: "ICED 달고나라떼", content: "ICED Only", price: "4,700원"},
+    { id: 2, title: "ICED 흑당라떼", content: null, price: "4,700원"},
+    { id: 3, title: "초코라떼", content: null, price: "4,700원"},
+    { id: 4, title: "녹차라떼", content: null, price: "4,700원"},
+    { id: 5, title: "민트초콜릿", content: null, price: "4,700원"},
+    { id: 6, title: "토피넛라떼", content: null, price: "4,700원"},
+  ]
+})
+
+let side = createSlice({
+  name: 'side',
+  initialState: [
+    { id: 0, title: "약과 크림치즈 쿠키", content: null, price: "4,900원"},
+    { id: 1, title: "버터 팬케이크", content: null, price: "4,700원"},
+    { id: 2, title: "소금빵", content: null, price: "4,700원"},
+    { id: 3, title: "소금 버터 스콘", content: null, price: "4,700원"},
+    { id: 4, title: "플레인 크로플", content: null, price: "4,700원"},
+    { id: 5, title: "더블베리 요거놀라 1인빙수", content: null, price: "4,700원"},
+    { id: 6, title: "애플망고 눈꽃빙수", content: null, price: "4,700원"},
   ]
 })
 
 export default configureStore({
   reducer: {
-    productdata : productdata.reducer
+    coffee : coffee.reducer,
+    beverage : beverage.reducer,
+    side : side.reducer
   }
 })
