@@ -32,6 +32,8 @@ function Main() {
     const [showproduct, setShowproduct] = useState(false);
     const moreproduct = showproduct ? dataproduct : dataproduct.slice(0, 4);
 
+    const [morebutton, setMorebutton] = useState(false);
+
     return (
         <Grid item xs={12}>
             <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
@@ -57,10 +59,10 @@ function Main() {
                 </Box>
                 <Box className='stampbox'>
                     <Box className='stamp'>
-                        <BsCupStraw /> 스탬프 <span>1</span>
+                        <BsCupStraw /> 스탬프 <span>0</span>
                     </Box>|
                     <Box className='coupon'>
-                        <RiCoupon3Line /> 쿠폰 <span>1</span>
+                        <RiCoupon3Line /> 쿠폰 <span>0</span>
                     </Box>
                 </Box>
 
