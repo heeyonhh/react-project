@@ -8,8 +8,7 @@ let coffee = createSlice({
     { id: 2, title: "ICED 넛츠 크림 라떼", content: "ICED Only", price: "4,700원"},
     { id: 3, title: "ICED 디카페인 콜드브루 화이트 비엔나", content: "ICED Only", price: "4,700원"},
     { id: 4, title: "카페라떼", content: null, price: "4,700원"},
-    { id: 5, title: "바닐라라떼", content: null, price: "4,700원"},
-    { id: 6, title: "카페모카", content: null, price: "4,700원"},
+    { id: 5, title: "카페모카", content: null, price: "4,700원"},
   ]
 })
 

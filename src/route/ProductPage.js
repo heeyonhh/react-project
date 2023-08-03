@@ -24,24 +24,24 @@ function ProductPage() {
         <Grid className="productpage">
             <Box>
                 <Tabs value={value} onChange={handleChange} centered>
-                    <Tab label="커피" />
-                    <Tab label="음료" />
-                    <Tab label="사이드" />
+                    <Tab className="pp_tab" label="커피" />
+                    <Tab className="pp_tab" label="음료" />
+                    <Tab className="pp_tab" label="사이드" />
                 </Tabs>
             </Box>
-            {productData.map((a, i) =>
-            <Box className="md_wrap">
-                <Box className="md" key={i}>
-                    <div className='productimgwrap'>
-                        <img className="productimg" src={`/img/productimg${productData[i].id + 1}.png`} />
+            <Box className="p_wrap">
+                {coffee.map((a, i) =>
+                <Box className="p" key={i}>
+                    <div className='p_img_wrap'>
+                        <img className="p_img" src={`/img/coffeeimg${coffee[i].id}.png`} />
                     </div>
-                    <h4 className='title'>{productData[i].title}</h4>
-                    <p className='content'>{productData[i].content}</p>
-                    <p className='price'>{productData[i].price}</p>
+                    <h4 className='title'>{coffee[i].title}</h4>
+                    <p className='content'>{coffee[i].content}</p>
+                    <p className='price'>{coffee[i].price}</p>
                 </Box>
+                    )
+                }
             </Box>
-            )
-            }
         </Grid>
     )
 };
