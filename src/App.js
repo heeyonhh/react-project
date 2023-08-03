@@ -15,12 +15,13 @@ import QrCodeIcon from '@mui/icons-material/QrCode';
 
 // 라우트
 import Main from './route/Main';
-import Nav from './route/Nav';
 import Code from './route/Code';
-import Event from './route/Event';
 import Login from './route/Login';
-import Order from './route/Order';
 import Stamp from './route/Stamp';
+import Order from './route/Order';
+import ProductPage from './route/ProductPage';
+
+import Nav from './components/Nav';
 
 //테마
 const theme = createTheme({
@@ -71,10 +72,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/code" element={<Code />} />
+              <Route path='/login' element={<Login />} />
               <Route path="/stamp" element={<Stamp />} />
               <Route path="/order" element={<Order />} />
-              <Route path="/event" element={<Event />} />
-              <Route path='/login' element={<Login />} />
+              <Route path="/productpage" element={<ProductPage />} />
             </Routes>
 
             {/* 하단 nav */}

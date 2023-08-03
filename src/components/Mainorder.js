@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Mainorder(props){ 
 
   return(
-    <Link to="/order" className="order_box">
+    <Link to="/productpage" className="order_box">
       <div className='order_icon'>{props.order.icon}</div>
       <p className='order_text'>{props.order.name}</p>
     </Link>

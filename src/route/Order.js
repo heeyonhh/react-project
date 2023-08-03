@@ -1,7 +1,11 @@
+import '../App.css';
+
+import Box from '@mui/material/Box';
+
 function Order(){
     return(
         <>
-            주문페이지임
+            제품 페이지임
         </>
     );
 };

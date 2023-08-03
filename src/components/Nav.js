@@ -21,7 +21,6 @@ function Nav() {
     return (
         <Box className="BottomNav">
             <BottomNavigation
-                sx={12}
                 showLabels
                 value={value}
                 onChange={(event, newValue) => {

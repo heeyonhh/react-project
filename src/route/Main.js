@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom'
 
 //css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +16,7 @@ import { RiCoupon3Line } from 'react-icons/ri';
 import Mainorder from '../components/Mainorder';
 import mainorderdata from '../components/mainorderdata';
 import Product from '../components/Product';
-import dataproduct from '../components/dataproduct';
+import productData from '../components/productData';
 
 function Main() {
 
@@ -26,13 +25,11 @@ function Main() {
         setIndex(selectedIndex);
     };
 
-    let [product, setProduct] = useState(dataproduct);
+    let [product, setProduct] = useState(productData);
     let [order, setOrder] = useState(mainorderdata);
 
     const [showproduct, setShowproduct] = useState(false);
-    const moreproduct = showproduct ? dataproduct : dataproduct.slice(0, 4);
-
-    const [morebutton, setMorebutton] = useState(false);
+    const moreproduct = showproduct ? productData : productData.slice(0, 4);
 
     return (
         <Grid item xs={12}>
