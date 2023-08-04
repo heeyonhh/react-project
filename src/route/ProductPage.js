@@ -48,13 +48,15 @@ function ProductPage() {
                 {currentCategory.map((a, i) =>
                 <Box className="p" key={i}>
                     <div className='p_img_wrap'>
-                     <img className="p_img" src={`/img/${currentCategory === coffee ? 'coffee' : currentCategory === beverage ? 'beverage' : 'side'}${a.id}.png`} />
+                        <img className="p_img" src={`/img/${currentCategory === coffee ? 'coffee' : currentCategory === beverage ? 'beverage' : 'side'}${a.id}.png`} />
                     </div>
-                    <h4 className='title'>{a.title}</h4>
-                    <p className='content'>{a.content}</p>
-                    <p className='price'>{a.price}</p>
+                    <div className="p_data_wrap">
+                        <h4 className='p_title'>{a.title}</h4>
+                        <p className='p_content'>{a.content}</p>
+                        <p className='p_price'>{a.price}</p>
+                    </div>
                 </Box>
-                    )
+                )
                 }
             </Box>
         </Grid>

@@ -66,7 +66,7 @@ function Main() {
                 <Box className="order">
                     {order.map(function (a, i) {
                         return (
-                            <Mainorder order={order[i]} i={i} />
+                            <Mainorder order={order[i]} i={i} key={i}/>
                         )
                     })}
                 </Box>
