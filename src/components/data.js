@@ -1,4 +1,29 @@
-let productdata = [
+import { MdOutlinePhonelinkRing } from 'react-icons/md';
+import { BiStore } from 'react-icons/bi';
+import { RiEBike2Line } from 'react-icons/ri';
+
+export const orderdata = [
+
+    {
+        id: 0,
+        icon: <MdOutlinePhonelinkRing fontSize="large" />,
+        name: "간편주문",
+    },
+
+    {
+        id: 1,
+        icon: <BiStore />,
+        name: "매장주문",
+    },
+
+    {
+        id: 2,
+        icon: <RiEBike2Line />,
+        name: "배달주문",
+    },
+]
+
+export const mddata = [
 
     {
         id: 0,
@@ -42,5 +67,3 @@ let productdata = [
         price: "6,300원"
     },
 ];
-
-export default productdata;

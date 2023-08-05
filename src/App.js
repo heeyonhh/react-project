@@ -17,10 +17,9 @@ import QrCodeIcon from '@mui/icons-material/QrCode';
 import Main from './route/Main';
 import Code from './route/Code';
 import Login from './route/Login';
-import Stamp from './route/Stamp';
+import ProductList from './route/ProductList';
+import Detail from './route/Detail';
 import Order from './route/Order';
-import ProductPage from './route/ProductPage';
-
 import Nav from './components/Nav';
 
 //테마
@@ -73,9 +72,9 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route path="/code" element={<Code />} />
               <Route path='/login' element={<Login />} />
-              <Route path="/stamp" element={<Stamp />} />
+              <Route path="/productlist" element={<ProductList />} />
+              <Route path="/detail" element={<Detail />} />
               <Route path="/order" element={<Order />} />
-              <Route path="/productpage" element={<ProductPage />} />
             </Routes>
 
             {/* 하단 nav */}

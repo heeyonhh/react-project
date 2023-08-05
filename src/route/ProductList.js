@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-function ProductPage() {
+function ProductList() {
 
     const coffee = useSelector((state) => state.coffee);
     const beverage = useSelector((state) => state.beverage);
@@ -63,4 +63,4 @@ function ProductPage() {
     )
 };
 
-export default ProductPage;
+export default ProductList;

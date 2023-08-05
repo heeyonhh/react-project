@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 //css
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,10 +14,7 @@ import { BsCupStraw } from 'react-icons/bs';
 import { RiCoupon3Line } from 'react-icons/ri';
 
 //컴포넌츠
-import Mainorder from '../components/Mainorder';
-import mainorderdata from '../components/mainorderdata';
-import Product from '../components/Product';
-import productData from '../components/productData';
+import { orderdata, mddata } from '../components/data';
 
 function Main() {
 
@@ -25,11 +23,10 @@ function Main() {
         setIndex(selectedIndex);
     };
 
-    let [product, setProduct] = useState(productData);
-    let [order, setOrder] = useState(mainorderdata);
+    let [order, setOrder] = useState(orderdata);
 
     const [showproduct, setShowproduct] = useState(false);
-    const moreproduct = showproduct ? productData : productData.slice(0, 4);
+    const moreproduct = showproduct ? mddata : mddata.slice(0, 4);
 
     return (
         <Grid item xs={12}>
@@ -64,9 +61,12 @@ function Main() {
                 </Box>
 
                 <Box className="order">
-                    {order.map(function (a, i) {
+                    {order.map(function (order, i) {
                         return (
-                            <Mainorder order={order[i]} i={i} key={i}/>
+                            <Link to="/productlist" className="order_box" key={i}>
+                                <div className='order_icon'>{order.icon}</div>
+                                <p className='order_text'>{order.name}</p>
+                            </Link>
                         )
                     })}
                 </Box>
@@ -76,7 +76,14 @@ function Main() {
                     <Box className="productwrap">
                         {moreproduct.map(function (product, i) {
                             return (
-                                <Product product={product} i={i} />
+                                <Box className='md' key={i}>
+                                    <div className='productimgwrap'>
+                                        <img className="productimg" src={'/img/product' + (i + 1) + '.png'} />
+                                    </div>
+                                    <h4 className='title'>{product.title}</h4>
+                                    <p className='content'>{product.content}</p>
+                                    <p className='price'>{product.price}</p>
+                                </Box>
                             )
                         })}
                     </Box>
@@ -84,7 +91,7 @@ function Main() {
                         <button
                             className='morebutton'
                             onClick={() =>
-                            setShowproduct(true)}>추천 메뉴 더보기
+                                setShowproduct(true)}>추천 메뉴 더보기
                         </button>
                     )}
                 </Box>
