@@ -50,7 +50,9 @@ function Main() {
             {/* 로그인하면 유저네임 생기게 */}
             <Grid className='section' item xs={12}>
                 <Box className='username_ment'>
-                    <p className='username'>username</p>님 환영합니다.
+                    <p className='username'>지금 플라토 회원이 되시면,<br/>다양한 할인 혜택을 드려요.</p>
+                    <button>회원가입</button>
+                    <button>로그인</button>
                 </Box>
                 <Box className='stampbox'>
                     <Box className='stamp'>

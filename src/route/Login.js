@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Login() {
+
+    // a0ab11a1d2a24d584c1cdbfb5c9a608c
+
     return (
         // 브레이크 포인트 화면 크기 xs
         <Container component="main" maxWidth="xs">
@@ -26,47 +29,18 @@ function Login() {
                 <Typography component="h1" variant="h5">
                     로그인
                 </Typography>
-                <TextField
-                    margin="normal"
-                    label="Email Address"
-                    required
-                    fullWidth
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                />
-                <TextField
-                    margin="normal"
-                    label="Password"
-                    type="password"
-                    required
-                    fullWidth
-                    name="password"
-                    autoComplete="current-password"
-                />
+                
+                <Link href="">카카오로 회원가입/로그인</Link>
+
+                <Link href="">구글로 회원가입/로그인</Link>
+
                 {/* 이메일 비밀번호 기억 폼 */}
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
-                    label="이메일/비밀번호 저장"
+                    label="로그인상태 유지"
                 />
 
-                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                    로그인
-                </Button>
-                <Grid container
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'space-around',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Grid item>
-                        <Link>비밀번호 찾기</Link>
-                    </Grid>
-                    <Grid item>
-                        <Link>회원가입</Link>
-                    </Grid>
-                </Grid>
+                <Link>비밀번호 찾기</Link>
             </Box>
         </Container>
     );
