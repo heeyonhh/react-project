@@ -2,6 +2,7 @@ import { MdOutlinePhonelinkRing } from 'react-icons/md';
 import { BiStore } from 'react-icons/bi';
 import { RiEBike2Line } from 'react-icons/ri';
 
+// 주문
 export const orderdata = [
 
     {
@@ -23,6 +24,7 @@ export const orderdata = [
     },
 ]
 
+// md
 export const mddata = [
 
     {

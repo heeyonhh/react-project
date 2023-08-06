@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import { StyledEngineProvider } from '@mui/material/styles';
@@ -8,10 +9,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box'
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 // 아이콘
 import QrCodeIcon from '@mui/icons-material/QrCode';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import CoffeeRoundedIcon from '@mui/icons-material/CoffeeRounded';
+import ApprovalIcon from '@mui/icons-material/Approval';
 
 // 라우트
 import Main from './route/Main';
@@ -20,7 +26,6 @@ import Login from './route/Login';
 import ProductList from './route/ProductList';
 import Detail from './route/Detail';
 import Order from './route/Order';
-import Nav from './components/Nav';
 
 //테마
 const theme = createTheme({
@@ -47,6 +52,7 @@ const theme = createTheme({
 function App() {
 
   let navigate = useNavigate();
+  let [value, setValue] = useState(0);
 
   return (
     <StyledEngineProvider injectFirst>
@@ -58,13 +64,13 @@ function App() {
           <Grid item xs={12}>
             <Box className='header'>
               <p className='logo'
-                onClick={() => {navigate('/')}}>
-                plato<br/>coffee</p>
+                onClick={() => { navigate('/') }}>
+                plato<br />coffee</p>
               <Box className='header_r'>
                 <QrCodeIcon />
                 <Avatar className='login'
                   src="/broken-image.jpg"
-                  onClick={() => {navigate('/login')}} />
+                  onClick={() => { navigate('/login') }} />
               </Box>
             </Box>
 
@@ -78,7 +84,20 @@ function App() {
             </Routes>
 
             {/* 하단 nav */}
-            <Nav />
+            <Box className="BottomNav">
+              <BottomNavigation
+                showLabels
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+              >
+                <BottomNavigationAction label="메인" icon={<HomeRoundedIcon />} onClick={() => { navigate('/') }} />
+                <BottomNavigationAction label="커피오더" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/order') }} />
+                <BottomNavigationAction label="스탬프" icon={<ApprovalIcon />} onClick={() => { navigate('/stamp') }} />
+              </BottomNavigation>
+            </Box>
+            
           </Grid>
         </div>
       </ThemeProvider>

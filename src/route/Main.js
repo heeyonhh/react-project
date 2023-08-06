@@ -31,6 +31,7 @@ function Main() {
     return (
         <Grid item xs={12}>
             <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
+            
             {/* 메인 이미지 슬라이드 */}
             <Grid className='mainslide'>
                 <Carousel activeIndex={index} onSelect={handleSelect}>
@@ -60,6 +61,7 @@ function Main() {
                     </Box>
                 </Box>
 
+                {/* 주문 영역 */}
                 <Box className="order">
                     {order.map(function (order, i) {
                         return (
@@ -71,6 +73,7 @@ function Main() {
                     })}
                 </Box>
 
+                {/* md 영역 */}
                 <Box className='mdmenu'>
                     <p className='today_ment'>#Today 추천 메뉴</p>
                     <Box className="productwrap">

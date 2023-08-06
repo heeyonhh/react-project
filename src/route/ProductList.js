@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom";
 
 import '../App.css';
 
@@ -46,7 +47,7 @@ function ProductList() {
             </Box>
             <Box className="p_wrap">
                 {currentCategory.map((a, i) =>
-                <Box className="p" key={i}>
+                <Link href="" className="p" key={i}>
                     <div className='p_img_wrap'>
                         <img className="p_img" src={`/img/${currentCategory === coffee ? 'coffee' : currentCategory === beverage ? 'beverage' : 'side'}${a.id}.png`} />
                     </div>
@@ -55,7 +56,7 @@ function ProductList() {
                         <p className='p_content'>{a.content}</p>
                         <p className='p_price'>{a.price}</p>
                     </div>
-                </Box>
+                </Link>
                 )
                 }
             </Box>
