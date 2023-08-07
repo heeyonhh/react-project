@@ -57,8 +57,7 @@ function ProductList() {
                         <p className='p_price'>{a.price}</p>
                     </div>
                 </Link>
-                )
-                }
+                )}
             </Box>
         </Grid>
     )
