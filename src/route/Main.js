@@ -51,15 +51,29 @@ function Main() {
         return array;
     };
 
+    const [mdPImages, setMdPImages] = useState([]);
+
     // mdProducts 상태 랜덤 배열
     useEffect(() => {
         const fetchmdProducts = () => {
             const allProducts = [...coffee, ...beverage, ...side];
             const mdProducts = shuffleArray(allProducts).slice(0, 4);
             dispatch(setmdP(mdProducts));
+
+            // mdProducts의 이미지 파일명 배열 생성
+            const mdProductImages = mdProducts.map((product) =>
+                getImageFileName(product.category, product.id)
+            );
+            setMdPImages(mdProductImages);
         };
-        fetchmdProducts();
+
+        fetchmdProducts(); // fetchmdProducts 함수 호출
+
     }, []);
+
+    const getImageFileName = (category, id) => {
+        return `/img/${category}${id}.png`;
+    };
 
     const [showMoreButton, setShowMoreButton] = useState(true);
     const [moreProduct, setMoreProduct] = useState([]);
@@ -73,11 +87,6 @@ function Main() {
         const moreProducts = shuffleArray(filteredProducts).slice(0, 2);
         setMoreProduct(moreProducts);
         setShowMoreButton(false);
-    };
-
-    // 이미지 파일명 생성 함수
-    const getImageFileName = (category, id) => {
-        return `/img/${category}${id}.png`;
     };
 
     return (
