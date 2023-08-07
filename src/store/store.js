@@ -36,24 +36,10 @@ export const side = createSlice({
   ]
 })
 
-// 메인 md
-export const mdP = createSlice({
-  name: 'mdP',
-  initialState: [],
-  reducers: {
-    setmdP(state, action) {
-      return action.payload;
-    },
-  },
-});
-
-export let { setmdP } = mdP.actions
-
 export default configureStore({
   reducer: {
     coffee : coffee.reducer,
     beverage : beverage.reducer,
     side : side.reducer,
-    mdP : mdP.reducer,
   }
 })

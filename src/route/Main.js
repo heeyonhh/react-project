@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setmdP } from '../store/store';
+import { useSelector } from 'react-redux';
 
-//css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
@@ -11,110 +9,78 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
 
-//아이콘
 import { BsCupStraw } from 'react-icons/bs';
 import { RiCoupon3Line } from 'react-icons/ri';
-
-//컴포넌츠
 import { orderdata } from '../components/data';
 
 function Main() {
-
-    let [index, setIndex] = useState(0);
-    let handleSelect = (selectedIndex) => {
+    const [index, setIndex] = useState(0);
+    const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 
-    let [order, setOrder] = useState(orderdata);
+    const [order] = useState(orderdata);
 
-    const dispatch = useDispatch();
-    const coffee = useSelector((state) => state.coffee);
-    const beverage = useSelector((state) => state.beverage);
-    const side = useSelector((state) => state.side);
-    const mdP = useSelector((state) => state.mdP);
+    const coffeeData = useSelector(state => state.coffee);
+    const beverageData = useSelector(state => state.beverage);
+    const sideData = useSelector(state => state.side);
 
-    // mdmenu 영역 4개
-    const shuffleArray = (array) => {
-        let currentIndex = array.length,
-            temporaryValue,
-            randomIndex;
+    const numOfRandomProducts = 2;
 
-        while (currentIndex !== 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
+    const getRandomProducts = (data) => {
+        const selectedProducts = [];
+        const randomIndices = [];
 
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
+        while (randomIndices.length < numOfRandomProducts) {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            if (!randomIndices.includes(randomIndex)) {
+                randomIndices.push(randomIndex);
+                const product = { ...data[randomIndex], isSelected: true };
+                selectedProducts.push(product);
+            }
         }
 
-        return array;
+        return selectedProducts;
     };
 
-    const [mdPImages, setMdPImages] = useState([]);
-
-    // mdProducts 상태 랜덤 배열
     useEffect(() => {
-        const fetchmdProducts = () => {
-            const allProducts = [...coffee, ...beverage, ...side];
-            const mdProducts = shuffleArray(allProducts).slice(0, 4);
-            dispatch(setmdP(mdProducts));
+        setRandomCoffee(getRandomProducts(coffeeData));
+        setRandomBeverage(getRandomProducts(beverageData));
+        setRandomSide(getRandomProducts(sideData));
+    }, [coffeeData, beverageData, sideData]);
 
-            // mdProducts의 이미지 파일명 배열 생성
-            const mdProductImages = mdProducts.map((product) =>
-                getImageFileName(product.category, product.id)
-            );
-            setMdPImages(mdProductImages);
-        };
-
-        fetchmdProducts(); // fetchmdProducts 함수 호출
-
-    }, []);
-
-    const getImageFileName = (category, id) => {
-        return `/img/${category}${id}.png`;
-    };
-
-    const [showMoreButton, setShowMoreButton] = useState(true);
-    const [moreProduct, setMoreProduct] = useState([]);
-
-    // 더보기 버튼 클릭 시 새로운 상품 추가
-    const MoreButtonClick = () => {
-        const allProducts = [...coffee, ...beverage, ...side];
-        const filteredProducts = allProducts.filter(
-            (product) => !mdP.some((p) => p.id === product.id)
-        );
-        const moreProducts = shuffleArray(filteredProducts).slice(0, 2);
-        setMoreProduct(moreProducts);
-        setShowMoreButton(false);
-    };
+    const [randomCoffee, setRandomCoffee] = useState([]);
+    const [randomBeverage, setRandomBeverage] = useState([]);
+    const [randomSide, setRandomSide] = useState([]);
 
     return (
         <Grid item xs={12}>
+
             <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
 
-            {/* 메인 이미지 슬라이드 */}
+            {/* 메인 슬라이드 영역 */}
             <Grid className='mainslide'>
                 <Carousel activeIndex={index} onSelect={handleSelect}>
                     <Carousel.Item>
-                        <img src='/img/slide1.jpg' width={'100%'} />
+                        <img src='/img/slide1.jpg' width={'100%'} alt="slide1" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img src='/img/slide2.jpg' width={'100%'} />
+                        <img src='/img/slide2.jpg' width={'100%'} alt="slide2" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img src='/img/slide3.jpg' width={'100%'} />
+                        <img src='/img/slide3.jpg' width={'100%'} alt="slide3" />
                     </Carousel.Item>
                 </Carousel>
             </Grid>
 
-            {/* 로그인하면 유저네임 생기게 */}
             <Grid className='section' item xs={12}>
                 <Box className='username_ment'>
                     <p className='username'>지금 플라토 회원이 되시면,<br />다양한 할인 혜택을 드려요.</p>
                     <button>회원가입</button>
                     <button>로그인</button>
                 </Box>
+
+                {/* 스탬프 영역 */}
                 <Box className='stampbox'>
                     <Box className='stamp'>
                         <BsCupStraw /> 스탬프 <span>0</span>
@@ -126,24 +92,45 @@ function Main() {
 
                 {/* 주문 영역 */}
                 <Box className="order">
-                    {order.map(function (order, i) {
-                        return (
-                            <Link to="/productlist" className="order_box" key={i}>
-                                <div className='order_icon'>{order.icon}</div>
-                                <p className='order_text'>{order.name}</p>
-                            </Link>
-                        )
-                    })}
+                    {order.map((order, i) => (
+                        <Link to="/productlist" className="order_box" key={i}>
+                            <div className='order_icon'>{order.icon}</div>
+                            <p className='order_text'>{order.name}</p>
+                        </Link>
+                    ))}
                 </Box>
 
+                {/* md 메뉴 영역 */}
                 <Box className="today_ment">#Today 추천 메뉴</Box>
-
-                {/* md 영역 */}
                 <div className="p_wrap">
-                    {mdP.map((product) => (
+                    {randomCoffee.map((product) => (
                         <Link to="#" className="p" key={product.id}>
                             <div className="p_img_wrap">
-                                <img className="p_img" src={getImageFileName(product.category, product.id)} />
+                                <img className="p_img" src={`/img/coffee${product.id}.png`} alt={product.title} />
+                            </div>
+                            <div className="p_data_wrap">
+                                <h4 className="p_title">{product.title}</h4>
+                                <p className="p_content">{product.content}</p>
+                                <p className="p_price">{product.price}</p>
+                            </div>
+                        </Link>
+                    ))}
+                    {randomBeverage.map((product) => (
+                        <Link to="#" className="p" key={product.id}>
+                            <div className="p_img_wrap">
+                                <img className="p_img" src={`/img/beverage${product.id}.png`} alt={product.title} />
+                            </div>
+                            <div className="p_data_wrap">
+                                <h4 className="p_title">{product.title}</h4>
+                                <p className="p_content">{product.content}</p>
+                                <p className="p_price">{product.price}</p>
+                            </div>
+                        </Link>
+                    ))}
+                    {randomSide.map((product) => (
+                        <Link to="#" className="p" key={product.id}>
+                            <div className="p_img_wrap">
+                                <img className="p_img" src={`/img/side${product.id}.png`} alt={product.title} />
                             </div>
                             <div className="p_data_wrap">
                                 <h4 className="p_title">{product.title}</h4>
@@ -153,26 +140,6 @@ function Main() {
                         </Link>
                     ))}
                 </div>
-
-                {/* 더보기 버튼 */}
-                {showMoreButton && (
-                    <button className="morebutton" onClick={MoreButtonClick}>
-                        더보기
-                    </button>
-                )}
-
-                {moreProduct.map((product) => (
-                    <Link to="#" className="p" key={product.id}>
-                        <div className="p_img_wrap">
-                            <img className="p_img" src={getImageFileName(product.category, product.id)} />
-                        </div>
-                        <div className="p_data_wrap">
-                            <h4 className="p_title">{product.title}</h4>
-                            <p className="p_content">{product.content}</p>
-                            <p className="p_price">{product.price}</p>
-                        </div>
-                    </Link>
-                ))}
             </Grid>
         </Grid>
     );
