@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-let coffee = createSlice({
+export const coffee = createSlice({
   name: 'coffee',
   initialState: [
     { id: 0, title: "아메리카노", content: null, price: "4,900원"},
@@ -12,7 +12,7 @@ let coffee = createSlice({
   ]
 })
 
-let beverage = createSlice({
+export const beverage = createSlice({
   name: 'beverage',
   initialState: [
     { id: 0, title: "블루문 에이드", content: "ICED Only", price: "4,900원"},
@@ -24,7 +24,7 @@ let beverage = createSlice({
   ]
 })
 
-let side = createSlice({
+export const side = createSlice({
   name: 'side',
   initialState: [
     { id: 0, title: "약과 크림치즈 쿠키", content: null, price: "4,900원"},
@@ -36,10 +36,24 @@ let side = createSlice({
   ]
 })
 
+// 메인 md
+export const mdP = createSlice({
+  name: 'mdP',
+  initialState: [],
+  reducers: {
+    setmdP(state, action) {
+      return action.payload;
+    },
+  },
+});
+
+export let { setmdP } = mdP.actions
+
 export default configureStore({
   reducer: {
     coffee : coffee.reducer,
     beverage : beverage.reducer,
-    side : side.reducer
+    side : side.reducer,
+    mdP : mdP.reducer,
   }
 })
