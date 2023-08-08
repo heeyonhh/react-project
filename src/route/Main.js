@@ -14,17 +14,21 @@ import { RiCoupon3Line } from 'react-icons/ri';
 import { orderdata } from '../components/data';
 
 function Main() {
+    //메인 슬라이드
     const [index, setIndex] = useState(0);
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 
+    //주문 영역
     const [order] = useState(orderdata);
 
+    //md 메뉴 영역 자료
     const coffeeData = useSelector(state => state.coffee);
     const beverageData = useSelector(state => state.beverage);
     const sideData = useSelector(state => state.side);
 
+    //랜덤으로 2개씩
     const numOfRandomProducts = 2;
 
     const getRandomProducts = (data) => {
