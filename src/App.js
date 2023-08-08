@@ -17,7 +17,6 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import QrCodeIcon from '@mui/icons-material/QrCode';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import CoffeeRoundedIcon from '@mui/icons-material/CoffeeRounded';
-import ApprovalIcon from '@mui/icons-material/Approval';
 
 // 라우트
 import Main from './route/Main';
@@ -67,7 +66,6 @@ function App() {
                 onClick={() => { navigate('/') }}>
                 plato<br />coffee</p>
               <Box className='header_r'>
-                <QrCodeIcon />
                 <Avatar className='login'
                   src="/broken-image.jpg"
                   onClick={() => { navigate('/login') }} />
@@ -93,8 +91,8 @@ function App() {
                 }}
               >
                 <BottomNavigationAction label="메인" icon={<HomeRoundedIcon />} onClick={() => { navigate('/') }} />
-                <BottomNavigationAction label="커피오더" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/order') }} />
-                <BottomNavigationAction label="스탬프" icon={<ApprovalIcon />} onClick={() => { navigate('/stamp') }} />
+                <BottomNavigationAction label="커피오더" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/productlist') }} />
+                <BottomNavigationAction label="마이코드" icon={<QrCodeIcon />} onClick={() => { navigate('/code') }} />
               </BottomNavigation>
             </Box>
             
