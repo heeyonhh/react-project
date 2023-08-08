@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,8 +9,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
 
-import { BsCupStraw } from 'react-icons/bs';
-import { RiCoupon3Line } from 'react-icons/ri';
 import { orderdata } from '../components/data';
 
 function Main() {
@@ -19,6 +17,8 @@ function Main() {
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
+
+    let navigate = useNavigate();
 
     //주문 영역
     const [order] = useState(orderdata);
@@ -47,6 +47,7 @@ function Main() {
         return selectedProducts;
     };
 
+    // 재랜딩 막기
     useEffect(() => {
         setRandomCoffee(getRandomProducts(coffeeData));
         setRandomBeverage(getRandomProducts(beverageData));
@@ -78,20 +79,11 @@ function Main() {
             </Grid>
 
             <Grid className='section' item xs={12}>
-                <Box className='username_ment'>
-                    <p className='username'>지금 플라토 회원이 되시면,<br />다양한 할인 혜택을 드려요.</p>
-                    <button>회원가입</button>
-                    <button>로그인</button>
-                </Box>
-
-                {/* 스탬프 영역 */}
-                <Box className='stampbox'>
-                    <Box className='stamp'>
-                        <BsCupStraw /> 스탬프 <span>0</span>
-                    </Box>|
-                    <Box className='coupon'>
-                        <RiCoupon3Line /> 쿠폰 <span>0</span>
-                    </Box>
+                <Box className='section_box'>
+                    <p className='section_ment'>지금 플라토 회원이 되시면,<br />다양한 할인 혜택을 드려요.</p>
+                    <button className='section_button'
+                    onClick={() => { navigate('/login') }} >
+                        회원가입 / 로그인</button>
                 </Box>
 
                 {/* 주문 영역 */}

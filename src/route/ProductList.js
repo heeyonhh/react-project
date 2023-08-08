@@ -15,6 +15,7 @@ function ProductList() {
     const beverage = useSelector((state) => state.beverage);
     const side = useSelector((state) => state.side);
 
+    // 탭메뉴
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
