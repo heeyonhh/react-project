@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { useSelector } from "react-redux"
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-import '../App.css';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -10,32 +8,22 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 function ProductList() {
+    const products = useSelector((state) => state.productData);
 
-    const coffee = useSelector((state) => state.coffee);
-    const beverage = useSelector((state) => state.beverage);
-    const side = useSelector((state) => state.side);
-
-    // 탭메뉴
+    // 선택한 탭 값에 대한 상태 설정
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-    let currentCategory;
-    switch (value) {
-        case 0:
-            currentCategory = coffee;
-            break;
-        case 1:
-            currentCategory = beverage;
-            break;
-        case 2:
-            currentCategory = side;
-            break;
-        default:
-            currentCategory = coffee;
-    }
+    // 선택한 카테고리에 따라 제품 필터링
+    const filteredProducts = products.filter(product => {
+        if (value === 0) return product.category === 'coffee';
+        if (value === 1) return product.category === 'beverage';
+        if (value === 2) return product.category === 'side';
+        return true;
+    });
 
     return (
         <Grid className="pp">
@@ -47,21 +35,19 @@ function ProductList() {
                 </Tabs>
             </Box>
             <Box className="p_wrap">
-                {currentCategory.map((a, i) =>
-                <Link href="" className="p" key={i}>
-                    <div className='p_img_wrap'>
-                        <img className="p_img" src={`/img/${currentCategory === coffee ? 'coffee' : currentCategory === beverage ? 'beverage' : 'side'}${a.id}.png`} />
-                    </div>
-                    <div className="p_data_wrap">
-                        <h4 className='p_title'>{a.title}</h4>
-                        <p className='p_content'>{a.content}</p>
-                        <p className='p_price'>{a.price}</p>
-                    </div>
-                </Link>
-                )}
+                {filteredProducts.map((product) => (
+                    <Link to={`/detail/${product.id}`} className="p" key={product.id}>
+                        <div className="p_img">{product.img}</div>
+                        <div className="p_data_wrap">
+                            <h4 className='p_title'>{product.title}</h4>
+                            <p className='p_content'>{product.content}</p>
+                            <p className='p_price'>{product.price}</p>
+                        </div>
+                    </Link>
+                ))}
             </Box>
         </Grid>
-    )
-};
+    );
+}
 
 export default ProductList;

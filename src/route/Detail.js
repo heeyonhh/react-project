@@ -1,18 +1,27 @@
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import '../App.css';
 
 import Grid from '@mui/material/Grid';
 
 function Detail() {
+
+    const { id } = useParams();
+    const product = useSelector((state) => state.productData.find(product => product.id === parseInt(id)));
+
+    if (!product) {
+        // 상품이 존재하지 않는 경우에 대한 처리
+        return <div>상품을 준비중입니다.</div>;
+    }
+
     return (
         <Grid item xs={12}>
 
             {/* 이미지 정보 영역 */}
             <div className="detail_data_wrap">
-                <div className="detail_img_wrap">
-                    <img className="detail_img" src={`/img/coffee${product.id}.png`} alt={product.title} />
-                </div>
+                <div className="detail_img">{product.img}</div>
                 <h4 className="detail_title">{product.title}</h4>
                 <p className="detail_content">{product.content}</p>
                 <p className="detail_explain">{product.explain}</p>
