@@ -160,7 +160,7 @@ p{
 }
 
 
-/* productlis */
+/* product list */
 .pp{
   width: 100%;
   height: 1050px;
@@ -172,7 +172,6 @@ p{
 }
 
 .p_wrap{
-  box-sizing: border-box;
   margin-top: 10px;
   width: 100%;
   height: 950px;
@@ -197,12 +196,9 @@ p{
   justify-content: center;
 }
 
-.p_img img{
-  width: 200px;
-}
-
 .p_data_wrap{
   margin-top: 20px;
+  padding-top: 20px;
   width: 100%;
   height: 100px;
   display: flex;
@@ -218,4 +214,93 @@ p{
 .p_content{
   color: rgb(11, 11, 149);
   font-weight: bold;
+}
+
+/* detail */
+.detail{
+  width: 100%;
+  padding: 0 12px 12px 12px;
+}
+
+/* 이미지 정보 영역 */
+.detail_data_wrap{
+  width: 100%;
+}
+
+.detail_img{
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail_title{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.detail_content{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: rgb(11, 11, 149);
+  font-weight: bold;
+}
+
+.detail_explain{
+  width: 100%;
+  height: 80px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+/* 수량 가격 영역 */
+.detail_order_box{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.detail_amount_m, .detail_amount_p{
+  width: 30px;
+  height: 30px;
+  background-color: #FFAB49;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+}
+
+/* 주문하기 영역 */
+
+.detail_order_wrap{
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail_order_wrap a{
+  display: block;
+  width: 200px;
+  height: 50px;
+  font-size: 1.3rem;
+  background-color: #FFAB49;
+  border-radius: 20px;
+  color: #fff;
+  line-height: 2.2;
 }

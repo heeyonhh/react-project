@@ -17,7 +17,7 @@ function Detail() {
     }
 
     return (
-        <Grid item xs={12}>
+        <Grid className='detail' item xs={12}>
 
             {/* 이미지 정보 영역 */}
             <div className="detail_data_wrap">
@@ -29,17 +29,15 @@ function Detail() {
 
             {/* 수량 가격 영역 */}
             <div className="detail_order_box">
-                <div className='detail_amount_wrap'>
-                    <button className='detail_amount_m'>-</button>
-                    <p className='detail_amount'>1</p>
-                    <button className='detail_amount_p'>+</button>
-                </div>
+                <button className='detail_amount_m'>-</button>
+                <p className='detail_amount'>1</p>
+                <button className='detail_amount_p'>+</button>
                 <p className="detail_price">{product.price}</p>
             </div>
 
             {/* 주문하기 영역 */}
             <div className='detail_order_wrap'>
-                <Link className="detail_order">주문하기</Link>
+                <Link>주문하기</Link>
             </div>
 
         </Grid>
