@@ -27,11 +27,31 @@ export const productData = createSlice({
     { id: 15, category: 'side', title: "소금 버터 스콘", content: null, price: "2,900원", explain: "버터의 풍미가 가득 느껴지는 고소하고 짭짤한 소금 버터 스콘 (딸기쨈과 함께 제공)", img: <img src="https://raw.githubusercontent.com/heeyonhh/img/main/side3.png" width="160" /> },
     { id: 16, category: 'side', title: "플레인 크로플", content: null, price: "2,900원", explain: "크루아상을 와플 모양으로 찍어만든 크로플 위에 메이플 시럽과 슈가파우더가 올라간 기본 타입 크로플", img: <img src="https://raw.githubusercontent.com/heeyonhh/img/main/side4.png" width="160" /> },
     { id: 17, category: 'side', title: "더블베리 요거놀라 1인빙수", content: null, price: "6,300원", explain: "아삭한 얼음과 요거트가 어우러진 베이스에 아이스크림, 딸기 베이스, 블루베리와 바삭한 그래놀라를 더한 1인 빙수", img: <img src="https://raw.githubusercontent.com/heeyonhh/img/main/side5.png" width="160" /> }
-  ]
+  ].map(product => ({
+    ...product,
+    quantity: 1,
+  })),
+
+  reducers: {
+    // +- 기능
+    increaseQuantity: (state, action) => {
+      const product = state.find(product => product.id === action.payload);
+      if (product) {
+        product.quantity += 1;
+      }
+    },
+    decreaseQuantity: (state, action) => {
+      const product = state.find(product => product.id === action.payload);
+      if (product && product.quantity > 1) {
+        product.quantity -= 1;
+      }
+    },
+  }
 });
 
+export const { increaseQuantity, decreaseQuantity } = productData.actions;
 export default configureStore({
   reducer: {
-    productData : productData.reducer
+    productData: productData.reducer
   }
 })

@@ -272,7 +272,7 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .detail_amount_m, .detail_amount_p{
