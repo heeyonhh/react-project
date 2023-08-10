@@ -24,6 +24,7 @@ function Main() {
 
     const [randomProducts, setRandomProducts] = useState([]);
 
+    // 재랜더링 막기
     useEffect(() => {
         const getRandomProducts = (category, count) => {
             const productsByCategory = products.filter(product => product.category === category);
@@ -35,6 +36,7 @@ function Main() {
             return Array.from(randomIndices).map(index => productsByCategory[index]);
         };
 
+        // 2개씩 랜덤 추천ㄴ
         const coffeeProducts = getRandomProducts('coffee', 2);
         const beverageProducts = getRandomProducts('beverage', 2);
         const sideProducts = getRandomProducts('side', 2);
