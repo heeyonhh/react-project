@@ -86,7 +86,7 @@ function Main() {
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
                         <Link to={`/detail/${product.id}`} className="p" key={product.id}>
-                            <div className="p_img">{product.img}</div>
+                            <img className="p_img" src={product.img} alt={product.title} width="160" />
                             <div className="p_data_wrap">
                                 <h4 className='p_title'>{product.title}</h4>
                                 <p className='p_content'>{product.content}</p>

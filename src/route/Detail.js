@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity } from '../store/store';
+import { addToCart } from '../store/cartSlice';
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
@@ -27,6 +28,10 @@ function Detail() {
         setQuantity(quantity + 1); // 로컬 상태 업데이트
     };
 
+    const handleAddToCart = () => {
+        dispatch(addToCart({ id: parseInt(id), quantity, price: product.price }));
+    };
+
     if (!product) {
         return <div>상품을 준비중입니다.</div>;
     }
@@ -36,7 +41,7 @@ function Detail() {
 
             {/* 이미지 정보 영역 */}
             <div className="detail_data_wrap">
-                <div className="detail_img">{product.img}</div>
+                <img className="detail_img" src={product.img} alt={product.title} width="160" />
                 <h4 className="detail_title">{product.title}</h4>
                 <p className="detail_content">{product.content}</p>
                 <p className="detail_explain">{product.explain}</p>
@@ -55,9 +60,12 @@ function Detail() {
 
             {/* 주문하기 영역 */}
             <div className='detail_order_wrap'>
-                <Link to={`/cart?id=${id}&quantity=${quantity}`} className='go_cart'>장바구니 담기</Link>
+                <Link to={`/cart?id=${id}&quantity=${quantity}`} className='go_cart'
+                onClick={handleAddToCart}
+                >장바구니 담기</Link>
+                {/* id 값 & 수량 정보 전달 & 장바구니 추가 */}
+
                 <Link to={`/order?id=${id}&quantity=${quantity}`} className='go_order'>주문하기</Link>
-                {/* id 값 % 수량 정보 전달 */}
             </div>
 
         </Grid>
