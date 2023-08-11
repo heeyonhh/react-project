@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 
 function Cart() {
     let navigate = useNavigate();
+
     const cartItems = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
@@ -30,7 +31,7 @@ function Cart() {
 
     return (
         <Grid className='cart' item xs={12}>
-            <div className="go_detail" onClick={() => { navigate('/') }}>
+            <div className="go_detail" onClick={() => { navigate(-1) }} >
                 <ArrowCircleLeftIcon className='go_detail_icon' />
             </div>
 
