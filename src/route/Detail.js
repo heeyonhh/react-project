@@ -42,7 +42,7 @@ function Detail() {
         <Grid className='detail' item xs={12}>
 
             <div className="go_back_box" onClick={() => navigate(-1)}>
-                <ArrowCircleLeftIcon className='go_back_icon'/>
+                <ArrowCircleLeftIcon className='go_back_icon' />
             </div>
 
             {/* 이미지 정보 영역 */}
@@ -75,10 +75,15 @@ function Detail() {
                     className='go_cart' onClick={handleAddToCart}>장바구니 담기</Link>
                 {/* id 값 & 수량 정보 전달 & 장바구니 추가 */}
 
-                <Link to={{
-                    pathname: '/cart',
-                    search: `?id=${id}&quantity=${quantity}&img=${product.img}&title=${product.title}`,
-                }} className='go_order'>주문하기</Link>
+                <Link
+                    to={{
+                        pathname: '/order',
+                        search: `?id=${id}&quantity=${quantity}&img=${encodeURIComponent(product.img)}&title=${encodeURIComponent(product.title)}`,
+                    }}
+                    className='go_order'
+                >
+                    주문하기
+                </Link>
             </div>
 
         </Grid>

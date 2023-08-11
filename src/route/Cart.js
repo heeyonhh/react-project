@@ -61,7 +61,15 @@ function Cart() {
                     <div className='cart_price_name'>상품금액</div>
                     <p className="cart_price">{totalAmount.toLocaleString()}원</p>
                 </div>
-                <Link to={`/order`} className='go_order'>주문하기</Link>
+                <Link
+                    to={{
+                        pathname: '/order',
+                        search: `?cartItems=${encodeURIComponent(JSON.stringify(cartItems))}&totalAmount=${totalAmount}`,
+                    }}
+                    className='go_order'
+                >
+                    주문하기
+                </Link>
             </div>
         </Grid>
     );
