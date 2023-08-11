@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity } from '../store/store';
 
 import '../App.css';
-
 import Grid from '@mui/material/Grid';
 
 function Detail() {
@@ -45,16 +44,20 @@ function Detail() {
 
             {/* 수량 가격 영역 */}
             <div className="detail_order_box">
-                <button className='detail_amount_m' onClick={handleDecrement}> - </button>
-                {/* 상품 가격 */}
-                <p className='detail_amount'>{quantity}</p>
-                <button className='detail_amount_p' onClick={handleIncrement}> + </button>
+                <div className='amout_wrap'>
+                    <button className='detail_amount_m' onClick={handleDecrement}> - </button>
+                    {/* 상품 수량 */}
+                    <p className='detail_amount'>{quantity}</p>
+                    <button className='detail_amount_p' onClick={handleIncrement}> + </button>
+                </div>
                 <p className="detail_price">{(parseInt(product.price.replace(/[^0-9]/g, '')) * quantity).toLocaleString()}원</p> {/* 숫자로 치환 & 수량에 따라 가격 조정 */}
             </div>
 
             {/* 주문하기 영역 */}
             <div className='detail_order_wrap'>
-                <Link>주문하기</Link>
+                <Link to={`/cart?id=${id}&quantity=${quantity}`} className='go_cart'>장바구니 담기</Link>
+                <Link to={`/order?id=${id}&quantity=${quantity}`} className='go_order'>주문하기</Link>
+                {/* id 값 % 수량 정보 전달 */}
             </div>
 
         </Grid>

@@ -14,16 +14,16 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 // 아이콘
-import QrCodeIcon from '@mui/icons-material/QrCode';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import CoffeeRoundedIcon from '@mui/icons-material/CoffeeRounded';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 // 라우트
 import Main from './route/Main';
-import Code from './route/Code';
 import Login from './route/Login';
 import ProductList from './route/ProductList';
 import Detail from './route/Detail';
+import Cart from './route/Cart';
 import Order from './route/Order';
 
 //테마
@@ -74,10 +74,10 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/code" element={<Code />} />
               <Route path='/login' element={<Login />} />
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/detail/:id" element={<Detail />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/order" element={<Order />} />
             </Routes>
 
@@ -92,7 +92,7 @@ function App() {
               >
                 <BottomNavigationAction label="메인" icon={<HomeRoundedIcon />} onClick={() => { navigate('/') }} />
                 <BottomNavigationAction label="커피오더" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/productlist') }} />
-                <BottomNavigationAction label="마이코드" icon={<QrCodeIcon />} onClick={() => { navigate('/code') }} />
+                <BottomNavigationAction label="장바구니" icon={<ShoppingCartIcon />} onClick={() => { navigate('/cart') }} />
               </BottomNavigation>
             </Box>
             

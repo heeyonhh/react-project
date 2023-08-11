@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
+import cartReducer from './cartSlice';
 
 export const productData = createSlice({
   name: 'productData',
@@ -33,7 +34,7 @@ export const productData = createSlice({
   })),
 
   reducers: {
-    // +- 기능
+    // detail 페이지 수량 +- 기능
     increaseQuantity: (state, action) => {
       const product = state.find(product => product.id === action.payload);
       if (product) {
@@ -52,6 +53,7 @@ export const productData = createSlice({
 export const { increaseQuantity, decreaseQuantity } = productData.actions;
 export default configureStore({
   reducer: {
-    productData: productData.reducer
+    productData: productData.reducer,
+    cart: cartReducer,
   }
 })
