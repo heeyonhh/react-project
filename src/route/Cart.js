@@ -12,9 +12,10 @@ import Grid from '@mui/material/Grid';
 
 function Cart() {
 
+    const navigate = useNavigate();
+
     const cartItems = useSelector(state => state.cart);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleQuantityChange = (id, newQuantity) => {
         dispatch(updateQuantity({ id, quantity: newQuantity }));
@@ -33,24 +34,26 @@ function Cart() {
     return (
         <Grid className='cart' item xs={12}>
 
-            <div className="go_back_box" onClick={() => navigate(-1)}>
-                <ArrowCircleLeftIcon className='go_back_icon' />
+            <div className="go_back" onClick={() => navigate(-1)}>
+                <ArrowCircleLeftIcon className='go_backicon' />
             </div>
 
-            <div className="cart_name">장바구니</div>
+            <div className="cart_name">장바구니 <ShoppingCartIcon /></div>
 
             <div className="cart_list">주문 상품</div>
             {cartItems.map(item => (
                 <div className="cart_data_box" key={item.id}>
                     <div className="cart_data_wrap">
-                        <div className='cart_img_wrap'>
+                        <div className='cart_wrap'>
                             <img className="cart_img" src={item.img} alt={item.title} width="80" />
+                            <div className="cart_title">{item.title}</div>
+                            <button className="cart_delete" onClick={() => handleRemoveItem(item.id)}> X </button>
                         </div>
-                        <div className="cart_title">{item.title}</div>
-                        <button className="cart_delete" onClick={() => handleRemoveItem(item.id)}> X </button>
-                        <button className="cart_button" onClick={() => handleQuantityChange(item.id, item.quantity + 1)}> + </button>
-                        <p className='detail_amount'>{item.quantity}</p>
-                        <button className="cart_button" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}> - </button>
+                        <div className='cart_button_wrap'>
+                            <button className="cart_button" onClick={() => handleQuantityChange(item.id, item.quantity + 1)}> + </button>
+                            <p className='detail_amount'>{item.quantity}</p>
+                            <button className="cart_button" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}> - </button>
+                        </div>
                     </div>
                 </div>
             ))}
