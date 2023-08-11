@@ -343,19 +343,15 @@ p{
   padding: 0 12px 12px 12px;
 }
 
-.go_back{
-
-}
-
 /* 이전으로 가기 navigate(-1) 버튼 */
-.go_back{
+.go_detail{
   width: 100%;
   height: 30px;
   display: flex;
   align-items: center;
 }
 
-.go_backicon{
+.go_detail_icon{
   color: #FFAB49;
 }
 

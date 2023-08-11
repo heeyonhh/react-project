@@ -3,17 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateQuantity, removeFromCart } from '../store/cartSlice';
 
-//아이콘
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
 
 function Cart() {
-
-    const navigate = useNavigate();
-
+    let navigate = useNavigate();
     const cartItems = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
@@ -33,9 +30,8 @@ function Cart() {
 
     return (
         <Grid className='cart' item xs={12}>
-
-            <div className="go_back" onClick={() => navigate(-1)}>
-                <ArrowCircleLeftIcon className='go_backicon' />
+            <div className="go_detail" onClick={() => { navigate('/') }}>
+                <ArrowCircleLeftIcon className='go_detail_icon' />
             </div>
 
             <div className="cart_name">장바구니 <ShoppingCartIcon /></div>
@@ -66,8 +62,7 @@ function Cart() {
                 </div>
                 <Link to={`/order`} className='go_order'>주문하기</Link>
             </div>
-
-        </Grid >
+        </Grid>
     );
 }
 
