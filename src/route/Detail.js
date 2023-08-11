@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity } from '../store/store';
 import { addToCart } from '../store/cartSlice';
@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 
 function Detail() {
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { id } = useParams();
     const product = useSelector((state) => state.productData.find(product => product.id === parseInt(id)));
@@ -29,7 +30,7 @@ function Detail() {
     };
 
     const handleAddToCart = () => {
-        dispatch(addToCart({ id: parseInt(id), quantity, price: product.price }));
+        dispatch(addToCart({ id: parseInt(id), quantity, price: product.price, img: product.img, title: product.title }));
     };
 
     if (!product) {
@@ -39,9 +40,15 @@ function Detail() {
     return (
         <Grid className='detail' item xs={12}>
 
+            <button className="go_back_button" onClick={() => navigate(-1)}>
+                이전으로 가기
+            </button>
+
             {/* 이미지 정보 영역 */}
             <div className="detail_data_wrap">
-                <img className="detail_img" src={product.img} alt={product.title} width="160" />
+                <div className='detail_img_wrap'>
+                    <img className="detail_img" src={product.img} alt={product.title} />
+                </div>
                 <h4 className="detail_title">{product.title}</h4>
                 <p className="detail_content">{product.content}</p>
                 <p className="detail_explain">{product.explain}</p>
@@ -60,12 +67,17 @@ function Detail() {
 
             {/* 주문하기 영역 */}
             <div className='detail_order_wrap'>
-                <Link to={`/cart?id=${id}&quantity=${quantity}`} className='go_cart'
-                onClick={handleAddToCart}
-                >장바구니 담기</Link>
+                <Link to={{
+                    pathname: '/cart',
+                    search: `?id=${id}&quantity=${quantity}&img=${product.img}&title=${product.title}`,
+                }}
+                    className='go_cart' onClick={handleAddToCart}>장바구니 담기</Link>
                 {/* id 값 & 수량 정보 전달 & 장바구니 추가 */}
 
-                <Link to={`/order?id=${id}&quantity=${quantity}`} className='go_order'>주문하기</Link>
+                <Link to={{
+                    pathname: '/cart',
+                    search: `?id=${id}&quantity=${quantity}&img=${product.img}&title=${product.title}`,
+                }} className='go_order'>주문하기</Link>
             </div>
 
         </Grid>

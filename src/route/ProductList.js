@@ -37,7 +37,9 @@ function ProductList() {
             <Box className="p_wrap">
                 {filteredProducts.map((product) => (
                     <Link to={`/detail/${product.id}`} className="p" key={product.id}>
-                        <img className="p_img" src={product.img} alt={product.title} width="160" />
+                        <div className='p_img_wrap'>
+                            <img className="p_img" src={product.img} alt={product.title} />
+                        </div>
                         <div className="p_data_wrap">
                             <h4 className='p_title'>{product.title}</h4>
                             <p className='p_content'>{product.content}</p>

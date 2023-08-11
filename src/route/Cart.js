@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateQuantity, removeFromCart } from '../store/cartSlice';
 
@@ -13,6 +13,7 @@ function Cart() {
 
     const cartItems = useSelector(state => state.cart);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleQuantityChange = (id, newQuantity) => {
         dispatch(updateQuantity({ id, quantity: newQuantity }));
@@ -30,18 +31,27 @@ function Cart() {
 
     return (
         <Grid className='cart' item xs={12}>
+
+            <button className="go_back_button" onClick={() => navigate(-1)}>
+                이전으로 가기
+            </button>
+
             <div className="cart_icon"><ShoppingCartIcon /></div>
 
             {cartItems.map(item => (
                 <div className="cart_data_box" key={item.id}>
                     <div className="cart_data_wrap">
-                        <img className="cart_img" src={item.img} alt={item.title} width="160" />
+                        <div className='cart_img_wrap'>
+                            <img className="cart_img" src={item.img} alt={item.title} width="160" />
+                        </div>
                         <h4 className="cart_title">{item.title}</h4>
                         <button onClick={() => handleQuantityChange(item.id, item.quantity + 1)}> + </button>
                         <p className='detail_amount'>{item.quantity}</p>
                         <button onClick={() => handleQuantityChange(item.id, item.quantity - 1)}> - </button>
                     </div>
-                    <button onClick={() => handleRemoveItem(item.id)}>장바구니 음료 삭제</button>
+                    <div className='cart_remove_box'>
+                        <button onClick={() => handleRemoveItem(item.id)}>장바구니 음료 삭제</button>
+                    </div>
                 </div>
             ))}
 
