@@ -25,7 +25,7 @@ export const cartSlice = createSlice({
       return state.filter(item => item.id !== id);
     },
   },
-});
+})
 
 export const { addToCart, updateQuantity, removeFromCart } = cartSlice.actions;
 

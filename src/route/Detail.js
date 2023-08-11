@@ -6,6 +6,7 @@ import { addToCart } from '../store/cartSlice';
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 function Detail() {
 
@@ -40,9 +41,9 @@ function Detail() {
     return (
         <Grid className='detail' item xs={12}>
 
-            <button className="go_back_button" onClick={() => navigate(-1)}>
-                이전으로 가기
-            </button>
+            <div className="go_back_box" onClick={() => navigate(-1)}>
+                <ArrowCircleLeftIcon className='go_back_icon'/>
+            </div>
 
             {/* 이미지 정보 영역 */}
             <div className="detail_data_wrap">

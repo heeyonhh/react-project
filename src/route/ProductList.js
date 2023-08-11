@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 function ProductList() {
+
+    const navigate = useNavigate();
+    
     const products = useSelector((state) => state.productData);
 
     // 선택한 탭 값에 대한 상태 설정
@@ -27,6 +31,10 @@ function ProductList() {
 
     return (
         <Grid className="pp">
+            <div className="go_back_box" onClick={() => navigate(-1)}>
+                <ArrowCircleLeftIcon className='go_back_icon'/>
+            </div>
+            
             <Box>
                 <Tabs value={value} onChange={handleChange} centered>
                     <Tab className="pp_tab" label="커피" />

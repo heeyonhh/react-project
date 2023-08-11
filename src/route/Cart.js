@@ -5,6 +5,7 @@ import { updateQuantity, removeFromCart } from '../store/cartSlice';
 
 //아이콘
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
@@ -32,32 +33,34 @@ function Cart() {
     return (
         <Grid className='cart' item xs={12}>
 
-            <button className="go_back_button" onClick={() => navigate(-1)}>
-                이전으로 가기
-            </button>
+            <div className="go_back_box" onClick={() => navigate(-1)}>
+                <ArrowCircleLeftIcon className='go_back_icon' />
+            </div>
 
-            <div className="cart_icon"><ShoppingCartIcon /></div>
+            <div className="cart_name">장바구니</div>
 
+            <div className="cart_list">주문 상품</div>
             {cartItems.map(item => (
                 <div className="cart_data_box" key={item.id}>
                     <div className="cart_data_wrap">
                         <div className='cart_img_wrap'>
-                            <img className="cart_img" src={item.img} alt={item.title} width="160" />
+                            <img className="cart_img" src={item.img} alt={item.title} width="80" />
                         </div>
-                        <h4 className="cart_title">{item.title}</h4>
-                        <button onClick={() => handleQuantityChange(item.id, item.quantity + 1)}> + </button>
+                        <div className="cart_title">{item.title}</div>
+                        <button className="cart_delete" onClick={() => handleRemoveItem(item.id)}> X </button>
+                        <button className="cart_button" onClick={() => handleQuantityChange(item.id, item.quantity + 1)}> + </button>
                         <p className='detail_amount'>{item.quantity}</p>
-                        <button onClick={() => handleQuantityChange(item.id, item.quantity - 1)}> - </button>
-                    </div>
-                    <div className='cart_remove_box'>
-                        <button onClick={() => handleRemoveItem(item.id)}>장바구니 음료 삭제</button>
+                        <button className="cart_button" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}> - </button>
                     </div>
                 </div>
             ))}
 
             {/* 전체 주문하기 영역 */}
             <div className='cart_order_box'>
-                <p className="cart_price">{totalAmount.toLocaleString()}원</p>
+                <div className='cart_price_wrap'>
+                    <div className='cart_price_name'>상품금액</div>
+                    <p className="cart_price">{totalAmount.toLocaleString()}원</p>
+                </div>
                 <Link to={`/order`} className='go_order'>주문하기</Link>
             </div>
 
