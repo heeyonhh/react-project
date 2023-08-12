@@ -158,6 +158,13 @@ p{
   text-align: left;
 }
 
+/* location 매장 선택 페이지 */
+.location{
+  width: 100%;
+  height: auto;
+  padding: 0 12px;
+}
+
 /* 이전으로 가기 navigate(-1) 버튼 */
 .go_back_box{
   width: 100%;

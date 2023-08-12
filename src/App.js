@@ -20,6 +20,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 // 라우트
 import Main from './route/Main';
+import Location from './route/Location';
 import Login from './route/Login';
 import ProductList from './route/ProductList';
 import Detail from './route/Detail';
@@ -75,6 +76,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path='/login' element={<Login />} />
+              <Route path='/location' element={<Location />} />
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/detail/:id" element={<Detail />} />
               <Route path="/cart" element={<Cart />} />
