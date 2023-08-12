@@ -1,6 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice';
-import axios from 'axios';
 
 export const productData = createSlice({
   name: 'productData',
@@ -52,23 +51,7 @@ export const productData = createSlice({
   }
 });
 
-// 주소로부터 위도와 경도를 얻는 비동기 액션 생성
-export const fetchCoordinates = (address) => async (dispatch) => {
-  try {
-    const response = await axios.get(`https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(address)}`, {
-      headers: {
-        Authorization: 'KakaoAK a0ab11a1d2a24d584c1cdbfb5c9a608c'
-      }
-    });
-    const latitude = response.data.documents[0]?.y;
-    const longitude = response.data.documents[0]?.x;
-    if (latitude && longitude) {
-      dispatch(locationData.actions.addLocation({ address, latitude, longitude }));
-    }
-  } catch (error) {
-    console.error('Error', error);
-  }
-};
+export const { increaseQuantity, decreaseQuantity } = productData.actions;
 
 export const locationData = createSlice({
   name: 'locationData',
@@ -1548,28 +1531,16 @@ export const locationData = createSlice({
     { address: "경기도 광주시 광주역로 10,경기광주역사 역동	" },
     { address: "경기도 광주시 행정타운로 50, 광주시청 송정동	" },
     { address: "경기도 광주시 회안대로 350-17, 광주시 청소년수련관 태전동	" }
-
   ].map((location, i) => ({
     ...location,
     locationid: i,
-  })),
-  reducers: {
-    addLocation: (state, action) => {
-      state.push({
-        address: action.payload.address,
-        latitude: action.payload.latitude,
-        longitude: action.payload.longitude,
-        locationid: action.payload.locationid
-      });
-    },
-  },
+  }))
 });
-
-export const { increaseQuantity, decreaseQuantity } = productData.actions;
+  
 export default configureStore({
   reducer: {
     productData: productData.reducer,
     cart: cartReducer,
-    locationData: locationData.reducer
+    locationData: locationData.reducer,
   }
 })
