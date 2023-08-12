@@ -3,24 +3,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 /* 리셋 */
-a{
+a {
   text-decoration: none;
-  color: rgba(45,45,45,0.87);
+  color: rgba(45, 45, 45, 0.87);
 }
 
-p{
+p {
   margin-bottom: 0;
 }
 
 .App {
   font-family: 'IBM Plex Sans KR', 'Noto Sans KR', sans-serif;
   text-align: center;
-  color: rgba(45,45,45,0.87);
+  color: rgba(45, 45, 45, 0.87);
   box-sizing: border-box;
 }
 
 /* app.js */
-.header{
+.header {
   width: 100%;
   height: 100px;
   padding: 24px 12px 0 12px;
@@ -30,7 +30,7 @@ p{
   align-items: center;
 }
 
-.logo{
+.logo {
   font-family: 'Raleway';
   font-size: 1.5em;
   color: #FFAB49;
@@ -39,21 +39,21 @@ p{
   line-height: 0.8;
 }
 
-.header_r{
+.header_r {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.login{
+.login {
   width: 30px;
   height: 30px;
   background-color: #FFAB49;
 }
 
 /* 하단 nav */
-.BottomNav{
+.BottomNav {
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -61,13 +61,13 @@ p{
   right: 0;
 }
 
-.MuiBottomNavigationAction-label{
+.MuiBottomNavigationAction-label {
   font-family: 'IBM Plex Sans KR';
 }
 
 
 /* main.js */
-.header_ment{
+.header_ment {
   width: 100%;
   height: 70px;
   padding: 0 12px;
@@ -75,34 +75,35 @@ p{
 }
 
 /* main 이미지 슬라이드 */
-.mainslide{
+.mainslide {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.carousel-item{
+.carousel-item {
   padding: 0 12px;
 }
 
-.carousel-item img{
+.carousel-item img {
   border-radius: 20px;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon,
-.carousel-indicators{
+.carousel-control-prev-icon,
+.carousel-control-next-icon,
+.carousel-indicators {
   display: none;
 }
 
 /* 섹션 */
-.section{
+.section {
   width: 100%;
   height: auto;
   padding: 12px 12px 60px 12px;
 }
 
-.section_box{
+.section_box {
   width: 100%;
   height: 70px;
   display: flex;
@@ -111,11 +112,11 @@ p{
   gap: 10px;
 }
 
-.section_ment{
+.section_ment {
   text-align: left;
 }
 
-.section_button{
+.section_button {
   border: none;
   background-color: #FFAB49;
   color: #fff;
@@ -124,7 +125,7 @@ p{
 }
 
 /* 주문 영역 */
-.order{
+.order {
   width: 100%;
   height: 110px;
   display: flex;
@@ -133,9 +134,9 @@ p{
   gap: 17%;
 }
 
-.order_box{
+.order_box {
   text-decoration: none;
-  color: rgba(45,45,45,0.87);
+  color: rgba(45, 45, 45, 0.87);
   cursor: pointer;
   position: relative;
   display: flex;
@@ -145,12 +146,12 @@ p{
   gap: 10px;
 }
 
-.order_icon{
+.order_icon {
   font-size: 1.5rem;
 }
 
 /* md 메뉴 영역 & productlist */
-.today_ment{
+.today_ment {
   width: 100%;
   height: 50px;
   padding-left: 5px;
@@ -159,36 +160,36 @@ p{
 }
 
 /* location 매장 선택 페이지 */
-.location{
+.location {
   width: 100%;
   height: auto;
   padding: 0 12px;
 }
 
 /* 이전으로 가기 navigate(-1) 버튼 */
-.go_back_box{
+.go_back_box {
   width: 100%;
   height: 30px;
   display: flex;
   align-items: center;
 }
 
-.go_back_icon{
+.go_back_icon {
   color: #FFAB49;
 }
 
 /* product list */
-.pp{
+.pp {
   width: 100%;
   height: 1050px;
   padding: 12px 12px 60px 12px;
 }
 
-.pp_tab{
+.pp_tab {
   font-size: 1rem;
 }
 
-.p_wrap{
+.p_wrap {
   margin-top: 10px;
   width: 100%;
   height: 950px;
@@ -198,7 +199,7 @@ p{
   grid-template-columns: 1fr 1fr;
 }
 
-.p{
+.p {
   height: 290px;
   display: flex;
   flex-direction: column;
@@ -206,18 +207,18 @@ p{
   justify-content: center;
 }
 
-.p_img_wrap{
+.p_img_wrap {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.p_img{
+.p_img {
   width: 160px;
 }
 
-.p_data_wrap{
+.p_data_wrap {
   margin-top: 20px;
   padding-top: 20px;
   width: 100%;
@@ -228,27 +229,29 @@ p{
   justify-content: flex-start;
 }
 
-.p_title, .p_content, .p_price{
+.p_title,
+.p_content,
+.p_price {
   font-size: 0.9rem;
 }
 
-.p_content{
+.p_content {
   color: rgb(11, 11, 149);
   font-weight: bold;
 }
 
 /* detail */
-.detail{
+.detail {
   width: 100%;
   padding: 0 12px 12px 12px;
 }
 
 /* 이미지 정보 영역 */
-.detail_data_wrap{
+.detail_data_wrap {
   width: 100%;
 }
 
-.detail_img_wrap{
+.detail_img_wrap {
   width: 100%;
   height: 180px;
   display: flex;
@@ -256,12 +259,12 @@ p{
   align-items: center;
 }
 
-.detail_img{
+.detail_img {
   display: block;
   width: 160px;
 }
 
-.detail_title{
+.detail_title {
   width: 100%;
   height: 50px;
   display: flex;
@@ -270,7 +273,7 @@ p{
   font-size: 1.5rem;
 }
 
-.detail_content{
+.detail_content {
   width: 100%;
   height: 30px;
   display: flex;
@@ -281,7 +284,7 @@ p{
   font-weight: bold;
 }
 
-.detail_explain{
+.detail_explain {
   width: 100%;
   height: 80px;
   padding: 0 30px;
@@ -292,7 +295,7 @@ p{
 }
 
 /* 수량 가격 영역 */
-.detail_order_box{
+.detail_order_box {
   width: 100%;
   height: 80px;
   padding: 0 20px;
@@ -301,14 +304,15 @@ p{
   align-items: center;
 }
 
-.amout_wrap{
+.amout_wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
 
-.detail_amount_m, .detail_amount_p{
+.detail_amount_m,
+.detail_amount_p {
   width: 30px;
   height: 30px;
   background-color: #FFAB49;
@@ -317,13 +321,13 @@ p{
   color: #fff;
 }
 
-.detail_price{
+.detail_price {
   font-size: 1.3rem;
 }
 
 /* 주문하기 영역 */
 
-.detail_order_wrap{
+.detail_order_wrap {
   width: 100%;
   height: 70px;
   display: flex;
@@ -332,7 +336,7 @@ p{
   gap: 20px;
 }
 
-.detail_order_wrap a{
+.detail_order_wrap a {
   display: block;
   width: 150px;
   height: 40px;
@@ -344,14 +348,15 @@ p{
 }
 
 /* cart page 장바구니*/
-.cart{
+.cart {
   width: 100%;
   height: auto;
   padding: 0 12px 12px 12px;
 }
 
 /* 이전으로 가기 navigate(-1) 버튼 */
-.go_detail, .go_cart{
+.go_detail,
+.go_cart {
   z-index: 999;
   width: 100%;
   height: 30px;
@@ -359,11 +364,11 @@ p{
   align-items: center;
 }
 
-.go_detail_icon{
+.go_detail_icon {
   color: #FFAB49;
 }
 
-.cart_name{
+.cart_name {
   width: 100px;
   height: 50px;
   position: fixed;
@@ -371,14 +376,14 @@ p{
   left: 136px;
 }
 
-.cart_list{
+.cart_list {
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
 }
 
-.cart_data_box{
+.cart_data_box {
   width: 100%;
   height: 100px;
   display: flex;
@@ -387,7 +392,7 @@ p{
   align-items: center;
 }
 
-.cart_data_wrap{
+.cart_data_wrap {
   width: 100%;
   height: 100px;
   display: flex;
@@ -395,20 +400,20 @@ p{
   align-items: center;
 }
 
-.cart_wrap{
+.cart_wrap {
   width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.cart_title{
+.cart_title {
   width: 120px;
   font-size: 0.8rem;
   font-weight: bold;
 }
 
-.cart_delete{
+.cart_delete {
   width: 20px;
   height: 20px;
   background-color: #fdc380;
@@ -418,7 +423,7 @@ p{
   line-height: 0.8;
 }
 
-.cart_button_wrap{
+.cart_button_wrap {
   width: 30%;
   display: flex;
   justify-content: center;
@@ -426,7 +431,7 @@ p{
   gap: 10px;
 }
 
-.cart_button{
+.cart_button {
   width: 20px;
   height: 20px;
   background-color: #FFAB49;
@@ -436,7 +441,7 @@ p{
   line-height: 0.8;
 }
 
-.cart_order_box{
+.cart_order_box {
   width: 100%;
   height: 120px;
   display: flex;
@@ -446,7 +451,7 @@ p{
   gap: 20px;
 }
 
-.cart_price_wrap{
+.cart_price_wrap {
   padding: 0 20px;
   width: 100%;
   height: 50px;
@@ -458,7 +463,7 @@ p{
   align-items: center;
 }
 
-.go_order{
+.go_order {
   padding: 0 20px;
   width: 100%;
   height: 50px;
@@ -471,13 +476,13 @@ p{
 }
 
 /* 주문 페이지 order.js */
-.pay{
+.pay {
   width: 100%;
   height: auto;
   padding: 0 12px 12px 12px;
 }
 
-.pay_text{
+.pay_text {
   width: 100px;
   height: 50px;
   position: fixed;
@@ -486,19 +491,19 @@ p{
   font-weight: bold;
 }
 
-.pay_list{
+.pay_list {
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
 }
 
-.pay_data_box{
+.pay_data_box {
   width: 100%;
   height: auto;
 }
 
-.pay_data{
+.pay_data {
   padding: 0 5px 0 20px;
   width: 100%;
   height: 100px;
@@ -508,38 +513,38 @@ p{
   border-bottom: 2px solid #fdc380;
 }
 
-.pay_title{
+.pay_title {
   width: 110px;
   font-size: 0.8rem;
   font-weight: bold;
 }
 
-.pay_amount{
+.pay_amount {
   width: 40px;
   font-size: 0.8rem;
   font-weight: bold;
 }
 
-.pay_price{
+.pay_price {
   width: 80px;
   font-weight: bold;
 }
 
 /* 포장 요청 사항 */
-.pay_rq_wrap{
+.pay_rq_wrap {
   width: 100%;
   height: 150px;
   border-bottom: 2px solid #fdc380;
 }
 
-.pay_rq_ment{
+.pay_rq_ment {
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
 }
 
-.check{
+.check {
   width: 100%;
   height: 30px;
   display: flex;
@@ -547,11 +552,11 @@ p{
   align-items: center;
 }
 
-.FormControlLabel{
+.FormControlLabel {
   font-size: 0.8rem;
 }
 
-.pay_rq{
+.pay_rq {
   width: 100%;
   height: 30px;
   display: flex;
@@ -559,26 +564,26 @@ p{
   font-size: 0.8rem;
 }
 
-.rq_input{
+.rq_input {
   outline: none;
   border: #fdc380 2px solid;
   border-radius: 10px;
 }
 
 /* 결제 수단 */
-.pay_pay{
+.pay_pay {
   width: 100%;
   height: 100px;
 }
 
-.pay_way{
+.pay_way {
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
 }
 
-.pay_check{
+.pay_check {
   width: 100%;
   height: 30px;
   display: flex;
@@ -587,7 +592,7 @@ p{
 }
 
 /* 결제 */
-.pay_box{
+.pay_box {
   width: 100%;
   height: 120px;
   display: flex;
@@ -597,7 +602,7 @@ p{
   gap: 20px;
 }
 
-.pay_wrap{
+.pay_wrap {
   padding: 0 20px;
   width: 100%;
   height: 50px;
@@ -609,7 +614,7 @@ p{
   align-items: center;
 }
 
-.pay_button{
+.pay_button {
   padding: 0 20px;
   width: 100%;
   height: 50px;
@@ -620,4 +625,18 @@ p{
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+}
+
+/* location */
+
+.map {
+  width: 100%;
+  height: 600px;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: medium;
+  border-color: #D8D8D8;
 }
