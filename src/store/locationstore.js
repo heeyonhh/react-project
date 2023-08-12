@@ -19,7 +19,6 @@ export const fetchCoordinates = (address) => async (dispatch) => {
   }
 };
 
-
 export const locationData = createSlice({
   name: 'locationData',
   initialState: [
