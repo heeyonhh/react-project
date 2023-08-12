@@ -30,6 +30,7 @@ function Detail() {
         setQuantity(quantity + 1); // 로컬 상태 업데이트
     };
 
+    // 장바구니 정보전달
     const handleAddToCart = () => {
         dispatch(addToCart({ id: parseInt(id), quantity, price: product.price, img: product.img, title: product.title }));
     };
@@ -59,8 +60,8 @@ function Detail() {
             <div className="detail_order_box">
                 <div className='amout_wrap'>
                     <button className='detail_amount_m' onClick={handleDecrement}> - </button>
-                    {/* 상품 수량 */}
                     <p className='detail_amount'>{quantity}</p>
+                    {/* 상품 수량 */}
                     <button className='detail_amount_p' onClick={handleIncrement}> + </button>
                 </div>
                 <p className="detail_price">{(parseInt(product.price.replace(/[^0-9]/g, '')) * quantity).toLocaleString()}원</p> {/* 숫자로 치환 & 수량에 따라 가격 조정 */}
@@ -84,6 +85,7 @@ function Detail() {
                 >
                     주문하기
                 </Link>
+                {/* 바로 주문하기 */}
             </div>
 
         </Grid>

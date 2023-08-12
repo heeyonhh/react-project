@@ -12,13 +12,16 @@ import Grid from '@mui/material/Grid';
 function Cart() {
     let navigate = useNavigate();
 
+    // detail에서 넘어온 상품 정보 가져오기
     const cartItems = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
+    // 수량 업데이트 핸들
     const handleQuantityChange = (id, newQuantity) => {
         dispatch(updateQuantity({ id, quantity: newQuantity }));
     };
 
+    // 선택 상품 삭제 핸들
     const handleRemoveItem = (id) => {
         dispatch(removeFromCart(id));
     };
@@ -61,14 +64,9 @@ function Cart() {
                     <div className='cart_price_name'>상품금액</div>
                     <p className="cart_price">{totalAmount.toLocaleString()}원</p>
                 </div>
-                <Link
-                    to={{
-                        pathname: '/order',
-                        search: `?cartItems=${encodeURIComponent(JSON.stringify(cartItems))}&totalAmount=${totalAmount}`,
-                    }}
-                    className='go_order'
-                >
-                    주문하기
+                {/* order 주문 페이지로 정보 넘기기 */}
+                <Link to={{ pathname: '/order',
+                        search: `?cartItems=${encodeURIComponent(JSON.stringify(cartItems))}&totalAmount=${totalAmount}`, }} className='go_order' >주문하기
                 </Link>
             </div>
         </Grid>

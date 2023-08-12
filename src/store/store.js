@@ -32,6 +32,7 @@ export const productData = createSlice({
     ...product,
     quantity: 1,
   })),
+  // 수량 추가
 
   reducers: {
     // detail 페이지 수량 +- 기능
