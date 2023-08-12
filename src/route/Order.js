@@ -7,10 +7,12 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 function Order() {
     const navigate = useNavigate();
 
+    // 사용자가 주문한 상품 정보
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const cartItems = JSON.parse(decodeURIComponent(queryParams.get('cartItems')));
 
+    // 주문한 상품들의 총 금액
     const totalAmount = cartItems.reduce((total, item) => {
         const itemPrice = parseInt(item.price.replace(/[^0-9]/g, ''));
         return total + (itemPrice * item.quantity);

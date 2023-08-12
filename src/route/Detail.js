@@ -78,7 +78,7 @@ function Detail() {
                 <Link
                     to={{
                         pathname: '/order',
-                        search: `?id=${id}&quantity=${quantity}&img=${encodeURIComponent(product.img)}&title=${encodeURIComponent(product.title)}`,
+                        search: `?cartItems=${encodeURIComponent(JSON.stringify([{ id: parseInt(id), quantity, price: product.price, img: product.img, title: product.title }]))}`,
                     }}
                     className='go_order'
                 >
