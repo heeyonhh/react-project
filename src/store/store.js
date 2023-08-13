@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice';
+import getAddressCoordinates from './addressToCoordinates';
 
 export const productData = createSlice({
   name: 'productData',
@@ -56,15 +57,46 @@ export const { increaseQuantity, decreaseQuantity } = productData.actions;
 export const locationData = createSlice({
   name: 'locationData',
   initialState: [
-    { }
+    { address : "서울특별시 중구 세종대로 지하2(남대문로 5가)" },
+    { address : "서울특별시 중구 세종대로 지하101(정동)" },
+    { address : "서울특별시 중구 서소문로 지하127(서소문동)" },
+    { address : "서울특별시 중구 을지로 지하42(을지로1가)" },
+    { address : "서울특별시 중구 을지로 지하106(을지로3가)" },
+    { address : "서울특별시 중구 을지로 지하178(을지로4가)" },
+    { address : "서울특별시 중구 을지로 지하279(을지로7가)" },
+    { address : "서울특별시 중구 퇴계로 지하431-1(신당동)" },
+    { address : "서울특별시 종로구 사직로 지하130(적선동)" },
+    { address : "서울특별시 종로구 율곡로 지하62(안국동)" },
+    { address : "서울특별시 종로구 돈화문로 지하30(묘동)" },
+    { address : "서울특별시 중구 을지로 지하129(을지로3가)" },
+    { address : "서울특별시 중구 퇴계로 지하214(필동2가)" },
+    { address : "서울특별시 중구 동호로 지하256(장충동2가)" },
+    { address : "서울특별시 중구 다산로 지하122(신당동)" },
+    { address : "서울특별시 중구 장충단로 지하230(광희동2가)" },
+    { address : "서울특별시 중구 퇴계로 지하214(필동2가)" },
+    { address : "서울특별시 중구 퇴계로 지하126(충무로2가)" },
+    { address : "서울특별시 중구 퇴계로 지하54(남창동)" },
+    { address : "서울특별시 종로구 통일로 지하126(평동)" },
+    { address : "서울특별시 종로구 세종대로 지하172(세종로)" },
+    { address : "서울특별시 종로구 돈화문로11길 지하 26(돈의동)" },
+    { address : "서울특별시 중구 창경궁로 지하51(주교동)" },
+    { address : "서울특별시 중구 마른내로 지하162(광희동1가)" },
+    { address : "서울특별시 중구 청구로 지하77(신당동)" }
   ]
-})
+});
 
-
+// 주소를 인자로 받아서 해당 주소의 좌표를 비동기로 가져오는 thunk action
+export const fetchCoordinatesForAddress = (address) => async (dispatch) => {
+  const coordinates = await getAddressCoordinates(address);
+  if (coordinates) {
+    dispatch(locationData.actions.setCoordinatesForAddress({ address, coordinates }));
+  }
+  console.log('script loaded!!!', coordinates);  
+};
 
 export default configureStore({
   reducer: {
     productData: productData.reducer,
     cart: cartReducer,
-  }
-})
+  },
+});
