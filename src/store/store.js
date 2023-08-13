@@ -82,8 +82,19 @@ export const locationData = createSlice({
     { address : "서울특별시 중구 창경궁로 지하51(주교동)" },
     { address : "서울특별시 중구 마른내로 지하162(광희동1가)" },
     { address : "서울특별시 중구 청구로 지하77(신당동)" }
-  ]
+  ],
+  reducers: {
+    addCoordinatesForAddress: (state, action) => {
+      const { storeid, coordinates } = action.payload;
+      const location = state.find(loc => loc.storeid === storeid);
+      if (location) {
+        location.coordinates = coordinates;
+      }
+    },
+  },
 });
+
+export const { addCoordinatesForAddress } = locationData.actions;
 
 // 주소를 인자로 받아서 해당 주소의 좌표를 비동기로 가져오는 thunk action
 export const fetchCoordinatesForAddress = (address) => async (dispatch) => {
@@ -91,7 +102,6 @@ export const fetchCoordinatesForAddress = (address) => async (dispatch) => {
   if (coordinates) {
     dispatch(locationData.actions.setCoordinatesForAddress({ address, coordinates }));
   }
-  console.log('script loaded!!!', coordinates);  
 };
 
 export default configureStore({
