@@ -17,3 +17,5 @@ const locationSlice = createSlice({
 export const { setStores } = locationSlice.actions;
 
 export default locationSlice.reducer;
+
+// a0ab11a1d2a24d584c1cdbfb5c9a608c

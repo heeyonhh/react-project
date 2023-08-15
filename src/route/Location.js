@@ -1,65 +1,57 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setStores } from '../store/locationSlice';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import '../App.css';
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import '../App.css';
 
 function Location() {
     const navigate = useNavigate();
-    const stores = useSelector(state => state.location.stores);
-    const dispatch = useDispatch();
+    const [map, setMap] = useState(null);
 
     useEffect(() => {
-        const new_script = src => {
-            return new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = src;
-                script.addEventListener('load', () => {
-                    resolve();
-                });
-                script.addEventListener('error', e => {
-                    reject(e);
-                });
-                document.head.appendChild(script);
-            });
-        };
+        const script = document.createElement('script');
+        script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=a0ab11a1d2a24d584c1cdbfb5c9a608c&libraries=services';
+        script.onload = () => {
+            const kakao = window.kakao;
 
-        const my_script = new_script('https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=a0ab11a1d2a24d584c1cdbfb5c9a608c');
-
-        my_script.then(() => {
-            console.log('script loaded!!!');
-            const kakao = window['kakao'];
+            //로드 된후 콜백함수 실행
             kakao.maps.load(() => {
                 const mapContainer = document.getElementById('map');
                 const options = {
                     center: new kakao.maps.LatLng(37.56000302825312, 126.97540593203321),
-                    level: 3
+                    level: 3,
                 };
-                const map = new kakao.maps.Map(mapContainer, options);
-
-                const zoomControl = new kakao.maps.ZoomControl();
-                map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+                const newMap = new kakao.maps.Map(mapContainer, options);
+                setMap(newMap);
 
                 const places = new kakao.maps.services.Places();
 
-                places.keywordSearch('카페', (result, status) => {
-                    if (status === kakao.maps.services.Status.OK) {
-                        console.log(result);
-                        dispatch(setStores(result));
-                    }
-                });
+                const performKeywordSearch = () => {
+                    if (!map) return;
 
-                const markerPosition = new kakao.maps.LatLng(places);
-                const marker = new kakao.maps.Marker({
-                    position: markerPosition
-                });
-                marker.setMap(map);
+                    const input = document.querySelector('.location_input');
+                    const keyword = input.value;
+
+                    places.keywordSearch(keyword, (result, status) => {
+                        if (status === kakao.maps.services.Status.OK) {
+                            map.removeMarkers();
+
+                            for (const place of result) {
+                                const marker = new kakao.maps.Marker({
+                                    position: new kakao.maps.LatLng(place.y, place.x),
+                                });
+                                marker.setMap(map);
+                            }
+                        }
+                    });
+                };
+
+                const searchButton = document.querySelector('.location_submit');
+                searchButton.addEventListener('click', performKeywordSearch);
             });
-        });
-    }, [dispatch]);
+        };
+        document.head.appendChild(script);
+    }, [map]);
 
     return (
         <Grid className='location' item xs={12}>
@@ -72,19 +64,8 @@ function Location() {
             <input className='location_input' placeholder='매장명을 입력해 주세요.' />
             <button className='location_submit'>매장 검색</button>
 
-            <div className='stores_list'>
-                <h2>매장 목록</h2>
-                <ul>
-                    {stores.map(store => (
-                        <li key={store.id}>
-                            {store.place_name} - {store.address_name}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
             <div className='map_box'>
-                <div id="map" className="map" />
+                <div id='map' className='map' />
             </div>
 
             <div className='location_comp'>매장 선택 완료</div>
