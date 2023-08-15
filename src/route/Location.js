@@ -38,6 +38,11 @@ function Location() {
                     level: 3
                 };
                 const map = new kakao.maps.Map(mapContainer, options); //맵생성
+
+                // 지도 확대 축소 컨트롤
+                const zoomControl = new kakao.maps.ZoomControl();
+                map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+                
                 //마커설정
                 const markerPosition = new kakao.maps.LatLng(37.56000302825312, 126.97540593203321);
                 const marker = new kakao.maps.Marker({
