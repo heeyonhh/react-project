@@ -1,3 +1,4 @@
+// 백엔드로 인가코드 넘겨주려면 axios import
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Checkbox from '@mui/material/Checkbox';
@@ -19,21 +20,21 @@ function Login() {
     }
 
     const handleKakaoLogin = () => {
-        // kakao.auth.login 함수를 사용하여 로그인 처리
+        const REDIRECT_URL = 'http://localhost:3000/oauth';
+        const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=${REDIRECT_URL}&response_type=code`;
+
         window.Kakao.Auth.login({
             success: function (authObj) {
                 console.log('카카오 로그인 성공:', authObj);
-                // 성공 콜백에서 필요한 처리를 하세요
+                window.location.href = KAKAO_AUTH_URL;
             },
             fail: function (error) {
                 console.log('카카오 로그인 실패:', error);
-                // 실패 콜백에서 에러 처리를 하세요
             },
         });
     };
 
     return (
-        // 브레이크 포인트 화면 크기 xs
         <Container component="main" maxWidth="xs">
             <Box
                 sx={{
