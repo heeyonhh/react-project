@@ -1,15 +1,17 @@
-// 백엔드로 인가코드 넘겨주려면 axios import
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuth } from '../store/authSlice';
+import OAuthHandler from './Oauth';
+
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Checkbox from '@mui/material/Checkbox';
 import Button from "@mui/material/Button";
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Link from "@mui/material/Link";
 import Typography from '@mui/material/Typography';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Login() {
+
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
     const KAKAO_CLIENT_ID = process.env.REACT_APP_KAKAO_CLIENT_ID;
 
@@ -34,6 +36,26 @@ function Login() {
         });
     };
 
+    const dispatch = useDispatch();
+    const auth = useSelector(state => state.auth);
+
+    useEffect(() => {
+        // 로컬 스토리지에서 로그인 상태 가져오기
+        const authData = JSON.parse(localStorage.getItem('authData'));
+        if (authData) {
+            dispatch(setAuth(authData));
+        }
+    }, []);
+
+    const handleLogout = () => {
+        dispatch(setAuth({
+            kakaoCode: null,
+            user_id: null,
+            nickName: null,
+            profileImage: null,
+        }));
+    };
+
     return (
         <Container component="main" maxWidth="xs">
             <Box
@@ -49,18 +71,17 @@ function Login() {
                     로그인
                 </Typography>
 
-                <Button onClick={handleKakaoLogin} data-token={KAKAO_CLIENT_ID}>
-                    카카오로 회원가입/로그인
-                </Button>
-
-
-                {/* 이메일 비밀번호 기억 폼 */}
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="로그인상태 유지"
-                />
-
-                <Link>비밀번호 찾기</Link>
+                {auth.user_id ? (
+                    <div>
+                        <p>안녕하세요! {auth.nickName}님</p>
+                        <img src={auth.profileImage} alt="Profile" />
+                        <button onClick={handleLogout}>로그아웃</button>
+                    </div>
+                ) : (
+                    <Button onClick={handleKakaoLogin} data-token={KAKAO_CLIENT_ID}>
+                        카카오로 회원가입/로그인
+                    </Button>
+                )}
             </Box>
         </Container>
     );

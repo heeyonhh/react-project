@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
+// import { useSelector } from 'react-redux';
 
 import { StyledEngineProvider } from '@mui/material/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -21,6 +22,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // 라우트
 import Main from './route/Main';
 import Login from './route/Login';
+import OAuthHandler from './route/Oauth';
+import Profile from './route/Profile';
 import ProductList from './route/ProductList';
 import Detail from './route/Detail';
 import Cart from './route/Cart';
@@ -95,6 +98,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path='/login' element={<Login />} />
+              <Route path="/oauth" element={<OAuthHandler />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/detail/:id" element={<Detail />} />
               <Route path="/cart" element={<Cart />} />
