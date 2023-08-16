@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import { StyledEngineProvider } from '@mui/material/styles';
@@ -20,7 +20,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 // 라우트
 import Main from './route/Main';
-import Location from './route/Location';
 import Login from './route/Login';
 import ProductList from './route/ProductList';
 import Detail from './route/Detail';
@@ -53,6 +52,26 @@ function App() {
 
   let navigate = useNavigate();
   let [value, setValue] = useState(0);
+  let [isLoading, setIsLoading] = useState(true);
+
+  // 컴포넌트 마운트될때 로딩 상태를 변경(로딩 화면), 일정 시간 뒤 로딩 종료
+  useEffect(() => {
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false); // 로딩 종료
+    }, 1500); // 로딩 시간
+
+    // 컴포넌트 언마운트되면 타임아웃 클리어 메모리 누수 방지
+    return () => clearTimeout(loadingTimeout);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="loading_screen">
+        <p className='loading_logo'>
+          plato<br />coffee</p>
+      </div>
+    );
+  }
 
   return (
     <StyledEngineProvider injectFirst>
@@ -76,7 +95,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/location' element={<Location />} />
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/detail/:id" element={<Detail />} />
               <Route path="/cart" element={<Cart />} />
@@ -97,7 +115,7 @@ function App() {
                 <BottomNavigationAction label="장바구니" icon={<ShoppingCartIcon />} onClick={() => { navigate('/cart') }} />
               </BottomNavigation>
             </Box>
-            
+
           </Grid>
         </div>
       </ThemeProvider>

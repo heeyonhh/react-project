@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Checkbox from '@mui/material/Checkbox';
@@ -11,17 +9,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Login() {;
 
-// ... (컴포넌트 코드)
-
-const locationData = useSelector(state => state.locationData);
-
-for (const location of locationData) {
-  console.log(`Address: ${location.address}`);
-  console.log(`Latitude: ${location.latitude}, Longitude: ${location.longitude}`);
-}
-
-
-    // a0ab11a1d2a24d584c1cdbfb5c9a608c
 
     return (
         // 브레이크 포인트 화면 크기 xs

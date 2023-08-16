@@ -19,6 +19,24 @@ p {
   box-sizing: border-box;
 }
 
+/* 로딩 페이지 */
+.loading_screen{
+  width: 100%;
+  height: 100vh;
+  background-color: #FFAB49;
+  position: relative;
+}
+
+.loading_logo{
+  font-family: 'Raleway';
+  font-size: 2.5em;
+  color: #fff;
+  line-height: 1;
+  position: absolute;
+  bottom: 30%;
+  left: 10%;
+}
+
 /* app.js */
 .header {
   width: 100%;
