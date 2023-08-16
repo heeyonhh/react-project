@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import KakaoLogin from 'react-kakao-login';
 import REACT_APP_KAKAO_API_KEY from '../key.env';
+import REACT_APP_KAKAO_CLIENT_ID from '../key.env';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -12,23 +12,24 @@ import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Login() {
-    const navigate = useNavigate();
-
     // SDK는 한 번만 초기화
     if (!window.Kakao.isInitialized()) {
-      // JavaScript key를 인자로 주고 SDK 초기화
-      window.Kakao.init(REACT_APP_KAKAO_API_KEY);
+        // JavaScript key를 인자로 주고 SDK 초기화
+        window.Kakao.init(REACT_APP_KAKAO_API_KEY);
     }
 
-    const handleKakaoLoginSuccess = (response) => {
-        // 로그인 성공 처리할 로직
-        console.log(response);
-        navigate('/');
-    };
-
-    const handleKakaoLoginFailure = (error) => {
-        //로그인 실패 시 처리할 로직
-        console.error(error);
+    const handleKakaoLogin = () => {
+        // kakao.auth.login 함수를 사용하여 로그인 처리
+        window.Kakao.Auth.login({
+            success: function(authObj) {
+                console.log('카카오 로그인 성공:', authObj);
+                // 성공 콜백에서 필요한 처리를 하세요
+            },
+            fail: function(error) {
+                console.log('카카오 로그인 실패:', error);
+                // 실패 콜백에서 에러 처리를 하세요
+            },
+        });
     };
 
     return (
@@ -47,14 +48,7 @@ function Login() {
                     로그인
                 </Typography>
 
-                {/* 카카오로 회원가입/로그인 */}
-                <KakaoLogin
-                    token={REACT_APP_KAKAO_API_KEY}
-                    onSuccess={handleKakaoLoginSuccess}
-                    onFailure={handleKakaoLoginFailure}
-                    render={({ onClick }) => (
-                        <button onClick={onClick}>카카오로 회원가입/로그인</button>
-                    )} />
+                <button token={REACT_APP_KAKAO_CLIENT_ID} onClick={handleKakaoLogin}>카카오로 회원가입/로그인</button>
 
                 {/* 이메일 비밀번호 기억 폼 */}
                 <FormControlLabel
