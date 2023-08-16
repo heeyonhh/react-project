@@ -369,7 +369,7 @@ p {
 .cart {
   width: 100%;
   height: auto;
-  padding: 0 12px 12px 12px;
+  padding: 0 12px 60px 12px;
 }
 
 /* 이전으로 가기 navigate(-1) 버튼 */
@@ -384,14 +384,6 @@ p {
 
 .go_detail_icon {
   color: #FFAB49;
-}
-
-.cart_name {
-  width: 100px;
-  height: 50px;
-  position: fixed;
-  top: 103px;
-  left: 136px;
 }
 
 .cart_list {
@@ -497,16 +489,7 @@ p {
 .pay {
   width: 100%;
   height: auto;
-  padding: 0 12px 12px 12px;
-}
-
-.pay_text {
-  width: 100px;
-  height: 50px;
-  position: fixed;
-  top: 103px;
-  left: 136px;
-  font-weight: bold;
+  padding: 0 12px 60px 12px;
 }
 
 .pay_list {
