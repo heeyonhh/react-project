@@ -5,7 +5,7 @@ import { isLoggedInAtom } from './isLoggedInAtom';
 import Avatar from '@mui/material/Avatar';
 import '../App.css';
 
-function LoggedInStatusChecker() {
+function Headerlogin() {
   let navigate = useNavigate();
   const isLoggedIn = useRecoilValue(isLoggedInAtom);
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
@@ -39,4 +39,4 @@ function LoggedInStatusChecker() {
   }
 }
 
-export default LoggedInStatusChecker;
+export default Headerlogin;

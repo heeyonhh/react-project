@@ -10,6 +10,7 @@ import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
 
 import { orderdata } from '../components/data';
+import Mainlogin from "../atoms/Mainlogin";
 
 function Main() {
     const [index, setIndex] = useState(0);
@@ -36,7 +37,7 @@ function Main() {
             return Array.from(randomIndices).map(index => productsByCategory[index]);
         };
 
-        // 2개씩 랜덤 추천ㄴ
+        // 2개씩 랜덤 추천
         const coffeeProducts = getRandomProducts('coffee', 2);
         const beverageProducts = getRandomProducts('beverage', 2);
         const sideProducts = getRandomProducts('side', 2);
@@ -64,12 +65,7 @@ function Main() {
             </Grid>
 
             <Grid className='section' item xs={12}>
-                <Box className='section_box'>
-                    <p className='section_ment'>지금 플라토 회원이 되시면,<br />다양한 할인 혜택을 드려요.</p>
-                    <button className='section_button'
-                        onClick={() => { navigate('/login') }} >
-                        회원가입 / 로그인</button>
-                </Box>
+                <Mainlogin />
 
                 {/* 주문 영역 */}
                 <Box className="order">

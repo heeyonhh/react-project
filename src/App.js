@@ -28,7 +28,7 @@ import Detail from './route/Detail';
 import Cart from './route/Cart';
 import Order from './route/Order';
 
-import LoggedInStatusChecker from './atoms/LoggedInStatusChecker';
+import Headerlogin from './atoms/Headerlogin';
 
 //테마
 const theme = createTheme({
@@ -56,21 +56,25 @@ function App() {
 
   let navigate = useNavigate();
   let [value, setValue] = useState(0);
-  let [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  //토큰이 있으면 로그인 상태로 간주
-  const isLoggedIn = !!window.localStorage.getItem('access_token');
-
-  // 컴포넌트 마운트될때 로딩 상태를 변경(로딩 화면), 일정 시간 뒤 로딩 종료
+  // 컴포넌트 마운트될 때 로딩 상태 변경
   useEffect(() => {
+    const timeout = setTimeout(() => {
       setIsLoading(false); // 로딩 종료
+    }, 1500);
+
+    return () => {
+      clearTimeout(timeout); // 컴포넌트 언마운트 시 타임아웃 클리어
+    };
   }, []);
 
   if (isLoading) {
     return (
       <div className="loading_screen">
         <p className='loading_logo'>
-          plato<br />coffee</p>
+          plato<br />coffee
+        </p>
       </div>
     );
   }
@@ -89,7 +93,7 @@ function App() {
                   onClick={() => { navigate('/') }}>
                   plato<br />coffee</p>
                 <Box className='header_r'>
-                  <LoggedInStatusChecker />
+                  <Headerlogin />
                 </Box>
               </Box>
 
