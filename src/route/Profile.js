@@ -1,49 +1,47 @@
-import { useRecoilValue } from 'recoil';
-import { useState, useEffect, Fragment } from 'react';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
 import { isLoggedInAtom } from '../atoms/isLoggedInAtom';
+import { profileAtom } from '../atoms/profileAtom'
+
+import '../App.css';
+import Grid from '@mui/material/Grid';
 
 function Profile() {
-  
-  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+
   const navigate = useNavigate();
+  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+  //프로필 닉네임, 이미지 얻어오기
+  const [profile, setProfile] = useRecoilState(profileAtom);
 
-  const [email, setEmail] = useState('');
-  const [nickName, setNickName] = useState('');
-  const [profileImage, setProfileImage] = useState('');
+  //로그아웃 핸들
+  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
 
-  const getProfile = async () => {
-    try {
-      const data = await window.Kakao.API.request({
-        url: '/v2/user/me',
-      });
-      setEmail(data.kakao_account.email);
-      setNickName(data.properties.nickname);
-      setProfileImage(data.properties.profile_image);
-    } catch (err) {
-      console.log(err);
+  const handleLogout = async () => {
+    if (window.Kakao) {
+      try {
+        await window.Kakao.Auth.logout();
+        window.localStorage.removeItem('access_token');
+        // 스토리지 저장소 토큰 제거
+        setIsLoggedIn(false);
+        navigate('/');
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  const onClickBtn = () => {
-    navigate('/');
-  };
-
-  useEffect(() => {
-    getProfile();
-  }, []);
-
   return (
-    <Fragment>
+    <Grid item xs={12}>
       {isLoggedIn && (
-        <div>
-          <h2>환영합니다. {nickName} 님</h2>
-          <img src={profileImage}></img>
+        <div className="profile_box">
+          <h2 className="profile_text">환영합니다. {profile.nickName} 님🧡</h2>
+          <img className="profile_img" src={profile.profileImage} alt="프로필 이미지"></img>
+          <a href="/" className="profile_home"> Home으로 돌아가기 </a>
+          <button className="profile_button" onClick={handleLogout}>로그아웃</button>
         </div>
       )}
-      <button onClick={() => onClickBtn()}>Home으로 돌아가기</button>
-    </Fragment>
+    </Grid>
   );
 }
 

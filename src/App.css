@@ -68,6 +68,7 @@ p {
   width: 30px;
   height: 30px;
   background-color: #FFAB49;
+  cursor: pointer;
 }
 
 /* 하단 nav */
@@ -628,16 +629,34 @@ p {
   cursor: pointer;
 }
 
-/* location */
-
-.map {
+/* 프로필 페이지 */
+.profile_box{
   width: 100%;
-  height: 600px;
-  align-items: center;
+  height: auto;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: solid;
-  border-width: medium;
-  border-color: #D8D8D8;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_text{
+  font-size: 1rem;
+}
+
+.profile_img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile_home{
+  text-decoration: underline;
+}
+
+.profile_button{
+  border: none;
+  background-color: transparent;
+  color: #FFAB49;
+  text-decoration: underline;
 }

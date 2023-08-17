@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
 
-import { orderdata } from '../components/data';
+import { orderdata } from '../data/data';
 import Mainlogin from "../atoms/Mainlogin";
 
 function Main() {
@@ -17,8 +17,6 @@ function Main() {
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
-
-    let navigate = useNavigate();
 
     const [order] = useState(orderdata);
     const products = useSelector((state) => state.productData);

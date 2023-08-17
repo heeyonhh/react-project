@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { isLoggedInAtom } from './isLoggedInAtom';
+import { profileAtom } from '../atoms/profileAtom'
 
 import Avatar from '@mui/material/Avatar';
 import '../App.css';
@@ -8,16 +9,8 @@ import '../App.css';
 function Headerlogin() {
   let navigate = useNavigate();
   const isLoggedIn = useRecoilValue(isLoggedInAtom);
-  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
-
-  const handleLogout = () => {
-    if (window.Kakao) {
-        window.Kakao.Auth.logout();
-      }
-    window.localStorage.removeItem('access_token'); // 토큰 제거
-    setIsLoggedIn(false);
-    navigate('/');
-  };
+  //프로필 사진 얻어오기
+  const [profile, setProfile] = useRecoilState(profileAtom);
 
   const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
   const REDIRECT_URL = 'http://localhost:3000/oauth/callback/kakao';
@@ -26,8 +19,7 @@ function Headerlogin() {
   if (isLoggedIn) {
     return (
       <>
-        <button onClick={() => navigate('/profile')}>프로필</button>
-        <button onClick={handleLogout}>로그아웃</button>
+        <Avatar className='login' onClick={() => navigate('/profile')} src={profile.profileImage} />
       </>
     );
   } else {

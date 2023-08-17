@@ -1,12 +1,15 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { isLoggedInAtom } from './isLoggedInAtom';
+import { profileAtom } from '../atoms/profileAtom'
 
 import '../App.css';
 import Box from '@mui/material/Box';
 
 function Mainlogin() {
   const isLoggedIn = useRecoilValue(isLoggedInAtom);
+  //프로필 닉네임 얻어오기
+  const [profile, setProfile] = useRecoilState(profileAtom);
 
   const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
   const REDIRECT_URL = 'http://localhost:3000/oauth/callback/kakao';
@@ -15,7 +18,7 @@ function Mainlogin() {
   if (isLoggedIn) {
     return (
       <Box className='section_box'>
-        <p className='section_ment'>님<br />환영합니다.</p>
+        <p className='section_ment'>{profile.nickName}님<br />환영합니다.</p>
       </Box>
     );
   } else {
