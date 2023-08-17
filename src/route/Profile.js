@@ -38,8 +38,7 @@ function Profile() {
     <Fragment>
       {isLoggedIn && (
         <div>
-          <h2>WELCOME! {nickName} 🙌</h2>
-          <h3>Your email is.. {email}</h3>
+          <h2>환영합니다. {nickName} 님</h2>
           <img src={profileImage}></img>
         </div>
       )}

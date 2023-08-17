@@ -5,7 +5,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { isLoggedInAtom } from '../atoms/isLoggedInAtom';
 
-export default function Auth() {
+function Redirect() {
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
     const REDIRECT_URL = 'http://localhost:3000/oauth/callback/kakao';
     const KAKAO_CLIENT_SECRET = process.env.REACT_APP_KAKAO_CLIENT_SECRET;
@@ -42,3 +42,5 @@ export default function Auth() {
 
     return <div>로그인 진행중입니다..</div>
 };
+
+export default Redirect;
