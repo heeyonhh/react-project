@@ -1,6 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice';
-import authReducer from './authSlice';
 
 export const productData = createSlice({
   name: 'productData',
@@ -58,7 +57,6 @@ export const { increaseQuantity, decreaseQuantity } = productData.actions;
 export default configureStore({
   reducer: {
     productData: productData.reducer,
-    cart: cartReducer,
-    auth: authReducer
+    cart: cartReducer
   },
 });
