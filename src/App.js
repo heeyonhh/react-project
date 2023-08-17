@@ -58,14 +58,12 @@ function App() {
   let [value, setValue] = useState(0);
   let [isLoading, setIsLoading] = useState(true);
 
+  //토큰이 있으면 로그인 상태로 간주
+  const isLoggedIn = !!window.localStorage.getItem('access_token');
+
   // 컴포넌트 마운트될때 로딩 상태를 변경(로딩 화면), 일정 시간 뒤 로딩 종료
   useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
       setIsLoading(false); // 로딩 종료
-    }, 1500); // 로딩 시간
-
-    // 컴포넌트 언마운트되면 타임아웃 클리어 메모리 누수 방지
-    return () => clearTimeout(loadingTimeout);
   }, []);
 
   if (isLoading) {

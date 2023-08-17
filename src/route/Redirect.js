@@ -26,8 +26,12 @@ function Redirect() {
         });
         try {
             const res = await axios.post('https://kauth.kakao.com/oauth/token', payload);
-            window.Kakao.init(KAKAO_API_KEY); // Kakao Javascript SDK 초기화
-            window.Kakao.Auth.setAccessToken(res.data.access_token); // access token 설정
+            window.Kakao.init(KAKAO_API_KEY);
+            // Kakao Javascript SDK 초기화
+            window.Kakao.Auth.setAccessToken(res.data.access_token);
+            // access token 설정
+            window.localStorage.setItem('access_token', res.data.access_token);
+            // 토큰 로컬스토리지 저장 (로그인 유지)
             setIsLoggedIn(true);
             navigate('/');
         } catch (err) {
@@ -37,7 +41,7 @@ function Redirect() {
     };
 
     useEffect(() => {
-        getToken();
+        getToken();    
     }, []);
 
     return <div>로그인 진행중입니다..</div>

@@ -14,6 +14,7 @@ function LoggedInStatusChecker() {
     if (window.Kakao) {
         window.Kakao.Auth.logout();
       }
+    window.localStorage.removeItem('access_token'); // 토큰 제거
     setIsLoggedIn(false);
     navigate('/');
   };
