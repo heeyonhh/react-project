@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Switch } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 import { StyledEngineProvider } from '@mui/material/styles';
@@ -77,15 +78,17 @@ function App() {
               </Box>
 
               <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path='/login' element={<Login />} />
-                <Route path="/oauth/callback/kakao" element={<Redirect />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/location" element={<Location />} />
-                <Route path="/productlist" element={<ProductList />} />
-                <Route path="/detail/:id" element={<Detail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/order" element={<Order />} />
+                <Switch>
+                  <Route path="/" element={<Main />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path="/oauth/callback/kakao" element={<Redirect />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/location/:locationId" element={<Location />} />
+                  <Route path="/productlist" element={<ProductList />} />
+                  <Route path="/location/:locationId/detail/:id" element={<Detail />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/order" element={<Order />} />
+                </Switch>
               </Routes>
 
               {/* 하단 nav */}
