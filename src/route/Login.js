@@ -15,7 +15,6 @@ function Login() {
         <div>
             {isLoggedIn ? (
                 <>
-                    <p>환영합니다, OOO님!</p>
                     <button onClick={() => navigate('/profile')}>프로필 보기</button>
                 </>
             ) : (
