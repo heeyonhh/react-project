@@ -8,7 +8,7 @@ import { profileAtom } from '../atoms/profileAtom';
 
 function Redirect() {
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
-    const REDIRECT_URL = 'http://localhost:3000/oauth/callback/kakao';
+    const REDIRECT_URL = 'https://platocoffee.netlify.app/oauth/callback/kakao';
     const KAKAO_CLIENT_SECRET = process.env.REACT_APP_KAKAO_CLIENT_SECRET;
 
     const navigate = useNavigate();
