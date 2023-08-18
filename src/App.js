@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { RecoilRoot } from 'recoil';
 
@@ -28,7 +28,7 @@ import Detail from './route/Detail';
 import Cart from './route/Cart';
 import Order from './route/Order';
 
-import Headerlogin from './atoms/Headerlogin';
+import Headerlogin from '../src/atoms/Headerlogin';
 
 //테마
 const theme = createTheme({
@@ -56,28 +56,6 @@ function App() {
 
   let navigate = useNavigate();
   let [value, setValue] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // 컴포넌트 마운트될 때 로딩 상태 변경
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false); // 로딩 종료
-    }, 1500);
-
-    return () => {
-      clearTimeout(timeout); // 컴포넌트 언마운트 시 타임아웃 클리어
-    };
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="loading_screen">
-        <p className='loading_logo'>
-          plato<br />coffee
-        </p>
-      </div>
-    );
-  }
 
   return (
     <RecoilRoot>
