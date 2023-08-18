@@ -15,6 +15,8 @@ function Detail() {
     const { id } = useParams();
     const product = useSelector((state) => state.productData.find(product => product.id === parseInt(id)));
     //상품 id 연결
+    const location = useSelector((state) => state.locationData);
+    //스토어id 연결
 
     const [quantity, setQuantity] = useState(1); // 수량 상태 추가
 

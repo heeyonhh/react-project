@@ -20,6 +20,7 @@ function Main() {
 
     const [order] = useState(orderdata);
     const products = useSelector((state) => state.productData);
+    const location = useSelector((state) => state.locationData);
 
     const [randomProducts, setRandomProducts] = useState([]);
 
@@ -79,7 +80,7 @@ function Main() {
                 <Box className="today_ment">#Today 추천 메뉴</Box>
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
-                        <Link to={`/detail/${product.id}`} className="p" key={product.id}>
+                        <Link to={`/location/${location.id}/detail/${product.id}`} className="p" key={product.id}>
                             <div className='p_img_wrap'>
                                 <img className="p_img" src={product.img} alt={product.title} />
                             </div>

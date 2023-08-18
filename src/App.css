@@ -185,6 +185,54 @@ p {
   padding: 0 12px;
 }
 
+.location_text{
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.location_text2{
+  width: 100%;
+  height: 30px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.location_box{
+  width: 100%;
+  height: 400px;
+}
+
+.location_list{
+  width: 100%;
+  height: 70px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.location_list:hover{
+  background-color: #FFAB49;
+  color: #fff;
+}
+
+.location_name, .location_address, .location_distance{
+  font-size: 1rem;
+}
+
+.location_select, .location_select_text{
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  line-height: 3;
+  background-color: #FFAB49;
+  color: #fff;
+}
+
 /* 이전으로 가기 navigate(-1) 버튼 */
 .go_back_box {
   width: 100%;
@@ -196,6 +244,7 @@ p {
 .go_back_icon {
   color: #FFAB49;
 }
+
 
 /* product list */
 .pp {

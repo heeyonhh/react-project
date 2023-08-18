@@ -23,6 +23,7 @@ import Main from './route/Main';
 import Login from './route/Login';
 import Redirect from './route/Redirect';
 import Profile from './route/Profile';
+import Location from './route/Location';
 import ProductList from './route/ProductList';
 import Detail from './route/Detail';
 import Cart from './route/Cart';
@@ -80,6 +81,7 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path="/oauth/callback/kakao" element={<Redirect />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/location" element={<Location />} />
                 <Route path="/productlist" element={<ProductList />} />
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/cart" element={<Cart />} />
