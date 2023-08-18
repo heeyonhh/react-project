@@ -66,7 +66,9 @@ function Location() {
     useEffect(() => {
         // closestLocations 업데이트 시 markers 위치도 업데이트
         closestLocations.forEach((location, index) => {
-            markers[index].setPosition(new window.kakao.maps.LatLng(location.latitude, location.longitude));
+            if (markers[index]) {
+                markers[index].setPosition(new window.kakao.maps.LatLng(location.latitude, location.longitude));
+            }
         });
     }, [closestLocations, markers]);
 

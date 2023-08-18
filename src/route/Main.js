@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -13,6 +13,8 @@ import { orderdata } from '../data/data';
 import Mainlogin from "../atoms/Mainlogin";
 
 function Main() {
+    const dispatch = useDispatch();
+    
     const [index, setIndex] = useState(0);
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
@@ -80,7 +82,9 @@ function Main() {
                 <Box className="today_ment">#Today 추천 메뉴</Box>
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
-                        <Link to={`/location/${location.id}/detail/${product.id}`} className="p" key={product.id}>
+                        <Link to={`/location/${location.id}/detail/${product.id}`}
+                            className="p" key={product.id}
+                            onClick={() => dispatch(setSelectedProduct(product))} >
                             <div className='p_img_wrap'>
                                 <img className="p_img" src={product.img} alt={product.title} />
                             </div>
