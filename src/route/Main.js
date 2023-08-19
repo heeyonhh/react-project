@@ -43,7 +43,14 @@ function Main() {
         setRandomProducts(randomProducts);
     }, [products]);
 
+    //매장 이미 선택했는지 확인
     const selectedLocationId = useSelector((state) => state.locationId);
+
+    window.addEventListener('beforeunload', () => {
+        // redux persist로 저장한값 페이지 끄면 삭제
+        localStorage.removeItem('root'); // persistConfig
+        localStorage.removeItem('auth'); // authPersistConfig
+      });
 
     return (
         <Grid item xs={12}>

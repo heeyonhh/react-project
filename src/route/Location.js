@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { setLocationId } from '../store/locationIdSlice';
+import { setAnotherLocationId } from '../store/anotherLocationIdSlice'
 
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -91,6 +92,7 @@ function Location() {
     const dispatch = useDispatch();
     const handlesetLocationId = () => {
         dispatch(setLocationId(selectedLocation.id));
+        dispatch(setAnotherLocationId(selectedLocation.id));
     };
 
     return (

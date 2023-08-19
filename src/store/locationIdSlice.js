@@ -11,4 +11,4 @@ const locationIdSlice = createSlice({
 export const { setLocationId } = locationIdSlice.actions;
 
 export default locationIdSlice.reducer;
-//detail.js에서 저장한 selectedLocationId
+//main.js 사용

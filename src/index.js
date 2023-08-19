@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import { PersistGate } from 'redux-persist/integration/react';
-import store from '../src/store/store.js';
 import { store, persistor } from '../src/store/store.js';
 
 ReactDOM.render(

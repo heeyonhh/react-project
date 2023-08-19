@@ -1,14 +1,21 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice';
 import locationIdReducer from './locationIdSlice';
+import anotherLocationIdReducer from './anotherLocationIdSlice';
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { combineReducers } from '@reduxjs/toolkit';
 
 const persistConfig = {
   key: 'root',
   storage,
 };
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+}
 
 export const productData = createSlice({
   name: 'productData',
@@ -89,13 +96,12 @@ const rootReducer = combineReducers({
   productData: productData.reducer,
   cart: cartReducer,
   locationData: locationData.reducer,
-  locationId: locationIdReducer,
+  locationId: persistReducer(persistConfig, locationIdReducer),
+  anotherLocationId: persistReducer(authPersistConfig, anotherLocationIdReducer),
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
 });
 
 const persistor = persistStore(store);

@@ -28,6 +28,9 @@ function ProductList() {
         return true;
     });
 
+    //매장 이미 선택했는지 확인
+    const selected_an_LocationId = useSelector((state) => state.anotherLocationId);
+
     return (
         <Grid className="pp">
             <div className="go_back_box" onClick={() => navigate(-1)}>
@@ -43,8 +46,10 @@ function ProductList() {
             </Box>
             <Box className="p_wrap">
                 {filteredProducts.map((product) => (
-                    <Link  to={`/location?product=${product.id}`}
-                    className="p" key={product.id}>
+                    <Link to={selected_an_LocationId
+                        ? `/detail/${product.id}`
+                        : `/location?product=${product.id}`}
+                        className="p" key={product.id}>
                         <div className='p_img_wrap'>
                             <img className="p_img" src={product.img} alt={product.title} />
                         </div>
