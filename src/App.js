@@ -98,7 +98,7 @@ function App() {
                   }}
                 >
                   <BottomNavigationAction label="메인" icon={<HomeRoundedIcon />} onClick={() => { navigate('/') }} />
-                  <BottomNavigationAction label="커피오더" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/productlist') }} />
+                  <BottomNavigationAction label="메뉴" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/productlist') }} />
                   <BottomNavigationAction label="장바구니" icon={<ShoppingCartIcon />} onClick={() => { navigate('/cart') }} />
                 </BottomNavigation>
               </Box>

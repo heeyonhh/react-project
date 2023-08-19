@@ -1,16 +1,14 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateQuantity, removeFromCart } from '../store/cartSlice';
 
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
 
 function Cart() {
-    let navigate = useNavigate();
 
     // detail에서 넘어온 상품 정보 가져오기
     const cartItems = useSelector(state => state.cart);
@@ -34,10 +32,6 @@ function Cart() {
 
     return (
         <Grid className='cart' item xs={12}>
-            <div className="go_detail" onClick={() => { navigate(-1) }} >
-                <ArrowCircleLeftIcon className='go_detail_icon' />
-            </div>
-
             <div className="cart_name">장바구니 <ShoppingCartIcon /></div>
 
             <div className="cart_list">주문 상품</div>

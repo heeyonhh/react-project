@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity } from '../store/store';
 import { addToCart } from '../store/cartSlice';
@@ -9,20 +9,16 @@ import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 function Detail() {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const locationId = searchParams.get('selectedLocationId');
-
     const { productId } = useParams();
     const product = useSelector((state) =>
         state.productData.find(product => product.id === parseInt(productId))
     );
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const [quantity, setQuantity] = useState(1); // 수량 상태 추가
 
+    const dispatch = useDispatch();
     const handleDecrement = () => {
         if (quantity > 1) {
             dispatch(decreaseQuantity(productId)); // 수량 감소 액션 호출
@@ -35,7 +31,7 @@ function Detail() {
         setQuantity(quantity + 1); // 로컬 상태 업데이트
     };
 
-    // 장바구니 정보전달
+    // 리덕스 장바구니 정보 전달
     const handleAddToCart = () => {
         dispatch(addToCart({ id: parseInt(productId), quantity, price: product.price, img: product.img, title: product.title }));
     };

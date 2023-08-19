@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLocationId } from '../store/locationIdSlice';
 
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -77,15 +78,20 @@ function Location() {
     const searchParams = new URLSearchParams(location.search);
     const productId = searchParams.get("product");
 
-    //selectedLocation 전달 하기 위한 작업
+    //detail로 연결 작업 / URL 생성 작업
     const selectedLocationId = selectedLocation ? selectedLocation.id : null;
-
-    // URL 생성
     const url = selectedLocationId
         ? `/detail/${productId}?locationId=${selectedLocationId}`
         : `/detail/${productId}`;
-        console.log('Received productId:', productId);
-        console.log('Received locationId:', selectedLocationId);
+
+    // console.log('Received productId:', productId);
+    // console.log('Received locationId:', selectedLocationId);
+
+    // 리덕스로 매장 id 전달
+    const dispatch = useDispatch();
+    const handlesetLocationId = () => {
+        dispatch(setLocationId(selectedLocation.id));
+    };
 
     return (
         <Grid className='location' item xs={12}>
@@ -113,7 +119,7 @@ function Location() {
                 <div className='location_select'>
                     {selectedLocation.name}</div>)}
 
-            <Link to={url} className='location_select_text'>
+            <Link to={url} onClick={handlesetLocationId} className='location_select_text'>
                 매장 선택 완료
             </Link>
 

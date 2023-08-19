@@ -8,8 +8,8 @@ import '../App.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
+import { MdOutlinePhonelinkRing } from 'react-icons/md';
 
-import { orderdata } from '../data/data';
 import Mainlogin from "../atoms/Mainlogin";
 
 function Main() {
@@ -18,7 +18,6 @@ function Main() {
         setIndex(selectedIndex);
     };
 
-    const [order] = useState(orderdata);
     const products = useSelector((state) => state.productData);
 
     const [randomProducts, setRandomProducts] = useState([]);
@@ -44,6 +43,8 @@ function Main() {
         setRandomProducts(randomProducts);
     }, [products]);
 
+    const selectedLocationId = useSelector((state) => state.locationId);
+
     return (
         <Grid item xs={12}>
             <Box className="header_ment">커피 한 잔의 철학🧡<br />플라토 커피</Box>
@@ -67,21 +68,21 @@ function Main() {
 
                 {/* 주문 영역 */}
                 <Box className="order">
-                    {order.map((order, i) => (
-                        <Link to="/productlist" className="order_box" key={i}>
-                            <div className='order_icon'>{order.icon}</div>
-                            <p className='order_text'>{order.name}</p>
-                        </Link>
-                    ))}
+                    <Link to="/productlist" className="order_box">
+                        <div className='order_icon'><MdOutlinePhonelinkRing fontSize="large" /></div>
+                        <p className='order_text'>간편주문</p>
+                    </Link>
                 </Box>
 
                 {/* md 메뉴 영역 */}
                 <Box className="today_ment">#Today 추천 메뉴</Box>
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
-                        <Link to={`/location?product=${product.id}`}
-                        className="p"
-                        key={product.id}>
+                        <Link to={selectedLocationId
+                            ? `/detail/${product.id}`
+                            : `/location?product=${product.id}`}
+                            className="p"
+                            key={product.id}>
                             <div className='p_img_wrap'>
                                 <img className="p_img" src={product.img} alt={product.title} />
                             </div>
