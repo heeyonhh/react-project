@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -10,7 +9,6 @@ import '../App.css';
 import calculateDistance from '../data/calculateDistance';
 
 function Location() {
-    const { locationId } = useParams();
     const navigate = useNavigate();
     const locationData = useSelector((state) => state.locationData);
 

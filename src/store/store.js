@@ -74,9 +74,6 @@ export const locationData = createSlice({
   ],
 });
 
-export const selectLocationById = (state, locationId) =>
-  state.locationData.find(location => location.id === locationId);
-
 export default configureStore({
   reducer: {
     productData: productData.reducer,

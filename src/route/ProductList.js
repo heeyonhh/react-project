@@ -13,7 +13,6 @@ function ProductList() {
     const navigate = useNavigate();
     
     const products = useSelector((state) => state.productData);
-    const location = useSelector((state) => state.locationData);
 
     // 선택한 탭 값에 대한 상태 설정
     const [value, setValue] = useState(0);
@@ -45,7 +44,7 @@ function ProductList() {
             </Box>
             <Box className="p_wrap">
                 {filteredProducts.map((product) => (
-                    <Link to={`/location/${location.id}/detail/${product.id}`} className="p" key={product.id}>
+                    <Link to={`/detail/${product.id}`} className="p" key={product.id}>
                         <div className='p_img_wrap'>
                             <img className="p_img" src={product.img} alt={product.title} />
                         </div>

@@ -13,11 +13,9 @@ function Detail() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { locationId, id } = useParams();
+    const { id } = useParams();
     const product = useSelector((state) => state.productData.find(product => product.id === parseInt(id)));
     //상품 id 연결
-    const selectedLocation = useSelector((state) => selectLocationById(state, locationId));
-    //location id연결
 
     const [quantity, setQuantity] = useState(1); // 수량 상태 추가
 
