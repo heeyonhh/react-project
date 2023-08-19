@@ -6,13 +6,14 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const { id, quantity, price, img, title } = action.payload;
+      //장바구니에 동일한 상품있는지 확인
       const existingItem = state.find(item => item.id === id);
       if (existingItem) {
         existingItem.quantity += quantity;
       } else {
         state.push({ id, quantity, price, img, title });
       }
-    },
+    },    
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const item = state.find(item => item.id === id);

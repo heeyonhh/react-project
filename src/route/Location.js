@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import Grid from '@mui/material/Grid';
@@ -9,6 +8,7 @@ import '../App.css';
 import calculateDistance from '../data/calculateDistance';
 
 function Location() {
+
     const navigate = useNavigate();
     const locationData = useSelector((state) => state.locationData);
 
@@ -72,6 +72,21 @@ function Location() {
         });
     }, [closestLocations, markers]);
 
+    //useLocation 으로 main,productlist에서 받아온 productid
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const productId = searchParams.get("product");
+
+    //selectedLocation 전달 하기 위한 작업
+    const selectedLocationId = selectedLocation ? selectedLocation.id : null;
+
+    // URL 생성
+    const url = selectedLocationId
+        ? `/detail/${productId}?locationId=${selectedLocationId}`
+        : `/detail/${productId}`;
+        console.log('Received productId:', productId);
+        console.log('Received locationId:', selectedLocationId);
+
     return (
         <Grid className='location' item xs={12}>
             <div className="go_back_box" onClick={() => navigate(-1)}>
@@ -85,8 +100,8 @@ function Location() {
             <div className='location_box'>
                 {closestLocations.map(location => (
                     <div className='location_list'
-                    key={location.id}
-                    onClick={() => setSelectedLocation(location)}>
+                        key={location.id}
+                        onClick={() => setSelectedLocation(location)}>
                         <p className='location_name'>{location.name}</p>
                         <p className='location_address'>{location.address}</p>
                         <p className='location_distance'>{location.distance.toFixed(2)} km</p>
@@ -98,7 +113,9 @@ function Location() {
                 <div className='location_select'>
                     {selectedLocation.name}</div>)}
 
-            <Link className='location_select_text'>매장 선택 완료</Link>
+            <Link to={url} className='location_select_text'>
+                매장 선택 완료
+            </Link>
 
             <div id="map" style={{ width: '100%', height: '400px' }} />
 

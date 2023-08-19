@@ -79,7 +79,9 @@ function Main() {
                 <Box className="today_ment">#Today 추천 메뉴</Box>
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
-                        <Link to={`/location`} className="p" key={product.id}>
+                        <Link to={`/location?product=${product.id}`}
+                        className="p"
+                        key={product.id}>
                             <div className='p_img_wrap'>
                                 <img className="p_img" src={product.img} alt={product.title} />
                             </div>

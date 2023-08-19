@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity } from '../store/store';
 import { addToCart } from '../store/cartSlice';
@@ -9,31 +9,35 @@ import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
 function Detail() {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const locationId = searchParams.get('selectedLocationId');
+
+    const { productId } = useParams();
+    const product = useSelector((state) =>
+        state.productData.find(product => product.id === parseInt(productId))
+    );
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    const { id } = useParams();
-    const product = useSelector((state) => state.productData.find(product => product.id === parseInt(id)));
-    //상품 id 연결
 
     const [quantity, setQuantity] = useState(1); // 수량 상태 추가
 
     const handleDecrement = () => {
         if (quantity > 1) {
-            dispatch(decreaseQuantity(id)); // 수량 감소 액션 호출
+            dispatch(decreaseQuantity(productId)); // 수량 감소 액션 호출
             setQuantity(quantity - 1); // 로컬 상태 업데이트
         }
     };
 
     const handleIncrement = () => {
-        dispatch(increaseQuantity(id)); // 수량 증가 액션 호출
+        dispatch(increaseQuantity(productId)); // 수량 증가 액션 호출
         setQuantity(quantity + 1); // 로컬 상태 업데이트
     };
 
     // 장바구니 정보전달
     const handleAddToCart = () => {
-        dispatch(addToCart({ id: parseInt(id), quantity, price: product.price, img: product.img, title: product.title }));
+        dispatch(addToCart({ id: parseInt(productId), quantity, price: product.price, img: product.img, title: product.title }));
     };
 
     if (!product) {
@@ -72,7 +76,7 @@ function Detail() {
             <div className='detail_order_wrap'>
                 <Link to={{
                     pathname: '/cart',
-                    search: `?id=${id}&quantity=${quantity}&img=${product.img}&title=${product.title}`,
+                    search: `?id=${productId}&quantity=${quantity}&img=${product.img}&title=${product.title}`,
                 }}
                     className='go_cart' onClick={handleAddToCart}>장바구니 담기</Link>
                 {/* id 값 & 수량 정보 전달 & 장바구니 추가 */}
@@ -80,7 +84,7 @@ function Detail() {
                 <Link
                     to={{
                         pathname: '/order',
-                        search: `?cartItems=${encodeURIComponent(JSON.stringify([{ id: parseInt(id), quantity, price: product.price, img: product.img, title: product.title }]))}`,
+                        search: `?cartItems=${encodeURIComponent(JSON.stringify([{ id: parseInt(productId), quantity, price: product.price, img: product.img, title: product.title }]))}`,
                     }}
                     className='go_order'
                 >

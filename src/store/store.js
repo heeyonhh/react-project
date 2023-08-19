@@ -72,12 +72,25 @@ export const locationData = createSlice({
     { id: 13, name: '플라토커피 신림중앙점', latitude: 37.4843180, longitude: 126.926613, address: '서울특별시 관악구 신림동 1433-141' },
     { id: 14, name: '플라토커피 목동남부점', latitude: 37.5087428, longitude: 126.864710, address: '서울특별시 양천구 목동남로 46 1층' },
   ],
+
+reducers: {
+  selectedLocation: (state, action) => {
+    const selectedId = action.payload.selectedId;
+    const selectedLocation = state.find(location => location.id === selectedId);
+
+    if (selectedLocation) {
+      state.selectedLocation = selectedLocation;
+    }
+  },
+},
 });
+
+export const { selectedLocation } = locationData.actions;
 
 export default configureStore({
   reducer: {
     productData: productData.reducer,
     cart: cartReducer,
-    locationData : locationData.reducer
+    locationData: locationData.reducer
   },
 });
