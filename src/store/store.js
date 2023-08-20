@@ -1,22 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice';
-import locationIdReducer from './locationIdSlice';
-import anotherLocationIdReducer from './anotherLocationIdSlice';
-
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { combineReducers } from '@reduxjs/toolkit';
-
-const persistConfig = {
-  key: 'root',
-  storage,
-  blacklist: ['auth', 'root'], // 로그아웃시 삭제
-};
-
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-}
 
 export const productData = createSlice({
   name: 'productData',
@@ -91,19 +74,10 @@ export const locationData = createSlice({
   ],
 });
 
-export const { selectedLocation } = locationData.actions;
-
-const rootReducer = combineReducers({
-  productData: productData.reducer,
-  cart: cartReducer,
-  locationData: locationData.reducer,
-  locationId: persistReducer(persistConfig, locationIdReducer),
-  anotherLocationId: persistReducer(authPersistConfig, anotherLocationIdReducer),
-});
-
-const store = configureStore({
-  reducer: rootReducer,
-});
-
-const persistor = persistStore(store);
-export { store, persistor };
+export default configureStore({
+  reducer: {
+    productData: productData.reducer,
+    cart: cartReducer,
+    locationData: locationData.reducer
+  }
+})

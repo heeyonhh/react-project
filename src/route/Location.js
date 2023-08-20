@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { setLocationId } from '../store/locationIdSlice';
-import { setAnotherLocationId } from '../store/anotherLocationIdSlice'
+import { useSelector } from 'react-redux';
+import { useSetRecoilState } from 'recoil';
+import { Locationid } from '../atoms/Locationid';
 
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -88,11 +88,11 @@ function Location() {
     // console.log('Received productId:', productId);
     // console.log('Received locationId:', selectedLocationId);
 
-    // 리덕스로 매장 id 전달
-    const dispatch = useDispatch();
-    const handlesetLocationId = () => {
-        dispatch(setLocationId(selectedLocation.id));
-        dispatch(setAnotherLocationId(selectedLocation.id));
+    // 레코일로 id 저장
+    const setUserlocationid = useSetRecoilState(Locationid);
+
+    const handleLocationId = () => {
+        setUserlocationid(selectedLocation ? selectedLocation.id : null);
     };
 
     return (
@@ -121,7 +121,7 @@ function Location() {
                 <div className='location_select'>
                     {selectedLocation.name}</div>)}
 
-            <Link to={url} onClick={handlesetLocationId} className='location_select_text'>
+            <Link to={url} onClick={handleLocationId} className='location_select_text'>
                 매장 선택 완료
             </Link>
 

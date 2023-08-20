@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { useRecoilValue } from 'recoil';
+import { Locationid } from '../atoms/Locationid';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -28,8 +30,8 @@ function ProductList() {
         return true;
     });
 
-    //매장 이미 선택했는지 확인
-    const selected_an_LocationId = useSelector((state) => state.anotherLocationId);
+    //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
+    const userLocationid = useRecoilValue(Locationid);
 
     return (
         <Grid className="pp">
@@ -46,7 +48,7 @@ function ProductList() {
             </Box>
             <Box className="p_wrap">
                 {filteredProducts.map((product) => (
-                    <Link to={selected_an_LocationId
+                    <Link to={userLocationid
                         ? `/detail/${product.id}`
                         : `/location?product=${product.id}`}
                         className="p" key={product.id}>

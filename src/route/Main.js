@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useRecoilValue } from 'recoil';
+import { Locationid } from '../atoms/Locationid';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -43,8 +45,8 @@ function Main() {
         setRandomProducts(randomProducts);
     }, [products]);
 
-    //매장 이미 선택했는지 확인
-    const selectedLocationId = useSelector((state) => state.locationId);
+   //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
+    const userLocationid = useRecoilValue(Locationid);
 
     return (
         <Grid item xs={12}>
@@ -79,7 +81,7 @@ function Main() {
                 <Box className="today_ment">#Today 추천 메뉴</Box>
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
-                        <Link to={selectedLocationId
+                        <Link to={userLocationid
                             ? `/detail/${product.id}`
                             : `/location?product=${product.id}`}
                             className="p"
