@@ -18,15 +18,15 @@ function Mainlogin() {
   if (isLoggedIn) {
     return (
       <Box className='section_box'>
-        <p className='section_ment'>{profile.nickName}님<br />환영합니다.</p>
+        <p className='section_ment'>{profile.nickName}님 환영합니다.<br/>지금 바로 플라토를 만나보세요.</p>
       </Box>
     );
   } else {
     return (
       <Box className='section_box'>
-        <p className='section_ment'>지금 플라토 회원이 되시면,<br />다양한 할인 혜택을 드려요.</p>
-        <a href={KAKAO_AUTH_URL} className='section_button'>
-          회원가입 / 로그인</a>
+        <p className='section_lg_ment'>지금 플라토 회원이 되시면,<br />다양한 할인 혜택을 드려요.</p>
+        <a href={KAKAO_AUTH_URL} className='section_lg_button'>
+          카카오<br/>간편 로그인</a>
       </Box>
     );
   }

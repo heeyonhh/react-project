@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useRecoilValue } from 'recoil';
-import { Locationid } from '../atoms/Locationid';
+import { LocationidAtom } from '../atoms/LocationidAtom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -45,8 +45,8 @@ function Main() {
         setRandomProducts(randomProducts);
     }, [products]);
 
-   //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
-    const userLocationid = useRecoilValue(Locationid);
+    //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
+    const userLocationid = useRecoilValue(LocationidAtom);
 
     return (
         <Grid item xs={12}>
@@ -55,22 +55,22 @@ function Main() {
             <Grid className='mainslide'>
                 <Carousel activeIndex={index} onSelect={handleSelect}>
                     <Carousel.Item>
-                        <img src='/img/slide1.jpg' width={'100%'} alt="slide1" />
+                        <img src='/img/slide1.png' width={'100%'} alt="slide1" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img src='/img/slide2.jpg' width={'100%'} alt="slide2" />
+                        <img src='/img/slide2.png' width={'100%'} alt="slide2" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img src='/img/slide3.jpg' width={'100%'} alt="slide3" />
+                        <img src='/img/slide3.png' width={'100%'} alt="slide3" />
                     </Carousel.Item>
                 </Carousel>
             </Grid>
 
             <Grid className='section' item xs={12}>
-                <Mainlogin />
 
                 {/* 주문 영역 */}
                 <Box className="order">
+                    <Mainlogin />
                     <Link to="/productlist" className="order_box">
                         <div className='order_icon'><MdOutlinePhonelinkRing fontSize="large" /></div>
                         <p className='order_text'>간편주문</p>

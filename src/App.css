@@ -20,14 +20,14 @@ p {
 }
 
 /* 로딩 페이지 */
-.loading_screen{
+.loading_screen {
   width: 100%;
   height: 100vh;
   background-color: #FFAB49;
   position: relative;
 }
 
-.loading_logo{
+.loading_logo {
   font-family: 'Raleway';
   font-size: 2.5em;
   color: #fff;
@@ -74,10 +74,12 @@ p {
 /* 하단 nav */
 .BottomNav {
   width: 100%;
+  z-index: 999;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: #fff;
 }
 
 .MuiBottomNavigationAction-label {
@@ -122,12 +124,21 @@ p {
   padding: 12px 12px 60px 12px;
 }
 
-.section_box {
+/* 주문 영역 */
+
+.order {
   width: 100%;
-  height: 70px;
+  height: 110px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+}
+
+.section_box {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -143,30 +154,44 @@ p {
   padding: 7px 13px;
 }
 
-/* 주문 영역 */
-.order {
-  width: 100%;
-  height: 110px;
+.section_lg_ment {
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.section_lg_button {
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 17%;
+  text-decoration: none;
+  background-color: #FFAB49;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 0.9rem;
 }
 
 .order_box {
-  text-decoration: none;
-  color: rgba(45, 45, 45, 0.87);
-  cursor: pointer;
-  position: relative;
+  width: 80px;
+  height: 80px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #FFAB49;
+  color: #fff;
+  border-radius: 30px;
 }
 
 .order_icon {
   font-size: 1.5rem;
+}
+
+.order_text {
+  font-size: 0.9rem;
 }
 
 /* md 메뉴 영역 & productlist */
@@ -185,45 +210,55 @@ p {
   padding: 0 12px;
 }
 
-.location_text{
+.location_text {
   width: 100%;
-  height: 30px;
+  height: 40px;
   text-align: center;
   font-size: 1rem;
+  font-weight: bold;
+  line-height: 2.5;
 }
 
-.location_text2{
+.location_text2 {
   width: 100%;
-  height: 30px;
-  text-align: left;
+  height: 50px;
+  display: flex;
+  align-items: center;
   font-size: 1rem;
 }
 
-.location_box{
+.location_box {
   width: 100%;
-  height: 400px;
+  height: 370px;
 }
 
-.location_list{
+.location_list {
   width: 100%;
   height: 70px;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border-bottom: 1px solid #FFAB49;
 }
 
-.location_list:hover{
-  background-color: #FFAB49;
-  color: #fff;
-}
-
-.location_name, .location_address, .location_distance{
+.location_name{
   font-size: 1rem;
+  width: 25%;
 }
 
-.location_select, .location_select_text{
+.location_address{
+  font-size: 0.9rem;
+  width: 55%;
+}
+
+.location_distance {
+  font-size: 0.9rem;
+  width: 20%;
+}
+
+.location_select,
+.location_select_text {
   display: block;
   width: 100%;
   height: 50px;
@@ -231,6 +266,7 @@ p {
   line-height: 3;
   background-color: #FFAB49;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 /* 이전으로 가기 navigate(-1) 버튼 */
@@ -244,7 +280,6 @@ p {
 .go_back_icon {
   color: #FFAB49;
 }
-
 
 /* product list */
 .pp {
@@ -422,18 +457,13 @@ p {
   padding: 0 12px 60px 12px;
 }
 
-/* 이전으로 가기 navigate(-1) 버튼 */
-.go_detail,
-.go_cart {
-  z-index: 999;
+.cart_name {
   width: 100%;
-  height: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.go_detail_icon {
-  color: #FFAB49;
+  height: 40px;
+  text-align: center;
+  line-height: 2.5;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .cart_list {
@@ -508,7 +538,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .cart_price_wrap {
@@ -540,6 +570,15 @@ p {
   width: 100%;
   height: auto;
   padding: 0 12px 60px 12px;
+}
+
+.pay_text {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 2.5;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .pay_list {
@@ -584,7 +623,7 @@ p {
 /* 포장 요청 사항 */
 .pay_rq_wrap {
   width: 100%;
-  height: 150px;
+  height: 200px;
   border-bottom: 2px solid #fdc380;
 }
 
@@ -601,6 +640,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .FormControlLabel {
@@ -609,10 +649,9 @@ p {
 
 .pay_rq {
   width: 100%;
-  height: 30px;
+  height: 50px;
   display: flex;
   align-items: center;
-  font-size: 0.8rem;
 }
 
 .rq_input {
@@ -650,7 +689,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .pay_wrap {
@@ -679,7 +718,7 @@ p {
 }
 
 /* 프로필 페이지 */
-.profile_box{
+.profile_box {
   width: 100%;
   height: auto;
   display: flex;
@@ -689,21 +728,21 @@ p {
   gap: 20px;
 }
 
-.profile_text{
+.profile_text {
   font-size: 1rem;
 }
 
-.profile_img{
+.profile_img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
 
-.profile_home{
+.profile_home {
   text-decoration: underline;
 }
 
-.profile_button{
+.profile_button {
   border: none;
   background-color: transparent;
   color: #FFAB49;

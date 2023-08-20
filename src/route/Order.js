@@ -48,8 +48,8 @@ function Order() {
 
     return (
         <Grid className='pay' item xs={12}>
-            <div className="go_cart" onClick={() => { navigate(-1) }} >
-                <ArrowCircleLeftIcon className='go_detail_icon' />
+            <div className="go_back_box" onClick={() => { navigate(-1) }} >
+                <ArrowCircleLeftIcon className='go_back_icon' />
             </div>
 
             <div className="pay_text">주문하기</div>

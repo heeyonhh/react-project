@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useSetRecoilState } from 'recoil';
-import { Locationid } from '../atoms/Locationid';
+import { LocationidAtom } from '../atoms/LocationidAtom'
 
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
@@ -89,7 +89,7 @@ function Location() {
     // console.log('Received locationId:', selectedLocationId);
 
     // 레코일로 id 저장
-    const setUserlocationid = useSetRecoilState(Locationid);
+    const setUserlocationid = useSetRecoilState(LocationidAtom);
 
     const handleLocationId = () => {
         setUserlocationid(selectedLocation ? selectedLocation.id : null);
@@ -119,13 +119,13 @@ function Location() {
 
             {selectedLocation && (
                 <div className='location_select'>
-                    {selectedLocation.name}</div>)}
+                    선택 매장 : {selectedLocation.name}</div>)}
 
             <Link to={url} onClick={handleLocationId} className='location_select_text'>
                 매장 선택 완료
             </Link>
 
-            <div id="map" style={{ width: '100%', height: '400px' }} />
+            <div id="map" style={{ width: '100%', height: '150px' }} />
 
         </Grid>
     );

@@ -4,16 +4,21 @@ import { useNavigate } from 'react-router-dom';
 
 import { isLoggedInAtom } from '../atoms/isLoggedInAtom';
 import { profileAtom } from '../atoms/profileAtom';
+import { LocationidAtom } from '../atoms/LocationidAtom'
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
 
 function Profile() {
   const navigate = useNavigate();
-  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+
   const profile = useRecoilValue(profileAtom);
   console.log(profile)
+
+  const isLoggedIn = useRecoilValue(isLoggedInAtom);
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
+  //로그아웃할때 매장 선택값도 삭제
+  const setILocationid = useSetRecoilState(LocationidAtom);
 
   const [sdkReady, setSdkReady] = useState(false);
   const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
@@ -32,8 +37,9 @@ function Profile() {
       window.Kakao.Auth.logout();
     }
     window.localStorage.removeItem('access_token');
-    // 로그아웃 하면서 스토리지 저장소 토큰 값 제거
+    // 로그아웃 하면서 스토리지 저장소 토큰 값, 매장 선택값 제거
     setIsLoggedIn(false);
+    setILocationid(null);
 
     navigate('/');
   };

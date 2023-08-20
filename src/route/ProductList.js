@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useRecoilValue } from 'recoil';
-import { Locationid } from '../atoms/Locationid';
+import { LocationidAtom } from '../atoms/LocationidAtom'
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -31,7 +31,7 @@ function ProductList() {
     });
 
     //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
-    const userLocationid = useRecoilValue(Locationid);
+    const userLocationid = useRecoilValue(LocationidAtom);
 
     return (
         <Grid className="pp">
