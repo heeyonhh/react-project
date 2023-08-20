@@ -5,7 +5,7 @@ import { isLoggedInAtom } from '../atoms/isLoggedInAtom';
 
 function Login() {
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
-    const REDIRECT_URL = 'https://platocoffee.netlify.app/oauth/callback/kakao';
+    const REDIRECT_URL = 'http://localhost:3000/oauth/callback/kakao';
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=${REDIRECT_URL}&response_type=code`;
 
     const isLoggedIn = useRecoilValue(isLoggedInAtom);

@@ -10,6 +10,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['auth', 'root'], // 로그아웃시 삭제
 };
 
 const authPersistConfig = {

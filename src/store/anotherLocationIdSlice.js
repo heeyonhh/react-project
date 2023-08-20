@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const anotherLocationIdSlice = createSlice({
   name: 'anotherLocationId',
-  initialState: null, // 초기값 설정
+  initialState: null,
   reducers: {
     setAnotherLocationId: (state, action) => action.payload,
   },
