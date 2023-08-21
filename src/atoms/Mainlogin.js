@@ -15,6 +15,7 @@ function Mainlogin() {
   const REDIRECT_URL = process.env.REACT_APP_KAKAO_REDIRECT_URL;
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=${REDIRECT_URL}&response_type=code`;
 
+
   if (isLoggedIn) {
     return (
       <Box className='section_box'>

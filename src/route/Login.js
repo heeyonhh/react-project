@@ -7,6 +7,7 @@ function Login() {
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
     const REDIRECT_URL = process.env.REACT_APP_KAKAO_REDIRECT_URL;
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=${REDIRECT_URL}&response_type=code`;
+  
 
     const isLoggedIn = useRecoilValue(isLoggedInAtom);
     const navigate = useNavigate();
