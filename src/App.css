@@ -233,6 +233,7 @@ p {
 }
 
 .location_list {
+  cursor: pointer;
   width: 100%;
   height: 70px;
   display: flex;
@@ -586,6 +587,14 @@ p {
   height: 50px;
   display: flex;
   align-items: center;
+}
+
+.location_value{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
 }
 
 .pay_data_box {

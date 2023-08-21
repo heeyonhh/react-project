@@ -6,6 +6,9 @@ const { persistAtom } = recoilPersist();
 
 export const LocationidAtom = atom({
   key: 'Locationid',
-  default: null, // 초기 값 null
+  default: {
+    id: '',
+    name: ''
+  },
   effects_UNSTABLE: [persistAtom],
 });

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { LocationidAtom } from '../atoms/LocationidAtom'
 
 import '../App.css';
 import Grid from '@mui/material/Grid';
@@ -46,6 +48,10 @@ function Order() {
         setCreditCardChecked(!event.target.checked);
     };
 
+    // 선택 매장 레코일에서 가져오기
+    const selectedLocation = useRecoilValue(LocationidAtom);
+    console.log("왔다", selectedLocation)
+
     return (
         <Grid className='pay' item xs={12}>
             <div className="go_back_box" onClick={() => { navigate(-1) }} >
@@ -55,6 +61,7 @@ function Order() {
             <div className="pay_text">주문하기</div>
 
             <div className="pay_list">주문 상품</div>
+            <div className='location_value'>선택 매장 : {selectedLocation.name}</div>
 
             {cartItems.map(item => (
                 <div key={item.id} className="pay_data_box">
