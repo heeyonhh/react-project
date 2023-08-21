@@ -31,7 +31,7 @@ function ProductList() {
     });
 
     //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
-    const userLocationid = useRecoilValue(LocationidAtom);
+    const Locationid = useRecoilValue(LocationidAtom);
 
     return (
         <Grid className="pp">
@@ -48,7 +48,7 @@ function ProductList() {
             </Box>
             <Box className="p_wrap">
                 {filteredProducts.map((product) => (
-                    <Link to={userLocationid
+                    <Link to={Locationid
                         ? `/detail/${product.id}`
                         : `/location?product=${product.id}`}
                         className="p" key={product.id}>

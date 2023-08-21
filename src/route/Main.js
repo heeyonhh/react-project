@@ -46,7 +46,7 @@ function Main() {
     }, [products]);
 
     //매장 이미 선택했는지 레코일 location 값 확인 링크 다르게
-    const userLocationid = useRecoilValue(LocationidAtom);
+    const Locationid = useRecoilValue(LocationidAtom);
 
     return (
         <Grid item xs={12}>
@@ -81,7 +81,7 @@ function Main() {
                 <Box className="today_ment">#Today 추천 메뉴</Box>
                 <div className="p_wrap">
                     {randomProducts.map((product) => (
-                        <Link to={userLocationid
+                        <Link to={Locationid
                             ? `/detail/${product.id}`
                             : `/location?product=${product.id}`}
                             className="p"
