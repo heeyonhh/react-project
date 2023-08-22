@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { RecoilRoot } from 'recoil';
 
@@ -57,6 +57,24 @@ function App() {
 
   let navigate = useNavigate();
   let [value, setValue] = useState(0);
+  let [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 비동기적 로딩
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
+  if (loading) {
+    // 초기 로딩이 진행 중인 동안 로딩 페이지를 렌더링
+    return <div className='loading_screen'>
+      <div className='loading_logo'>
+        platto<br/>
+        coffee
+      </div>
+    </div>;
+  }
 
   return (
     <RecoilRoot>
