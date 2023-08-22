@@ -66,7 +66,7 @@ function App() {
             <CssBaseline />
 
             {/* header (상단 영역) */}
-            <Grid item xs={12}>
+            <Grid item xs={4}>
               <Box className='header'>
                 <p className='logo'
                   onClick={() => { navigate('/') }}>
