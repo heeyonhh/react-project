@@ -50,9 +50,10 @@ function Profile() {
         <div className="profile_box">
           <h2 className="profile_text">환영합니다. {profile.nickName} 님🧡</h2>
           <img className="profile_img" src={profile.profileImage} alt="프로필 이미지"></img>
-          <a href="/" className="profile_home">
+          <div className="profile_home"
+          onClick={() => { navigate('/') }}>
             Home으로 돌아가기
-          </a>
+          </div>
           <button className="profile_button" onClick={handleLogout}>
             로그아웃
           </button>
