@@ -136,16 +136,18 @@ p {
   width: 100%;
   height: 110px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
 }
 
 .section_box {
+  width: 270px;
   height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .section_ment {
