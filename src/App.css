@@ -142,7 +142,6 @@ p {
 }
 
 .section_box {
-  width: 270px;
   height: 110px;
   display: flex;
   align-items: center;
