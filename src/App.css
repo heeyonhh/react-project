@@ -12,11 +12,18 @@ p {
   margin-bottom: 0;
 }
 
+.wrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .App {
   font-family: 'IBM Plex Sans KR', 'Noto Sans KR', sans-serif;
   text-align: center;
   color: rgba(45, 45, 45, 0.87);
   box-sizing: border-box;
+  width: 425px;
 }
 
 /* 로딩 페이지 */
@@ -78,7 +85,6 @@ p {
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
   background-color: #fff;
 }
 

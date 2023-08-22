@@ -62,48 +62,50 @@ function App() {
     <RecoilRoot>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
-          <div className="App">
-            <CssBaseline />
+          <div className='wrap'>
+            <div className="App">
+              <CssBaseline />
 
-            {/* header (상단 영역) */}
-            <Grid item xs={4}>
-              <Box className='header'>
-                <p className='logo'
-                  onClick={() => { navigate('/') }}>
-                  plato<br />coffee</p>
-                <Box className='header_r'>
-                  <Headerlogin />
+              {/* header (상단 영역) */}
+              <Grid item xs={12}>
+                <Box className='header'>
+                  <p className='logo'
+                    onClick={() => { navigate('/') }}>
+                    plato<br />coffee</p>
+                  <Box className='header_r'>
+                    <Headerlogin />
+                  </Box>
                 </Box>
-              </Box>
 
-              <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path='/login' element={<Login />} />
-                <Route path="/oauth/callback/kakao" element={<Redirect />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/location" element={<Location />} />
-                <Route path="/productlist" element={<ProductList />} />
-                <Route path="/detail/:productId" element={<Detail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/order" element={<Order />} />
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<Main />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path="/oauth/callback/kakao" element={<Redirect />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/location" element={<Location />} />
+                  <Route path="/productlist" element={<ProductList />} />
+                  <Route path="/detail/:productId" element={<Detail />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/order" element={<Order />} />
+                </Routes>
 
-              {/* 하단 nav */}
-              <Box className="BottomNav">
-                <BottomNavigation
-                  showLabels
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                >
-                  <BottomNavigationAction label="메인" icon={<HomeRoundedIcon />} onClick={() => { navigate('/') }} />
-                  <BottomNavigationAction label="메뉴" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/productlist') }} />
-                  <BottomNavigationAction label="장바구니" icon={<ShoppingCartIcon />} onClick={() => { navigate('/cart') }} />
-                </BottomNavigation>
-              </Box>
+                {/* 하단 nav */}
+                <Box className="BottomNav">
+                  <BottomNavigation
+                    showLabels
+                    value={value}
+                    onChange={(event, newValue) => {
+                      setValue(newValue);
+                    }}
+                  >
+                    <BottomNavigationAction label="메인" icon={<HomeRoundedIcon />} onClick={() => { navigate('/') }} />
+                    <BottomNavigationAction label="메뉴" icon={<CoffeeRoundedIcon />} onClick={() => { navigate('/productlist') }} />
+                    <BottomNavigationAction label="장바구니" icon={<ShoppingCartIcon />} onClick={() => { navigate('/cart') }} />
+                  </BottomNavigation>
+                </Box>
 
-            </Grid>
+              </Grid>
+            </div>
           </div>
         </ThemeProvider>
       </StyledEngineProvider>
