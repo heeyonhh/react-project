@@ -10,7 +10,6 @@ import '../App.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-bootstrap/Carousel';
-import { MdOutlinePhonelinkRing } from 'react-icons/md';
 
 import Mainlogin from "../atoms/Mainlogin";
 
@@ -69,13 +68,7 @@ function Main() {
             <Grid className='section' item xs={12}>
 
                 {/* 주문 영역 */}
-                <Box className="order">
-                    <Mainlogin />
-                    <Link to="/productlist" className="order_box">
-                        <div className='order_icon'><MdOutlinePhonelinkRing fontSize="large" /></div>
-                        <p className='order_text'>간편주문</p>
-                    </Link>
-                </Box>
+                <Mainlogin />
 
                 {/* md 메뉴 영역 */}
                 <Box className="today_ment">#Today 추천 메뉴</Box>
