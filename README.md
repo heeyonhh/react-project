@@ -6,12 +6,16 @@ React를 사용하여 직접 구상하고 개발한 플라토 커피 주문 웹 
 
 ## 상태 관리 및 사용 스택
 
-- react-router-dom / Material-UI / bootstrap / Geolocation API / Kakao Login API
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white">
 
-- Redux 스토어 : 상품 정보 관리 및 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리
+<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"> : 상품 정보 관리 및 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리
 
-- Recoil & RecoilPersist : 카카오 로그인 사용자의 인증 상태 및 프로필 데이터 관리, 선택 매장 저장
+<img src="https://img.shields.io/badge/recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white"> & RecoilPersist : 카카오 로그인 사용자의 인증 상태 및 프로필 데이터 관리, 선택 매장 저장
 
+Geolocation API / Kakao Login API
+
+<img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"> <img src="https://img.shields.io/badge/mui-007FFF?style=for-the-badge&logo=mui&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
 
 ## 기능 소개
 
