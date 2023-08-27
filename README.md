@@ -6,7 +6,7 @@ React를 사용하여 직접 구상하고 개발한 플라토 커피 주문 웹 
 
 ## 상태 관리 및 사용 스택
 
-- react-router-dom / Material-UI / bootstrap / Kakao Login API
+- react-router-dom / Material-UI / bootstrap / Geolocation API / Kakao Login API
 
 - Redux 스토어 : 상품 정보 관리 및 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리
 
