@@ -7,6 +7,7 @@ import { LocationidAtom } from '../atoms/LocationidAtom';
 import Grid from '@mui/material/Grid';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import '../App.css';
+//가까운 매장 계산 함수
 import calculateDistance from '../data/calculateDistance';
 
 function Location() {
@@ -31,6 +32,7 @@ function Location() {
                         level: 6,
                     };
 
+                    //유저 위치와 가까운 매장 지도에 좌표로 가져오기
                     const closestLocations = locationData
                         .map((location) => ({
                             ...location,
@@ -65,6 +67,7 @@ function Location() {
         });
     }, []);
 
+    //마커 위치 업데이트
     useEffect(() => {
         closestLocations.forEach((location, index) => {
             if (markers[index]) {
