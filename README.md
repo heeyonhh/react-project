@@ -2,7 +2,7 @@
 
 ## https://platocoffee.netlify.app/
 
-React를 사용 개발한 플라토 커피 주문 웹 & 앱입니다.
+React를 사용 개발한 PWA 플라토 커피 주문 웹 & 앱
 
 ## 상태 관리 및 사용 스택
 
