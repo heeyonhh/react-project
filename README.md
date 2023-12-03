@@ -1,16 +1,16 @@
-# 플라토 커피 주문 앱 for React
+# 플라토 커피 주문 앱
 
 ## https://platocoffee.netlify.app/
 
-React를 사용하여 직접 구상하고 개발한 플라토 커피 주문 웹 & 앱입니다.
+React를 사용 개발한 플라토 커피 주문 웹 & 앱입니다.
 
 ## 상태 관리 및 사용 스택
 
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white">
 
-<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"> : 상품 정보 관리 및 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리
+<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"> : 상품 상태 관리 ( 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리 )
 
-<img src="https://img.shields.io/badge/recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white"> & RecoilPersist : 카카오 로그인 사용자의 인증 상태 및 프로필 데이터 관리, 선택 매장 저장
+<img src="https://img.shields.io/badge/recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white"> & RecoilPersist ( 카카오 로그인 사용자의 인증 상태 및 프로필 데이터 관리, 선택 매장 저장 )
 
 Geolocation API / Kakao Login API
 
@@ -33,23 +33,19 @@ Geolocation API / Kakao Login API
 
 ## 메인 페이지 : 이미지 슬라이드쇼, 주문 영역, 추천 메뉴 영역
 
-MUI (Material-UI) 라이브러리로 레이아웃을 구성 후 StyledEngineProvider를 사용하여 override 시키고 자유롭게 디자인하였습니다.
+MUI (Material-UI) 라이브러리로 레이아웃을 구성 후 StyledEngineProvider를 사용하여 override 시키고 심플하게 디자인
 
-또한 플라토 커피의 메인 컬러인 오렌지 컬러로 MUI 테마를 적용하여 UI들을 구성하였습니다.
+플라토 커피의 메인 컬러인 오렌지 컬러로 MUI 테마를 적용하여 UI들을 구성
 
-추천 메뉴 데이터 랜덤 선택 : Redux 스토어에서 가져온 products 데이터 중에서 각 카테고리 별로 랜덤한 상품을 선택합니다.
+추천 메뉴 데이터 랜덤 선택 : Redux 스토어에서 가져온 products 데이터 중에서 각 카테고리 별로 랜덤한 상품을 선택
 
-선택된 상품은 randomProducts 상태에 저장됩니다. 이 과정은 컴포넌트가 마운트되거나 products 데이터가 변경될 때마다 실행됩니다.
+선택된 상품은 randomProducts 상태에 저장 (이 과정은 컴포넌트가 마운트되거나 products 데이터가 변경될 때마다 실행)
 
-매장 선택 여부에 따른 링크 설정 : Locationid Recoil 상태를 사용하여 매장 선택 여부를 확인하고,
+문제
 
-선택되었다면 각 메뉴의 링크를 /detail/${product.id}로, 선택되지 않았다면 /location?product=${product.id}로 설정합니다.
+## Login 페이지 : 카카오 간편 로그인 & 프로필 정보 확인 기능
 
-## Login 페이지 : 사용자가 카카오 계정으로 로그인하고 프로필 정보를 확인할 수 있는 기능을 구현
-
-Recoil 상태 관리 라이브러리를 사용하여 사용자의 로그인 상태를 관리하도록 하였습니다.
-
-isLoggedIn이라는 상태를 생성하고, recoilPersist를 사용하여 로컬 스토리지에 상태를 유지하도록 설정하였습니다.
+Recoil로 사용자의 로그인 상태 관리 (isLoggedIn이라는 상태를 생성 recoilPersist 사용 로컬 스토리지에 상태 유지)
 
 카카오 API를 사용하여 로그인 후 리다이렉트되는 경로(redirect 컴포넌트)를 만들어 사용자가 카카오 계정으로 로그인하면
 
