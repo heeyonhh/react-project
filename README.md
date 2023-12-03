@@ -8,9 +8,9 @@ React를 사용 개발한 플라토 커피 주문 웹 & 앱입니다.
 
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white">
 
-<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"> : 상품 상태 관리 ( 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리 )
+Redux 상품 상태 관리 ( 수량 업데이트 액션, 매장 정보 관리, 장바구니 관리 )
 
-<img src="https://img.shields.io/badge/recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white"> & RecoilPersist ( 카카오 로그인 사용자의 인증 상태 및 프로필 데이터 관리, 선택 매장 저장 )
+Recoil & RecoilPersist ( 카카오 로그인 사용자의 인증 상태 및 프로필 데이터 관리, 선택 매장 저장 )
 
 Geolocation API / Kakao Login API
 
